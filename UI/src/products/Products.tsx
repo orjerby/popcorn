@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import Card from '../Card'
+import Card from '../components/Card'
 import { useProducts, useProductsDispatch } from './ProductsContext'
 
 export default function Products() {
@@ -15,17 +15,19 @@ export default function Products() {
   }, [])
 
   return (
-    <ul>
-      {products.map((product) => (
-        <Card
-          key={product.id}
-          image={product.images[0]}
-          title={product.title}
-          size={product.size}
-          price={product.price}
-          reviewsCount={product.reviews.length}
-        />
-      ))}
-    </ul>
+    <div className=" h-550 overflow-auto">
+      <ul className="w-max flex gap-25">
+        {products.map((product) => (
+          <Card
+            key={product.id}
+            image={product.images[0]}
+            title={product.title}
+            size={product.size}
+            price={product.price}
+            reviewsCount={product.reviews.length}
+          />
+        ))}
+      </ul>
+    </div>
   )
 }

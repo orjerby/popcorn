@@ -10,11 +10,11 @@ function Card({ image, title, size, price, reviewsCount }: CardProps) {
   console.log('Card', { image, title, size, price, reviewsCount })
 
   return (
-    <div className="flex h-522 flex-col overflow-hidden">
-      <div className="mt-37 flex h-481 w-268 flex-col items-center justify-center rounded-sm bg-white">
+    <div className="flex max-h-522 flex-col overflow-hidden">
+      <div className="mt-37 flex max-h-481 max-w-268 flex-col items-center justify-center rounded-sm bg-white">
         <div className="group flex flex-col items-center gap-10">
           <img
-            className="mt-105 h-256 w-full cursor-pointer object-contain transition-all duration-300 group-hover:scale-105"
+            className="mt-105 max-h-256 w-full cursor-pointer object-contain transition-all duration-300 group-hover:scale-105"
             src={image}
             alt="Popcorn"
           />
@@ -34,10 +34,10 @@ function Card({ image, title, size, price, reviewsCount }: CardProps) {
           </div>
 
           <div className="mt-20 mb-190 flex flex-col gap-10">
-            <button className="w-188 cursor-pointer rounded-[5px] bg-[#3eadb8] p-12 font-bold text-white hover:opacity-70">
+            <button className="w-188  cursor-pointer rounded font-sans bg-[#3eadb8] p-12 font-bold text-white hover:opacity-70">
               ADD TO CART
             </button>
-            <button className="w-188 cursor-pointer rounded-[5px] bg-[#b69775] p-12 font-bold text-white hover:opacity-70">
+            <button className="w-188 cursor-pointer rounded font-sans bg-[#b69775] p-12 font-bold text-white hover:opacity-70">
               VIEW MORE
             </button>
           </div>

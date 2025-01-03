@@ -1,13 +1,14 @@
 import './App.css'
-import Products from './products/Products'
-import { ProductsProvider } from './products/ProductsContext'
+import Header from './components/Header'
+import Home from './pages/Home'
 
 function App() {
   return (
     <>
-      <ProductsProvider>
-        <Products />
-      </ProductsProvider>
+      <div className="bg-[#f6f3e2]">
+        <Header></Header>
+        <Home></Home>
+      </div>
     </>
   )
 }
