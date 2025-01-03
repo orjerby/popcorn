@@ -6,7 +6,6 @@ function App() {
   return (
     <>
       <ProductsProvider>
-        <h1>Day off in Kyoto</h1>
         <Products />
       </ProductsProvider>
     </>

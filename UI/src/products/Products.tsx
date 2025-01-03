@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Card from '../Card'
 import { useProducts, useProductsDispatch } from './ProductsContext'
 
 export default function Products() {
@@ -16,9 +17,14 @@ export default function Products() {
   return (
     <ul>
       {products.map((product) => (
-        <li key={product.id}>
-          {product.title} - {product.price}
-        </li>
+        <Card
+          key={product.id}
+          image={product.images[0]}
+          title={product.title}
+          size={product.size}
+          price={product.price}
+          reviewsCount={product.reviews.length}
+        />
       ))}
     </ul>
   )

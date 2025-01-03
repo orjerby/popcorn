@@ -1,26 +1,34 @@
-import Stars from "./Stars";
+type CardProps = {
+  image: string
+  title: string
+  size: string
+  price: number
+  reviewsCount: number
+}
 
-function Card() {
+function Card({ image, title, size, price, reviewsCount }: CardProps) {
+  console.log('Card', { image, title, size, price, reviewsCount })
+
   return (
     <div className="flex h-522 flex-col overflow-hidden">
       <div className="mt-37 flex h-481 w-268 flex-col items-center justify-center rounded-sm bg-white">
         <div className="group flex flex-col items-center gap-10">
           <img
             className="mt-105 h-256 w-full cursor-pointer object-contain transition-all duration-300 group-hover:scale-105"
-            src="https://www.pipsnacks.com/cdn/shop/files/PC-Popcorn_Truffle_4.5oz_010323-render-front_7beebedc-e973-43e5-af88-a6fbe1848bd5.png?v=1690293798&width=165 165w, //www.pipsnacks.com/cdn/shop/files/PC-Popcorn_Truffle_4.5oz_010323-render-front_7beebedc-e973-43e5-af88-a6fbe1848bd5.png?v=1690293798&width=360 360w, //www.pipsnacks.com/cdn/shop/files/PC-Popcorn_Truffle_4.5oz_010323-render-front_7beebedc-e973-43e5-af88-a6fbe1848bd5.png?v=1690293798&width=533 533w, //www.pipsnacks.com/cdn/shop/files/PC-Popcorn_Truffle_4.5oz_010323-render-front_7beebedc-e973-43e5-af88-a6fbe1848bd5.png?v=1690293798&width=720 720w, //www.pipsnacks.com/cdn/shop/files/PC-Popcorn_Truffle_4.5oz_010323-render-front_7beebedc-e973-43e5-af88-a6fbe1848bd5.png?v=1690293798&width=940 940w, //www.pipsnacks.com/cdn/shop/files/PC-Popcorn_Truffle_4.5oz_010323-render-front_7beebedc-e973-43e5-af88-a6fbe1848bd5.png?v=1690293798&width=1066 1066w, //www.pipsnacks.com/cdn/shop/files/PC-Popcorn_Truffle_4.5oz_010323-render-front_7beebedc-e973-43e5-af88-a6fbe1848bd5.png?v=1690293798 3000w"
+            src={image}
             alt="Popcorn"
           />
-          <h3 className="text-lg font-bold">Truffle Mini Popcorn</h3>
+          <h3 className="text-lg font-bold text-black">{title}</h3>
           <div className="mt-16 flex flex-col items-center gap-10">
-            <div className="flex gap-x-5 font-bold">
-              <span>4-PACK</span>
+            <div className="flex gap-x-5 font-bold  text-black">
+              <span>{size}</span>
               <span>|</span>
-              <span>$18</span>
+              <span>${price}</span>
             </div>
             <div className="flex">
-              <Stars></Stars>
+              {/* <Stars></Stars> */}
               <span className="pl-5 text-sm font-bold text-[#337d9c]">
-                295 REVIEWS
+                {reviewsCount} REVIEWS
               </span>
             </div>
           </div>
@@ -36,6 +44,6 @@ function Card() {
         </div>
       </div>
     </div>
-  );
+  )
 }
-export default Card;
+export default Card
