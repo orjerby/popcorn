@@ -15,8 +15,8 @@ export default function Products() {
   }, [])
 
   return (
-    <div className=" h-550 overflow-auto">
-      <ul className="w-max flex gap-25">
+    <div className="h-550 overflow-auto">
+      <ul className="flex w-max gap-25">
         {products.map((product) => (
           <Card
             key={product.id}

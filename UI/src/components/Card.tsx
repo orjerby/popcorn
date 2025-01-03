@@ -20,7 +20,7 @@ function Card({ image, title, size, price, reviewsCount }: CardProps) {
           />
           <h3 className="text-lg font-bold text-black">{title}</h3>
           <div className="mt-16 flex flex-col items-center gap-10">
-            <div className="flex gap-x-5 font-bold  text-black">
+            <div className="flex gap-x-5 font-bold text-black">
               <span>{size}</span>
               <span>|</span>
               <span>${price}</span>
@@ -34,10 +34,10 @@ function Card({ image, title, size, price, reviewsCount }: CardProps) {
           </div>
 
           <div className="mt-20 mb-190 flex flex-col gap-10">
-            <button className="w-188  cursor-pointer rounded font-sans bg-[#3eadb8] p-12 font-bold text-white hover:opacity-70">
+            <button className="w-188 cursor-pointer rounded bg-[#3eadb8] p-12 font-sans font-bold text-white hover:opacity-70">
               ADD TO CART
             </button>
-            <button className="w-188 cursor-pointer rounded font-sans bg-[#b69775] p-12 font-bold text-white hover:opacity-70">
+            <button className="w-188 cursor-pointer rounded bg-[#b69775] p-12 font-sans font-bold text-white hover:opacity-70">
               VIEW MORE
             </button>
           </div>
