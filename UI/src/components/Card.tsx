@@ -7,8 +7,6 @@ type CardProps = {
 }
 
 function Card({ image, title, size, price, reviewsCount }: CardProps) {
-  console.log('Card', { image, title, size, price, reviewsCount })
-
   return (
     <div className="flex max-h-522 flex-col overflow-hidden">
       <div className="mt-37 flex max-h-481 max-w-268 flex-col items-center justify-center rounded-sm bg-white">
