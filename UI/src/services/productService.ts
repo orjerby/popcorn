@@ -8,12 +8,11 @@ const API_URL = 'http://localhost:3000/products'
  * Fetch all products from the API
  * @returns {Promise<Product[]>} - List of products
  */
-export const getProducts = new Promise<Product[]>(async (resolve, reject) => {
+export const getProducts = new Promise<Product[]>(async (resolve) => {
   try {
     const response = await axios.get<Product[]>(API_URL)
     resolve(response.data)
   } catch (error) {
     console.error('Error fetching products:', error)
-    reject(new Error('Failed to fetch products.'))
   }
 })

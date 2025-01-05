@@ -2,7 +2,7 @@ function Header() {
   return (
     <div>
       <div className="flex h-36 flex-col items-center justify-center bg-[#eb6600]">
-        <p className="text-center text-sm font-medium text-white uppercase">
+        <p className="font-pluto-medium text-center text-sm font-medium text-white uppercase">
           Snag free shipping on orders over $30
         </p>
       </div>

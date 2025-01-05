@@ -1,4 +1,5 @@
-import React, { createContext, ReactNode, use, useReducer } from 'react'
+import React, { createContext, ReactNode, use } from 'react'
+import { useImmerReducer } from 'use-immer'
 import { Action, rootReducer, RootState } from './rootReducer'
 
 type AppContextProps = {
@@ -11,7 +12,7 @@ export const AppContext = createContext<AppContextProps | undefined>(undefined)
 export const initialState: RootState = rootReducer()
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(rootReducer, initialState)
+  const [state, dispatch] = useImmerReducer(rootReducer, initialState)
 
   return <AppContext value={{ state, dispatch }}>{children}</AppContext>
 }

@@ -2,10 +2,46 @@
 
 @config "../tailwind.config.js";
 
+@font-face {
+  font-family: 'vinyl';
+  src:
+    url('https://use.typekit.net/af/57de58/000000000000000077359a3b/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/57de58/000000000000000077359a3b/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/57de58/000000000000000077359a3b/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'vinyl';
+  src:
+    url('https://use.typekit.net/af/006c0d/000000000000000077359a3f/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/006c0d/000000000000000077359a3f/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/006c0d/000000000000000077359a3f/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'PlutoMedium';
+  src: url('//www.pipsnacks.com/cdn/shop/t/205/assets/PlutoCondMedium.otf?v=131492063285319223371707493612');
+}
+
 @theme {
   --color-my-special: red;
   --spacing: 0.0625rem;
-  /* --radius-*: 2px; */
+  --font-vinyl: 'vinyl';
+  --font-pluto-medium: 'PlutoMedium';
 }
 
 /* Custom rounded utilities for any number using calc */
@@ -17,7 +53,7 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'vinyl', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

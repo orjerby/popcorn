@@ -1,11 +1,13 @@
+import { Draft } from 'immer'
 import {
   initialProductState,
   ProductAction,
   productReducer,
+  ProductState,
 } from './reducers/productReducer'
 
 export type RootState = {
-  productState: ReturnType<typeof productReducer>
+  productState: ProductState
 }
 
 const initialState: RootState = {
@@ -15,8 +17,11 @@ const initialState: RootState = {
 export type Action = ProductAction
 
 export const rootReducer = (
-  state = initialState,
+  state: Draft<RootState> = initialState,
   action?: Action,
-): RootState => ({
-  productState: productReducer(state.productState, action),
-})
+): RootState => {
+  productReducer(state.productState, action)
+  return state
+}
+
+export const getInitialState = () => initialState
