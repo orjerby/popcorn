@@ -1,6 +1,6 @@
 function Stars() {
   return (
-    <div className="flex flex-row items-center gap-x-5">
+    <span className="flex flex-row justify-center gap-x-5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -76,8 +76,8 @@ function Stars() {
           />
         </g>
       </svg>
-    </div>
-  );
+    </span>
+  )
 }
 
-export default Stars;
+export default Stars

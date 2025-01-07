@@ -31,7 +31,7 @@ export default function ProductList() {
   // }
 
   return (
-    <div className="h-550 overflow-auto bg-red-300">
+    <div className="h-550 overflow-auto bg-[#f6f3e2] uppercase">
       <ul className="flex w-max gap-25">
         {products.map((product) => (
           <Card
