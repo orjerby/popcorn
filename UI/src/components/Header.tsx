@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button'
 import { useState } from 'react'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoSearchSharp } from 'react-icons/io5'
@@ -11,7 +10,6 @@ function Header() {
   return (
     <div>
       <div>
-        <Button onClick={() => setIsCartOpen(true)}>Open cart</Button>
         <Cart isOpen={isCartOpen} close={() => setIsCartOpen(false)} />
       </div>
       <div className="flex h-36 flex-col items-center justify-center bg-[#eb6600]">
@@ -52,7 +50,10 @@ function Header() {
           <button>
             <IoSearchSharp size={34} />
           </button>
-          <button>
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="cursor-pointer"
+          >
             <span className="relative">
               <PiHandbagSimple size={34} />
               <span className="absolute -top-10 -right-10 flex h-28 w-24 items-center justify-center rounded-full bg-[#e5d1b3] text-sm text-white">
