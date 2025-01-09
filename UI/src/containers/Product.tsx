@@ -1,3 +1,4 @@
+import Stars from '../components/Stars'
 import { useAppContext } from '../context/AppContext'
 
 type Props = {
@@ -35,16 +36,16 @@ export default function Product({
             src={image}
             alt="Popcorn"
           />
-          <h3 className="text-lg font-bold text-black">{title}</h3>
+          <h3 className="text-xl font-bold text-black">{title}</h3>
           <div className="mt-16 flex flex-col items-center gap-10">
             <div className="flex gap-x-5 font-bold text-black">
-              <span>{size}</span>
+              <span>4-PACK</span>
               <span>|</span>
               <span>${price}</span>
             </div>
-            <div className="flex">
-              {/* <Stars></Stars> */}
-              <span className="pl-5 text-sm font-bold text-[#337d9c]">
+            <div className="flex h-24 items-center">
+              <Stars />
+              <span className="justify-center pl-5 text-base font-bold text-[#337d9c]">
                 {reviewsCount} REVIEWS
               </span>
             </div>

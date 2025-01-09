@@ -65,4 +65,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  .swiper-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    /* gap: 25px; */
+  }
 }

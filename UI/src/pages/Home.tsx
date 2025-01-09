@@ -20,7 +20,7 @@ function Home() {
           </p>
         </div>
         <div className="py-12">
-          <h1 className="font-custom text-center text-5xl font-bold text-black">
+          <h1 className="mt-36 mb-36 text-center text-5xl font-bold text-black uppercase">
             Fan Favorites
           </h1>
           <Suspense fallback={<div>Loading products...</div>}>
