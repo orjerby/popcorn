@@ -6,6 +6,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'cinnamon-sugar-twists-1',
       title: 'Cinnamon Sugar Twists',
+      count: 4,
       description:
         'We’re bringing a new twist to the snack game! The irresistible Pipcorn crunch meets the classic flavor, Cinnamon Sugar, for a uniquely satisfying, omg-I-finished-the-bag snacking experience. Our all-new Twists are made with sustainability in mind by using upcycled Heirloom corn flour to create a flavor-packed shape that’s light, airy, and oh-so-crispy! You might even forget that Twists are better for you, too!',
       size: '4-PACK',
@@ -26,6 +27,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'sea-salt-heirloom-corn-dippers',
       title: 'Sea Salt Corn Dippers',
+      count: 4,
       description:
         'Just three ingredients to make the oh-my-gosh-this-is-so-much-better-than-every-other-corn-chip corn chip? You bet! Our heirloom corn steps up and shines in this dipper that begs to be dunked (or enjoyed on its own – preferably by the handful). Flaky, light, with just the right touch of salt, and non-GMO and gluten-free. Crunched your way to the bottom of the bag on the first open? That’s okay because Heirloom Makes It Better.',
       size: '4-9.25oz Bags',
@@ -43,6 +45,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'sea-salt-mini-heirloom-popcorn',
       title: 'Sea Salt Mini Popcorn',
+      count: 4,
       description:
         'The OG snack that started it all. Once upon a time, our founders came to Shark Tank armed with bags of mini popcorn made from sustainably grown, delicious heirloom corn…and the rest is history. Just four simple ingredients (and no artificial anything!) make for perfectly crunchy, totally mindful snacking. Plus, it’s seasoned with the perfect amount of salt so that it gives you everything you’re craving (and nothing that you aren’t). Crunched your way to the bottom of the bag on the first open? That’s okay, because Heirloom Makes It Better.',
       size: '4-4.5oz Bags',
@@ -63,6 +66,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'cheddar-heirloom-cheese-balls',
       title: 'Cheddar Cheese Balls',
+      count: 4,
       description:
         'When you crave cheddar, only real cheddar will do – especially when every perfectly poppable bite brings back childhood memories of a snack you loved then and love now. It’s just like you remember – but better tasting, made better (baked, not fried), and with better ingredients that are better for you. All real, non-GMO, and gluten free. Crunched your way to the bottom of the bag on the first open? That’s okay, because Heirloom Makes It Better.',
       size: '4-4.5oz Bags',
@@ -83,6 +87,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'truffle-mini-heirloom-popcorn',
       title: 'Truffle Mini Popcorn',
+      count: 4,
       description:
         'Spoiler alert: Truffle should never be confined to just haute cuisine. Which is why we decided to make an elevated popcorn for the people. Distinctive, savory flavor meets our sustainably grown, deliciously crunchy heirloom corn for a mindful snack that only tastes decadent. It’s also non-GMO, gluten free, and perfectly seasoned, so that it gives you everything you’re craving (and nothing that you aren’t). Crunched your way to the bottom of the bag on the first open? That’s okay, because Heirloom Makes It Better.',
       size: '4-4.5oz Bags',
@@ -103,6 +108,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'sea-salt-twists',
       title: 'Sea Salt Twists',
+      count: 4,
       description:
         'We’re bringing a new twist to the snack game! The irresistible Pipcorn crunch meets the classic flavor, Sea Salt, for a uniquely satisfying, omg-I-finished-the-bag snacking experience. Our all-new Twists are made with sustainability in mind by using upcycled Heirloom corn flour to create a flavor-packed shape that’s light, airy, and oh-so-crispy! You might even forget that Twists are better for you, too!',
       size: '4-4.5oz Bags',
@@ -123,6 +129,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'jalapeno-cheddar-heirloom-cheese-balls',
       title: 'Jalapeño Cheddar Cheese Balls',
+      count: 4,
       description:
         'We took endlessy snackable, added real cheddar cheese, and then decided to bring the heat! These are perfectly poppable bites with a personality all their own – and our grown-up take on a snack shape you’ve loved since childhood. Every handful is baked, not fried, and made with better-for-you ingredients that are also organic, non-GMO, and gluten free. Crunched your way to the bottom of the bag on the first open? That’s okay, because Heirloom Makes It Better.',
       size: '4-4.5oz Bags',
@@ -141,6 +148,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'cheddar-crunchies',
       title: 'Cheddar Crunchies',
+      count: 4,
       description:
         'We don’t put ‘crunch’ in a name unless we mean it – and this level of crunch and real cheddar cheese combine for a snack you simply can’t put down (but not the kind you have to wipe off your fingers every time you reach for another handful). You won’t feel the least bit of guilt about our better for you, non-GMO, gluten free crunchies, because they’re simply that addictive. Crunched your way to the bottom of the bag on the first open? That’s okay, because Heirloom Makes It Better.',
       size: '4-7oz Bags',
@@ -158,6 +166,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'white-cheddar-cheese-balls',
       title: 'White Cheddar Cheese Balls',
+      count: 4,
       description:
         'When you crave white cheddar, only real white cheddar will do – especially when every perfectly poppable bite brings back childhood memories of a snack you loved then and love now. It’s just like you remember – but better tasting, made better (baked, not fried), and with better ingredients that are better for you. All organic, non-GMO and gluten free. Crunched your way to the bottom of the bag on the first open? That’s okay, because Heirloom Makes It Better.',
       size: '4-4.5oz bags',
@@ -177,6 +186,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'honey-barbeque-twists',
       title: 'Honey Barbeque Twists',
+      count: 4,
       description:
         'We’re bringing a new twist to the snack game! The irresistible Pipcorn crunch meets the classic flavor, Honey BBQ, for a uniquely satisfying, omg-I-finished-the-bag snacking experience. Our all-new Twists are made with sustainability in mind by using upcycled Heirloom corn flour to create a flavor-packed shape that’s light, airy, and oh-so-crispy! You might even forget that Twists are better for you, too!',
       size: '4-4.5oz Bags',
@@ -197,6 +207,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'kernel-test',
       title: 'Mini Popcorn Kernels',
+      count: 4,
       description:
         "NEW! Mini Popcorn Kernels have arrived. Pop your favorite Pipcorn popcorn in the comfort of your own home and see how Heirloom makes it better! Grown sustainably from Heirloom seeds that have been preserved by family farmers for generations, Heirloom is the not-so-secret ingredient that makes Pipcorn so irresistible. Because life's snackable moments deserve better snacks.",
       size: '44oz Tub',
@@ -213,6 +224,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'cheddar-fries',
       title: 'Cheddar Fries',
+      count: 4,
       description:
         "There was a time when we couldn't put those french fry chips down! But when we peeked at the ingredient list, we decided to take matters into our own hands and create something we truly feel good about eating and sharing. Inspired by the classic snack, but elevated with premium, heirloom corn and real Non-GMO ingredients. Our heirloom Fries are baked to perfection, boasting a light, crispy french fry texture that's both airy and crunchy. So go ahead and keep munching. We hope you love them as much as we do!",
       size: '4-5oz Bags',
@@ -232,6 +244,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'firey-fries',
       title: 'Fiery Cheddar Fries',
+      count: 4,
       description:
         "There was a time when we couldn't put those french fry chips down! But when we peeked at the ingredient list, we decided to take matters into our own hands and create something we truly feel good about eating and sharing. Inspired by the classic snack, but elevated with premium, heirloom corn and real Non-GMO ingredients. Our heirloom Fries are baked to perfection, boasting a light, crispy french fry texture that's both airy and crunchy. So go ahead and keep munching. We hope you love them as much as we do!",
       size: '4 - 5oz Bags',
@@ -251,6 +264,7 @@ const defaultData: DatabaseSchema = {
     {
       id: 'truffle-fries',
       title: 'Truffle Fries',
+      count: 4,
       description:
         "There was a time when we couldn't put those french fry chips down! But when we peeked at the ingredient list, we decided to take matters into our own hands and create something we truly feel good about eating and sharing. Inspired by the classic snack, but elevated with premium, heirloom corn and real Non-GMO ingredients. Our heirloom Fries are baked to perfection, boasting a light, crispy french fry texture that's both airy and crunchy. So go ahead and keep munching. We hope you love them as much as we do!",
       size: '4 - 5oz Bags',

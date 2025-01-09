@@ -1,6 +1,16 @@
+import Button from '@mui/material/Button'
+import { useState } from 'react'
+import Cart from '../containers/Cart'
+
 function Header() {
+  const [isCartOpen, setIsCartOpen] = useState(false)
+
   return (
     <div>
+      <div>
+        <Button onClick={() => setIsCartOpen(true)}>Open cart</Button>
+        <Cart isOpen={isCartOpen} close={() => setIsCartOpen(false)} />
+      </div>
       <div className="flex h-36 flex-col items-center justify-center bg-[#eb6600]">
         <p className="font-pluto-medium text-center text-sm font-medium text-white uppercase">
           Snag free shipping on orders over $30
