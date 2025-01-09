@@ -39,7 +39,7 @@ export default function Product({
           <h3 className="text-xl font-bold text-black">{title}</h3>
           <div className="mt-16 flex flex-col items-center gap-10">
             <div className="flex gap-x-5 font-bold text-black">
-              <span>4-PACK</span>
+              <span>{size}</span>
               <span>|</span>
               <span>${price}</span>
             </div>
