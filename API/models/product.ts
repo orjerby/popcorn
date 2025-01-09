@@ -6,7 +6,7 @@ type SnackType =
   | 'Popcorn'
   | 'Twists'
 
-type SnakeFlavor =
+type SnackFlavor =
   | 'Cheddar'
   | 'Cinnamon Sugar'
   | 'Fiery'
@@ -20,12 +20,13 @@ type SnakeFlavor =
 export type Product = {
   id: string
   title: string
+  count: number
   size: string
   price: number
   description: string
   images: string[]
   type: SnackType
-  flavor?: SnakeFlavor
+  flavor?: SnackFlavor
   reviews: {
     rate: number
     title: string

@@ -1,10 +1,19 @@
+import Button from '@mui/material/Button'
+import { useState } from 'react'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoSearchSharp } from 'react-icons/io5'
 import { PiHandbagSimple } from 'react-icons/pi'
+import Cart from '../containers/Cart'
 
 function Header() {
+  const [isCartOpen, setIsCartOpen] = useState(false)
+
   return (
     <div>
+      <div>
+        <Button onClick={() => setIsCartOpen(true)}>Open cart</Button>
+        <Cart isOpen={isCartOpen} close={() => setIsCartOpen(false)} />
+      </div>
       <div className="flex h-36 flex-col items-center justify-center bg-[#eb6600]">
         <p className="font-pluto-medium text-center text-sm font-medium text-white uppercase">
           Snag free shipping on orders over $30

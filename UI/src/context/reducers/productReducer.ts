@@ -59,7 +59,6 @@ export const productReducer = (
       }
       break
     }
-
     case 'SET_CART': {
       const { productId, quantity } = action.payload
       const existingItemIndex = state.cart.findIndex(

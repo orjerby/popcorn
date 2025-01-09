@@ -1,6 +1,8 @@
-import Stars from './Stars'
+import Stars from '../components/Stars'
+import { useAppContext } from '../context/AppContext'
 
-type CardProps = {
+type Props = {
+  id: string
   image: string
   title: string
   size: string
@@ -8,7 +10,23 @@ type CardProps = {
   reviewsCount: number
 }
 
-function Card({ image, title, price, reviewsCount }: CardProps) {
+export default function Product({
+  id,
+  image,
+  title,
+  size,
+  price,
+  reviewsCount,
+}: Props) {
+  const { dispatch } = useAppContext()
+
+  const addToCart = () => {
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: { productId: id },
+    })
+  }
+
   return (
     <div className="flex max-h-522 flex-col overflow-hidden">
       <div className="mt-37 flex max-h-481 max-w-268 flex-col items-center justify-center rounded-sm bg-white">
@@ -26,7 +44,7 @@ function Card({ image, title, price, reviewsCount }: CardProps) {
               <span>${price}</span>
             </div>
             <div className="flex h-24 items-center">
-              <Stars></Stars>
+              <Stars />
               <span className="justify-center pl-5 text-base font-bold text-[#337d9c]">
                 {reviewsCount} REVIEWS
               </span>
@@ -34,7 +52,10 @@ function Card({ image, title, price, reviewsCount }: CardProps) {
           </div>
 
           <div className="mt-20 mb-190 flex flex-col gap-10">
-            <button className="w-188 cursor-pointer rounded bg-[#3eadb8] p-12 font-sans font-bold text-white hover:opacity-70">
+            <button
+              onClick={addToCart}
+              className="w-188 cursor-pointer rounded bg-[#3eadb8] p-12 font-sans font-bold text-white hover:opacity-70"
+            >
               ADD TO CART
             </button>
             <button className="w-188 cursor-pointer rounded bg-[#b69775] p-12 font-sans font-bold text-white hover:opacity-70">
@@ -46,4 +67,3 @@ function Card({ image, title, price, reviewsCount }: CardProps) {
     </div>
   )
 }
-export default Card

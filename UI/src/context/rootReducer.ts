@@ -23,5 +23,3 @@ export const rootReducer = (
   productReducer(state.productState, action)
   return state
 }
-
-export const getInitialState = () => initialState
