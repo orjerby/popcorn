@@ -2,18 +2,18 @@ import { useState } from 'react'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoSearchSharp } from 'react-icons/io5'
 import { PiHandbagSimple } from 'react-icons/pi'
-import Cart from '../containers/Cart'
 import { useAppContext } from '../context/AppContext'
 import { selectCartTotalQuantity } from '../context/selectors'
+import Cart from './Cart'
 
 function Header() {
   const { state } = useAppContext()
-  const cartTotalQuantity = selectCartTotalQuantity(state)
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const cartTotalQuantity = selectCartTotalQuantity(state)
 
   return (
     <div>
-      <Cart isOpen={isCartOpen} close={() => setIsCartOpen(false)} />
+      <Cart open={isCartOpen} onClose={() => setIsCartOpen(false)} />
       <div className="flex h-36 flex-col items-center justify-center bg-[#eb6600]">
         <p className="font-pluto-medium text-center text-sm font-medium text-white uppercase">
           Snag free shipping on orders over $30

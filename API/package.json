@@ -15,6 +15,7 @@
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "i": "^0.3.7",
+    "kill-port": "^2.0.1",
     "lowdb": "^7.0.1",
     "nanoid": "^5.0.9",
     "npm": "^11.0.0"
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/kill-port": "^2.0.3",
     "@types/node": "^22.10.3"
   }
 }

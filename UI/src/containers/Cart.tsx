@@ -3,11 +3,11 @@ import { useAppContext } from '../context/AppContext'
 import { selectCart } from '../context/selectors'
 
 type Props = {
-  isOpen: boolean
-  close: () => void
+  open: boolean
+  onClose: () => void
 }
 
-export default function Cart({ isOpen, close }: Props) {
+export default function Cart({ open, onClose }: Props) {
   const { state, dispatch } = useAppContext()
   const cart = selectCart(state)
 
@@ -59,7 +59,7 @@ export default function Cart({ isOpen, close }: Props) {
   )
 
   return (
-    <Drawer anchor={'right'} open={isOpen} onClose={close}>
+    <Drawer anchor={'right'} open={open} onClose={onClose}>
       {DrawerList}
     </Drawer>
   )

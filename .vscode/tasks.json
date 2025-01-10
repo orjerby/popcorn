@@ -1,0 +1,53 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build API",
+      "type": "shell",
+      "command": "npm install",
+      "options": {
+        "cwd": "${workspaceFolder}/API"
+      }
+    },
+    {
+      "label": "Build UI",
+      "type": "shell",
+      "command": "npm install",
+      "options": {
+        "cwd": "${workspaceFolder}/UI"
+      }
+    },
+    {
+      "label": "Start API",
+      "type": "shell",
+      "command": "npm run start",
+      "options": {
+        "cwd": "${workspaceFolder}/API"
+      }
+    },
+    {
+      "label": "Start UI",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/UI"
+      }
+    },
+    {
+      "label": "Build All",
+      "dependsOn": ["Build API", "Build UI"]
+    },
+    {
+      "label": "Start All",
+      "dependsOn": ["Start API", "Start UI"]
+    },
+    {
+      "label": "Build And Start All",
+      "dependsOn": ["Build All", "Start All"],
+      "dependsOrder": "sequence",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}

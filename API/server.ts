@@ -1,5 +1,6 @@
 import cors from 'cors'
 import express from 'express'
+import killPort from 'kill-port'
 import { router as productsRouter } from './routers/productsRouter.ts'
 
 const app = express()
@@ -10,6 +11,12 @@ app.use(cors())
 
 app.use('/products', productsRouter)
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
-})
+killPort(port, 'tcp')
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`)
+    })
+  })
+  .catch((err) => {
+    console.error(`Error freeing up port ${port}:`, err)
+  })
