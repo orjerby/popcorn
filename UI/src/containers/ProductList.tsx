@@ -1,24 +1,13 @@
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.css'
 import { useAppContext } from '../context/AppContext'
 import { selectProducts } from '../context/selectors'
-import { useData } from '../hooks/useData'
-import { getProducts } from '../services/productService'
-// import '../../node_modules/swiper/swiper-bundle.min.css'
-import 'swiper/swiper-bundle.css'
 import Product from './Product'
 
 export default function ProductList() {
-  const { state, dispatch } = useAppContext()
+  const { state } = useAppContext()
   const products = selectProducts(state)
-
-  useData({
-    promise: getProducts,
-    onLoad: (productsData) => {
-      console.log('loaded', productsData)
-      dispatch({ type: 'SET_PRODUCTS', payload: productsData })
-    },
-  })
 
   return (
     <div className="h-550 overflow-hidden bg-[#f6f3e2] uppercase">

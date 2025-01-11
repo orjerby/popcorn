@@ -1,14 +1,19 @@
 import { Draft } from 'immer'
-import { Product } from '../../../../API/models/product'
+import { Product, SnackFlavor, SnackType } from '../../../../API/models/product'
 
 type Cart = {
-  productId: string
-  quantity: number
+  totalQuantity: number
+  products: {
+    productId: string
+    quantity: number
+  }[]
 }
 
 export type ProductState = {
   products: Product[]
-  cart: Cart[]
+  types: SnackType[]
+  flavors: SnackFlavor[]
+  cart: Cart
 }
 
 export type ProductAction =
@@ -20,7 +25,9 @@ export type ProductAction =
 
 export const initialProductState: ProductState = {
   products: [],
-  cart: [],
+  types: [],
+  flavors: [],
+  cart: { totalQuantity: 0, products: [] },
 }
 
 export const productReducer = (
@@ -30,50 +37,68 @@ export const productReducer = (
   switch (action.type) {
     case 'SET_PRODUCTS':
       state.products = action.payload
+      state.types = Array.from(
+        new Set(action.payload.map((product) => product.type).filter(Boolean)),
+      ).sort()
+
+      state.flavors = Array.from(
+        new Set(
+          action.payload.map((product) => product.flavor).filter(Boolean),
+        ),
+      ).sort()
       break
     case 'ADD_TO_CART': {
       const { productId } = action.payload
-      const existingItemIndex = state.cart.findIndex(
+      const existingItemIndex = state.cart.products.findIndex(
         (item) => item.productId === productId,
       )
 
       if (existingItemIndex !== -1) {
-        state.cart[existingItemIndex].quantity++
+        state.cart.products[existingItemIndex].quantity++
       } else {
-        state.cart.push({ productId, quantity: 1 })
+        state.cart.products.push({ productId, quantity: 1 })
       }
+
+      state.cart.totalQuantity++
       break
     }
     case 'REMOVE_FROM_CART': {
       const { productId } = action.payload
-      const existingItemIndex = state.cart.findIndex(
+      const existingItemIndex = state.cart.products.findIndex(
         (item) => item.productId === productId,
       )
 
       if (existingItemIndex !== -1) {
-        if (state.cart[existingItemIndex].quantity <= 1) {
-          state.cart.splice(existingItemIndex, 1)
+        if (state.cart.products[existingItemIndex].quantity <= 1) {
+          state.cart.products.splice(existingItemIndex, 1)
         } else {
-          state.cart[existingItemIndex].quantity--
+          state.cart.products[existingItemIndex].quantity--
         }
+
+        state.cart.totalQuantity--
       }
       break
     }
     case 'SET_CART': {
       const { productId, quantity } = action.payload
-      const existingItemIndex = state.cart.findIndex(
+      const existingItemIndex = state.cart.products.findIndex(
         (item) => item.productId === productId,
       )
 
       if (existingItemIndex !== -1) {
         if (quantity <= 0) {
-          state.cart.splice(existingItemIndex, 1)
+          state.cart.totalQuantity -=
+            state.cart.products[existingItemIndex].quantity
+          state.cart.products.splice(existingItemIndex, 1)
         } else {
-          state.cart[existingItemIndex].quantity = quantity
+          state.cart.totalQuantity +=
+            quantity - state.cart.products[existingItemIndex].quantity
+          state.cart.products[existingItemIndex].quantity = quantity
         }
       } else {
         if (quantity > 0) {
-          state.cart.push({ productId, quantity })
+          state.cart.totalQuantity += quantity
+          state.cart.products.push({ productId, quantity })
         }
       }
       break

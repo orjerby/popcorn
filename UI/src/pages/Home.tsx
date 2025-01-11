@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import ProductList from '../containers/ProductList'
 
-function Home() {
+export default function Home() {
   return (
     <>
       <div className="bg-[#f6f3e2]">
@@ -106,5 +106,3 @@ function Home() {
     </>
   )
 }
-
-export default Home

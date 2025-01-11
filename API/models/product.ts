@@ -1,4 +1,4 @@
-type SnackType =
+export type SnackType =
   | 'Cheese Balls'
   | 'Crunchies'
   | 'Dippers'
@@ -6,7 +6,7 @@ type SnackType =
   | 'Popcorn'
   | 'Twists'
 
-type SnackFlavor =
+export type SnackFlavor =
   | 'Cheddar'
   | 'Cinnamon Sugar'
   | 'Fiery'
@@ -26,7 +26,7 @@ export type Product = {
   description: string
   images: string[]
   type: SnackType
-  flavor?: SnackFlavor
+  flavor: SnackFlavor
   reviews: {
     rate: number
     title: string
