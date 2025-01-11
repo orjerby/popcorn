@@ -29,7 +29,7 @@ function Header() {
           <div className="absolute mt-55 flex h-156 w-156 items-center justify-center rounded-full bg-[#f6f3e2]">
             <img
               className=""
-              src="//www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945&width=140"
+              src="https://www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945&width=140"
               alt=""
             />
           </div>
@@ -49,12 +49,16 @@ function Header() {
               />
             </span>
           </a>
-          <button>
+          <button
+            title="Search"
+            className="arial-label='search' cursor-pointer"
+          >
             <IoSearchSharp size={34} />
           </button>
           <button
+            title="Cart"
             onClick={() => setIsCartOpen(true)}
-            className="cursor-pointer"
+            className="arial-label='cart' cursor-pointer"
           >
             <span className="relative">
               <PiHandbagSimple size={34} />

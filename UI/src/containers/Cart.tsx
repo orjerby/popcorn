@@ -44,6 +44,7 @@ export default function Cart({ open, onClose }: Props) {
               <button onClick={() => addToCart(item.productId)}>+</button>
               <button onClick={() => removeFromCart(item.productId)}>-</button>
               <input
+                aria-label="quantity"
                 value={item.quantity}
                 onChange={(e) => setCart(item.productId, +e.target.value)}
                 type="number"

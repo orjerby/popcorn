@@ -7,7 +7,7 @@ function Home() {
       <div className="bg-[#f6f3e2]">
         <img
           className="w-full"
-          src="//www.pipsnacks.com/cdn/shop/t/205/assets/FRIES-Hero-tagline_headerR2-crop.png?v=144608968554861915091724934551"
+          src="https://www.pipsnacks.com/cdn/shop/t/205/assets/FRIES-Hero-tagline_headerR2-crop.png?v=144608968554861915091724934551"
           alt=""
         />
         <div className="flex h-128 items-center justify-center bg-white text-center text-black">
@@ -27,6 +27,81 @@ function Home() {
             <ProductList />
           </Suspense>
         </div>
+        {/* Build your own bundle section */}
+        <div className="py-16">
+          <div className="container mx-auto rounded">
+            <div className="flex items-center justify-center bg-[#b69775]">
+              <div className="flex-1 items-center justify-center p-16">
+                <a className="justify-center pb-12 pl-32 text-4xl text-black uppercase">
+                  can't pick a favorite? choose your own snack-adventure!
+                </a>
+              </div>
+              <div className="flex max-w-320 items-center justify-center gap-4 rounded bg-orange-500 px-8 py-3 text-4xl text-white uppercase">
+                <a className="font-light">
+                  Build your <br /> own bundle
+                </a>
+                <a className="flex items-center justify-center bg-orange-500 px-10">
+                  <svg
+                    className="text-2xl font-bold text-white"
+                    viewBox="0 0 13 29"
+                    width="13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2.34375 1.91296L11.0839 13.7996C11.4786 14.3363 11.4733 15.0687 11.071 15.5998L2.34375 27.1198"
+                      stroke="currentColor"
+                      stroke-width="3.00977"
+                      stroke-linecap="round"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-12">
+          <div className="container mx-auto">
+            <div className="grid grid-cols-2 gap-16">
+              <div>
+                <img
+                  src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-2.png?v=148265719181198205821700256160"
+                  alt=""
+                />
+              </div>
+              <div>
+                {' '}
+                <img
+                  src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-4.png?v=85460436416592772881700256151"
+                  alt=""
+                />
+              </div>
+              <div>
+                {' '}
+                <img
+                  src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-1.png?v=65731467904801407471700256157"
+                  alt=""
+                />
+              </div>
+              <div>
+                {' '}
+                <img
+                  src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-3.png?v=14406280734367485691700256159"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer className="mt-12">
+          <div className="flex h-577 w-full items-center justify-center bg-[#b69775] bg-[url('https://www.pipsnacks.com/cdn/shop/t/205/assets/rice-paper.webp?v=15630725387464339411709904553')] bg-cover bg-center">
+            <img
+              className="justify-center"
+              src="https://www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945&width=140"
+              alt=""
+            />
+          </div>
+        </footer>
       </div>
     </>
   )
