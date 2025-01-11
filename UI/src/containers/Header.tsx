@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoSearchSharp } from 'react-icons/io5'
 import { PiHandbagSimple } from 'react-icons/pi'
+import { NavLink } from 'react-router'
 import { useAppContext } from '../context/AppContext'
 import { selectCartTotalQuantity } from '../context/selectors'
 import Cart from './Cart'
@@ -21,7 +22,10 @@ function Header() {
       </div>
       <div className="grid h-108 grid-cols-3">
         <div className="flex items-center justify-center bg-[#f6f3e2] text-center text-[26px] text-black uppercase">
-          <span className="pl-16">shop</span>
+          <NavLink to="/collections/all-products" className="pl-16">
+            shop
+          </NavLink>
+
           <span className="pl-16">build a bundle</span>
           <span className="pl-16">about us</span>
         </div>
@@ -49,7 +53,7 @@ function Header() {
               />
             </span>
           </a>
-          <button>
+          <button aria-label="serach">
             <IoSearchSharp size={34} />
           </button>
           <button

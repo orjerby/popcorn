@@ -205,23 +205,6 @@ const defaultData: DatabaseSchema = {
       reviews: [],
     },
     {
-      id: 'kernel-test',
-      title: 'Mini Popcorn Kernels',
-      count: 4,
-      description:
-        "NEW! Mini Popcorn Kernels have arrived. Pop your favorite Pipcorn popcorn in the comfort of your own home and see how Heirloom makes it better! Grown sustainably from Heirloom seeds that have been preserved by family farmers for generations, Heirloom is the not-so-secret ingredient that makes Pipcorn so irresistible. Because life's snackable moments deserve better snacks.",
-      size: '44oz Tub',
-      price: 19.99,
-      type: 'Popcorn',
-      images: [
-        'https://www.pipsnacks.com/cdn/shop/files/KernelJar-WPile-Transparent-1080.png',
-        'https://www.pipsnacks.com/cdn/shop/files/PC_NFP-Ingred_1080_kernels.png',
-        'https://www.pipsnacks.com/cdn/shop/files/PC_Kernels_HowTo_1080.png',
-        'https://www.pipsnacks.com/cdn/shop/files/FinishedKernelsInBowl-Detail2-1080.png',
-      ],
-      reviews: [],
-    },
-    {
       id: 'cheddar-fries',
       title: 'Cheddar Fries',
       count: 4,

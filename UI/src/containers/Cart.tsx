@@ -1,6 +1,6 @@
 import Drawer from '@mui/material/Drawer'
 import { useAppContext } from '../context/AppContext'
-import { selectCart } from '../context/selectors'
+import { selectCartProducts } from '../context/selectors'
 
 type Props = {
   open: boolean
@@ -9,7 +9,7 @@ type Props = {
 
 export default function Cart({ open, onClose }: Props) {
   const { state, dispatch } = useAppContext()
-  const cart = selectCart(state)
+  const cart = selectCartProducts(state)
 
   const addToCart = (productId: string) => {
     dispatch({
@@ -44,6 +44,7 @@ export default function Cart({ open, onClose }: Props) {
               <button onClick={() => addToCart(item.productId)}>+</button>
               <button onClick={() => removeFromCart(item.productId)}>-</button>
               <input
+                aria-label="quantity"
                 value={item.quantity}
                 onChange={(e) => setCart(item.productId, +e.target.value)}
                 type="number"
