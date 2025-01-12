@@ -51,8 +51,8 @@ export default function Home() {
                     <path
                       d="M2.34375 1.91296L11.0839 13.7996C11.4786 14.3363 11.4733 15.0687 11.071 15.5998L2.34375 27.1198"
                       stroke="currentColor"
-                      stroke-width="3.00977"
-                      stroke-linecap="round"
+                      strokeWidth="3.00977"
+                      strokeLinecap="round"
                     ></path>
                   </svg>
                 </a>

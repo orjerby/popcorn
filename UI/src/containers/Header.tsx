@@ -25,17 +25,20 @@ function Header() {
           <NavLink to="/collections/all-products" className="pl-16">
             shop
           </NavLink>
-
-          <span className="pl-16">build a bundle</span>
+          <NavLink to="/pages/builder">
+            <span className="pl-16">build a bundle</span>
+          </NavLink>
           <span className="pl-16">about us</span>
         </div>
         <div className="flex items-center justify-center bg-[#f6f3e2]">
           <div className="absolute mt-55 flex h-156 w-156 items-center justify-center rounded-full bg-[#f6f3e2]">
-            <img
-              className=""
-              src="https://www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945&width=140"
-              alt=""
-            />
+            <NavLink to="/">
+              <img
+                className=""
+                src="https://www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945&width=140"
+                alt=""
+              />
+            </NavLink>
           </div>
         </div>
         <div className="flex items-center justify-center gap-23 bg-[#f6f3e2] text-black">

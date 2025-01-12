@@ -17,8 +17,6 @@ export default function ProductList() {
         slidesPerView={'auto'}
         spaceBetween={30}
         navigation
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
       >
         {products.map((product) => (
           <SwiperSlide key={product.id} className="!w-268">
