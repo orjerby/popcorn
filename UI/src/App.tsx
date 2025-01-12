@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
+import Footer from './components/Footer'
 import Header from './containers/Header'
 import { useAppContext } from './context/AppContext'
 import { useData } from './hooks/useData'
@@ -25,6 +26,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="collections/all-products" element={<Filters />} />
       </Routes>
+      <Footer></Footer>
     </div>
   )
 }
