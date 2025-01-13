@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router'
 import './App.css'
 import Footer from './components/Footer'
@@ -11,6 +12,7 @@ import { getProducts } from './services/productService'
 
 export default function App() {
   const { dispatch } = useAppContext()
+  const [scrolled, setScrolled] = useState(false)
 
   useData({
     promise: getProducts,
@@ -20,16 +22,35 @@ export default function App() {
     },
   })
 
-  return (
-    <div className="bg-[#f6f3e2]">
-      <Header></Header>
-      <Routes>
-        <Route index element={<Home />} />
+  const handleScroll = () => {
+    // console.log(window.scrollY)
 
-        <Route path="collections/all-products" element={<Filters />} />
-        <Route path="pages/builder" element={<Bundle />} />
-      </Routes>
-      <Footer></Footer>
+    if (window.scrollY > 120) {
+      setScrolled(true)
+    } else {
+      setScrolled(false)
+    }
+  }
+
+  useEffect(() => {
+    handleScroll()
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  return (
+    <div className="relative bg-[#f6f3e2]">
+      <Header scrolled={scrolled}></Header>
+      <div className="mt-140">
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="collections/all-products" element={<Filters />} />
+          <Route path="pages/builder" element={<Bundle />} />
+        </Routes>
+        <Footer></Footer>
+      </div>
     </div>
   )
 }

@@ -2,6 +2,9 @@ import { RootState } from './rootReducer'
 
 export const selectProducts = (state: RootState) => state.productState.products
 
+export const selectSingleProducts = (state: RootState) =>
+  state.productState.products.filter((item) => item.count === 1)
+
 export const selectProductTypes = (state: RootState) => state.productState.types
 
 export const selectProductFlavors = (state: RootState) =>
