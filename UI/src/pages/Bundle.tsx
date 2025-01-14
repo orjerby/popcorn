@@ -5,8 +5,6 @@ import { selectProductTypes, selectSingleProducts } from '../context/selectors'
 
 export default function Bundle() {
   const [bundle, setBundle] = useState<Product[]>([])
-  const [index, setIndex] = useState<number>(0)
-
   const { state } = useAppContext()
   const types = selectProductTypes(state)
   const singleProducts = selectSingleProducts(state)
@@ -16,14 +14,29 @@ export default function Bundle() {
   }
 
   return (
-    <div className="h-1300 overflow-hidden">
+    <div className="h-1300 overflow-hidden scroll-smooth">
       <h1 className="text-9xl text-black">Bundle</h1>
       <ul className="flex gap-x-10 text-sm font-bold text-black uppercase">
         <li className="p-5">Jump to: </li>
         {types.map((type) => {
           return (
-            <li key={type}>
-              <button className="border p-5">{type}</button>
+            <li key={type} className="cursor-pointer">
+              <button
+                onClick={() => {
+                  const element = document.getElementById(type)
+                  if (element) {
+                    const yOffset = -120
+                    const y =
+                      element.getBoundingClientRect().top +
+                      window.scrollY +
+                      yOffset
+                    window.scrollTo({ top: y, behavior: 'smooth' })
+                  }
+                }}
+                className="border p-5"
+              >
+                {type}
+              </button>
             </li>
           )
         })}
@@ -37,7 +50,9 @@ export default function Bundle() {
                 <li key={type}>
                   <ul>
                     <li key={type}>
-                      <h2 className="p-5 text-2xl text-[#52525B]">{type}</h2>
+                      <h2 id={type} className="p-5 text-2xl text-[#52525B]">
+                        {type}
+                      </h2>
                     </li>
                   </ul>
                   <div>
