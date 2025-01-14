@@ -11,6 +11,10 @@ export default function Bundle() {
   const types = selectProductTypes(state)
   const singleProducts = selectSingleProducts(state)
 
+  const addToBundle = (product: Product) => {
+    if (bundle.length < 12) setBundle([...bundle, product])
+  }
+
   return (
     <div className="h-1300 overflow-hidden">
       <h1 className="text-9xl text-black">Bundle</h1>
@@ -51,7 +55,7 @@ export default function Bundle() {
                             <div
                               className="ml-4 bg-amber-300 p-3"
                               onClick={() => {
-                                setBundle([...bundle, product])
+                                addToBundle(product)
                               }}
                             >
                               ADD TO BUNDLE
