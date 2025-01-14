@@ -5,6 +5,7 @@ type Props = {
   id: string
   image: string
   title: string
+  count: number
   size: string
   price: number
   reviewsCount: number
@@ -14,7 +15,7 @@ export default function Product({
   id,
   image,
   title,
-  size,
+  count,
   price,
   reviewsCount,
 }: Props) {
@@ -39,7 +40,7 @@ export default function Product({
           <h3 className="text-xl font-bold text-black">{title}</h3>
           <div className="mt-16 flex flex-col items-center gap-10">
             <div className="flex gap-x-5 font-bold text-black">
-              <span>{size}</span>
+              <span>{count}-Pack</span>
               <span>|</span>
               <span>${price}</span>
             </div>

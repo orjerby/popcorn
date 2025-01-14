@@ -18,18 +18,21 @@ export default function ProductList() {
         spaceBetween={30}
         navigation
       >
-        {products.map((product) => (
-          <SwiperSlide key={product.id} className="!w-268">
-            <Product
-              id={product.id}
-              image={product.images[0]}
-              title={product.title}
-              size={product.size}
-              price={product.price}
-              reviewsCount={product.reviews.length}
-            />
-          </SwiperSlide>
-        ))}
+        {products
+          .filter((product) => product.count > 1)
+          .map((product) => (
+            <SwiperSlide key={product.id} className="!w-268">
+              <Product
+                id={product.id}
+                image={product.images[0]}
+                title={product.title}
+                count={product.count}
+                size={product.size}
+                price={product.price}
+                reviewsCount={product.reviews.length}
+              />
+            </SwiperSlide>
+          ))}
       </Swiper>
 
       {/* </ul> */}
