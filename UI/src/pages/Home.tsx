@@ -6,15 +6,18 @@ export default function Home() {
   return (
     <>
       <div className="mt-40 bg-[#f6f3e2]">
-        <div className="block">
-          <img
-            className="h-auto w-full max-w-full"
-            width={1300}
-            height={727}
-            src="https://www.pipsnacks.com/cdn/shop/t/205/assets/FRIES-Hero-tagline_headerR2-crop.png?v=144608968554861915091724934551"
-            alt=""
-          />
-        </div>
+        <NavLink to={'collections/all-products?types=Fries'}>
+          <div className="relative block">
+            <img
+              className="h-auto w-full max-w-full"
+              width={1300}
+              height={727}
+              src="https://www.pipsnacks.com/cdn/shop/t/205/assets/FRIES-Hero-tagline_headerR2-crop.png?v=144608968554861915091724934551"
+              alt=""
+            />
+            <div className="absolute bottom-[5%] left-1/2 h-full max-h-16 w-full max-w-24 rounded bg-white opacity-80"></div>
+          </div>
+        </NavLink>
         <div className="flex h-128 items-center justify-center bg-white text-center text-black">
           <p className="text-xl font-bold">
             PIPCORN HEIRLOOM SNACKS IS FAMILY-FOUNDED – BORN FROM OUR LOVE OF
