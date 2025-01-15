@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router'
 import './App.css'
 import Footer from './components/Footer'
 import Header from './containers/Header'
+import ScrollToTop from './containers/ScrollToTop'
 import { useAppContext } from './context/AppContext'
 import { useData } from './hooks/useData'
 import Bundle from './pages/Bundle'
@@ -45,6 +46,7 @@ export default function App() {
     <div className="relative bg-[#f6f3e2]">
       <Header scrolled={scrolled} />
       <div className="mt-140">
+        <ScrollToTop />
         <Routes>
           <Route index element={<Home />} />
           <Route path="products">
