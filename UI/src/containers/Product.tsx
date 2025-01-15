@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router'
 import Stars from '../components/Stars'
 import { useAppContext } from '../context/AppContext'
 
@@ -32,11 +33,13 @@ export default function Product({
     <div className="flex max-h-522 flex-col overflow-hidden">
       <div className="mt-37 flex max-h-481 max-w-268 flex-col items-center justify-center rounded-sm bg-white">
         <div className="group flex flex-col items-center gap-10">
-          <img
-            className="mt-105 max-h-256 w-full cursor-pointer object-contain transition-all duration-300 group-hover:scale-105"
-            src={image}
-            alt="Popcorn"
-          />
+          <NavLink
+            to={`/products/${id}`}
+            className="mt-105 max-h-256 w-full transition-all duration-300 group-hover:scale-105"
+          >
+            <img src={image} alt="Popcorn" />
+          </NavLink>
+
           <h3 className="text-xl font-bold text-black">{title}</h3>
           <div className="mt-16 flex flex-col items-center gap-10">
             <div className="flex gap-x-5 font-bold text-black">
@@ -59,9 +62,12 @@ export default function Product({
             >
               ADD TO CART
             </button>
-            <button className="w-188 cursor-pointer rounded bg-[#b69775] p-12 font-sans font-bold text-white hover:opacity-70">
+            <NavLink
+              to={`/products/${id}`}
+              className="w-188 rounded bg-[#b69775] p-12 text-center font-sans font-bold text-white hover:opacity-70"
+            >
               VIEW MORE
-            </button>
+            </NavLink>
           </div>
         </div>
       </div>

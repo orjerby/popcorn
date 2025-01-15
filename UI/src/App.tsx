@@ -8,6 +8,7 @@ import { useData } from './hooks/useData'
 import Bundle from './pages/Bundle'
 import Filters from './pages/Filters'
 import Home from './pages/Home'
+import Product from './pages/Product'
 import { getProducts } from './services/productService'
 
 export default function App() {
@@ -42,14 +43,17 @@ export default function App() {
 
   return (
     <div className="relative bg-[#f6f3e2]">
-      <Header scrolled={scrolled}></Header>
+      <Header scrolled={scrolled} />
       <div className="mt-140">
         <Routes>
           <Route index element={<Home />} />
+          <Route path="products">
+            <Route path=":id" element={<Product />} />
+          </Route>
           <Route path="collections/all-products" element={<Filters />} />
           <Route path="pages/builder" element={<Bundle />} />
         </Routes>
-        <Footer></Footer>
+        <Footer />
       </div>
     </div>
   )
