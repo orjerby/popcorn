@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, use } from 'react'
+import React, { createContext, ReactNode, use, useEffect } from 'react'
 import { useImmerReducer } from 'use-immer'
 import { Action, rootReducer, RootState } from './rootReducer'
 
@@ -9,10 +9,17 @@ type AppContextProps = {
 
 export const AppContext = createContext<AppContextProps | undefined>(undefined)
 
-export const initialState: RootState = rootReducer()
+export const initializer = (defaultValue = rootReducer()) => {
+  const localState = localStorage.getItem('localState')
+  return localState ? JSON.parse(localState) : defaultValue
+}
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useImmerReducer(rootReducer, initialState)
+  const [state, dispatch] = useImmerReducer(rootReducer, initializer())
+
+  useEffect(() => {
+    localStorage.setItem('localState', JSON.stringify(state))
+  }, [state])
 
   return <AppContext value={{ state, dispatch }}>{children}</AppContext>
 }

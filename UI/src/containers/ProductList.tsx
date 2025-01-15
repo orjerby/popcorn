@@ -2,12 +2,12 @@ import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.css'
 import { useAppContext } from '../context/AppContext'
-import { selectProducts } from '../context/selectors'
+import { selectBundledProducts } from '../context/selectors'
 import Product from './Product'
 
 export default function ProductList() {
   const { state } = useAppContext()
-  const products = selectProducts(state)
+  const bundledProducts = selectBundledProducts(state)
 
   return (
     <div className="h-550 overflow-hidden bg-[#f6f3e2] uppercase">
@@ -18,21 +18,19 @@ export default function ProductList() {
         spaceBetween={30}
         navigation
       >
-        {products
-          .filter((product) => product.count > 1)
-          .map((product) => (
-            <SwiperSlide key={product.id} className="!w-268">
-              <Product
-                id={product.id}
-                image={product.images[0]}
-                title={product.title}
-                count={product.count}
-                size={product.size}
-                price={product.price}
-                reviewsCount={product.reviews.length}
-              />
-            </SwiperSlide>
-          ))}
+        {bundledProducts.map((product) => (
+          <SwiperSlide key={product.id} className="!w-268">
+            <Product
+              id={product.id}
+              image={product.images[0]}
+              title={product.title}
+              count={product.count}
+              size={product.size}
+              price={product.price}
+              reviewsCount={product.reviews.length}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       {/* </ul> */}
