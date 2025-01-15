@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import { NavLink } from 'react-router'
 import ProductList from '../containers/ProductList'
 
 export default function Home() {
@@ -33,17 +34,23 @@ export default function Home() {
         </div>
         {/* Build your own bundle section */}
         <div className="py-16">
-          <div className="container mx-auto rounded">
-            <div className="flex items-center justify-center bg-[#b69775]">
+          <div className="container mx-auto transform rounded transition hover:scale-105">
+            <div className="flex rounded-lg bg-[#b69775]">
               <div className="flex-1 items-center justify-center p-16">
-                <a className="justify-center pb-12 pl-32 text-4xl text-black uppercase">
+                <NavLink
+                  to={'pages/builder'}
+                  className="cursor-pointer justify-center pb-12 pl-32 text-4xl text-black uppercase"
+                >
                   can't pick a favorite? choose your own snack-adventure!
-                </a>
+                </NavLink>
               </div>
-              <div className="flex max-w-320 items-center justify-center gap-4 rounded bg-orange-500 px-8 py-3 text-4xl text-white uppercase">
-                <a className="font-light">
+              <div className="flex max-w-320 items-center justify-center gap-4 rounded bg-orange-500 px-8 py-5 text-4xl text-white uppercase">
+                <NavLink
+                  to={'pages/builder'}
+                  className="cursor-pointer font-light"
+                >
                   Build your <br /> own bundle
-                </a>
+                </NavLink>
                 <a className="flex items-center justify-center bg-orange-500 px-10">
                   <svg
                     className="text-2xl font-bold text-white"
@@ -67,33 +74,66 @@ export default function Home() {
         <div className="mt-12">
           <div className="container mx-auto">
             <div className="grid grid-cols-2 gap-16">
-              <div>
-                <img
-                  src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-2.png?v=148265719181198205821700256160"
-                  alt=""
-                />
-              </div>
-              <div>
-                {' '}
-                <img
-                  src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-4.png?v=85460436416592772881700256151"
-                  alt=""
-                />
-              </div>
-              <div>
-                {' '}
-                <img
-                  src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-1.png?v=65731467904801407471700256157"
-                  alt=""
-                />
-              </div>
-              <div>
-                {' '}
-                <img
-                  src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-3.png?v=14406280734367485691700256159"
-                  alt=""
-                />
-              </div>
+              <NavLink to={'collections/all-products?types=Cheese+Balls'}>
+                <div className="group relative cursor-pointer overflow-hidden rounded-xl">
+                  <img
+                    className="transform transition duration-200 group-hover:scale-105"
+                    src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-2.png?v=148265719181198205821700256160"
+                    alt=""
+                  />
+                  <img
+                    className="absolute right-0 bottom-0 mr-25 mb-15 w-full max-w-224 transform transition duration-200 group-hover:scale-95"
+                    src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home_layer_logo_2.png?v=113524904076145218291700256158"
+                    alt=""
+                    height={400}
+                  />
+                </div>
+              </NavLink>
+              <NavLink to={'collections/all-products?types=Popcorn'}>
+                <div className="group relative cursor-pointer overflow-hidden rounded-xl">
+                  <img
+                    className="transform transition duration-200 group-hover:scale-105"
+                    src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-4.png?v=85460436416592772881700256151"
+                    alt=""
+                  />
+                  <img
+                    className="absolute right-0 bottom-0 mr-25 mb-15 w-full max-w-224 transform transition duration-200 group-hover:scale-95"
+                    src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home_layer_logo_4.png?v=153146537531975114011700256158"
+                    alt=""
+                    height={400}
+                  />
+                </div>
+              </NavLink>
+              <NavLink to={'collections/all-products?types=Twists'}>
+                <div className="group relative cursor-pointer overflow-hidden rounded-xl">
+                  <img
+                    className="transform transition duration-200 group-hover:scale-105"
+                    src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-1.png?v=65731467904801407471700256157"
+                    alt=""
+                  />
+                  <img
+                    className="absolute right-0 bottom-0 mr-25 mb-15 w-full max-w-224 transform transition duration-200 group-hover:scale-95"
+                    src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home_layer_logo_1.png?v=17247479584948056611700256160"
+                    alt=""
+                    height={400}
+                  />
+                </div>
+              </NavLink>
+              <NavLink to={'collections/all-products?types=Crunchies'}>
+                <div className="group relative cursor-pointer overflow-hidden rounded-xl">
+                  <img
+                    className="transform transition duration-200 group-hover:scale-105"
+                    src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home-layers-3.png?v=14406280734367485691700256159"
+                    alt=""
+                  />
+                  <img
+                    className="absolute right-0 bottom-0 mr-25 mb-15 w-full max-w-224 transform transition duration-200 group-hover:scale-95"
+                    src="https://www.pipsnacks.com/cdn/shop/t/200/assets/home_layer_logo_3.png?v=123617556695366971881700256157"
+                    alt=""
+                    height={400}
+                  />
+                </div>
+              </NavLink>
             </div>
           </div>
         </div>
