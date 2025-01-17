@@ -1,10 +1,28 @@
 import { useState } from 'react'
+
 import { Product } from '../../../API/models/product'
 import { useAppContext } from '../context/AppContext'
 import { selectProductTypes, selectSingleProducts } from '../context/selectors'
 
 export default function Bundle() {
+  const { dispatch } = useAppContext()
+
+  const addToCart = (id: any) => {
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: { productId: id },
+    })
+  }
+
+  const addToCarts = (productsid: string[]) => {
+    dispatch({
+      type: 'ADD_TO_CARTS',
+      payload: { productsId: productsid },
+    })
+  }
   const [bundle, setBundle] = useState<Product[]>([])
+  const [productsId, setProductsId] = useState<string[]>([])
+
   const { state } = useAppContext()
   const types = selectProductTypes(state)
   const singleProducts = selectSingleProducts(state)
@@ -12,7 +30,15 @@ export default function Bundle() {
   const addToBundle = (product: Product) => {
     if (bundle.length < 12) setBundle([...bundle, product])
   }
-
+  const sendToCart = async (products: Product[]) => {
+    if (bundle.length % 4 === 0) {
+      const ids = products.map((p) => p.id) // Get the IDs from the products array
+      await setProductsId(ids) // Update the state (if necessary for other purposes)
+      addToCarts(ids) // Use the IDs directly
+    } else {
+      console.log('wrong num :' + bundle.length)
+    }
+  }
   return (
     <div className="h-1300 overflow-hidden scroll-smooth">
       <h1 className="text-9xl text-black">Bundle</h1>
@@ -84,6 +110,22 @@ export default function Bundle() {
             })}
           </ul>
         </div>
+        <div className="ml-200 grid max-h-500 grid-cols-4 gap-5 text-black">
+          <div className="max-w-240 bg-amber-500">b</div>
+          <div>c</div>
+          <div>d</div>
+          <div>a</div>
+
+          <div>b</div>
+          <div>c</div>
+          <div>d</div>
+          <div>a</div>
+
+          <div>b</div>
+          <div>c</div>
+          <div>d</div>
+          <div>a</div>
+        </div>
         <div className="relative bottom-40 left-700 mt-100 flex-col overflow-hidden text-black">
           <ul className="flex flex-col gap-10 text-lg font-bold text-black uppercase">
             {bundle.map((product, index) => {
@@ -105,6 +147,12 @@ export default function Bundle() {
             })}
           </ul>
         </div>
+        <button
+          onClick={() => sendToCart(bundle)}
+          className="h-50 cursor-pointer border border-black bg-amber-300 text-3xl"
+        >
+          send to cart
+        </button>
       </div>
     </div>
   )

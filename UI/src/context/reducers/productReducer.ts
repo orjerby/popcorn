@@ -20,6 +20,7 @@ export type ProductAction =
   | { type: 'NO_ACTION'; payload: null }
   | { type: 'SET_PRODUCTS'; payload: Product[] }
   | { type: 'ADD_TO_CART'; payload: { productId: string } }
+  | { type: 'ADD_TO_CARTS'; payload: { productsId: string[] } }
   | { type: 'REMOVE_FROM_CART'; payload: { productId: string } }
   | { type: 'SET_CART'; payload: { productId: string; quantity: number } }
 
@@ -60,6 +61,29 @@ export const productReducer = (
       }
 
       state.cart.totalQuantity++
+      break
+    }
+    case 'ADD_TO_CARTS': {
+      const { productsId } = action.payload
+
+      productsId.forEach((productId) => {
+        // Find if the product already exists in the cart
+        const existingItemIndex = state.cart.products.findIndex(
+          (item) => item.productId === productId,
+        )
+
+        if (existingItemIndex !== -1) {
+          // If the product exists, increment its quantity
+          state.cart.products[existingItemIndex].quantity++
+        } else {
+          // If the product does not exist, add it to the cart with quantity 1
+          state.cart.products.push({ productId, quantity: 1 })
+        }
+
+        // Increment the total quantity of items in the cart
+        state.cart.totalQuantity++
+      })
+
       break
     }
     case 'REMOVE_FROM_CART': {
