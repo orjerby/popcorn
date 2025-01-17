@@ -10,6 +10,7 @@ import Bundle from './pages/Bundle'
 import Filters from './pages/Filters'
 import Home from './pages/Home'
 import Product from './pages/Product'
+import Search from './pages/Search'
 import { getProducts } from './services/productService'
 
 export default function App() {
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="products">
             <Route path=":id" element={<Product />} />
           </Route>
+          <Route path="search" element={<Search />} />
           <Route path="collections/all-products" element={<Filters />} />
           <Route path="pages/builder" element={<Bundle />} />
         </Routes>

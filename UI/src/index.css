@@ -38,18 +38,12 @@
 }
 
 @theme {
-  --color-my-special: red;
   --spacing: 0.0625rem;
   --font-vinyl: 'vinyl';
   --font-pluto-medium: 'PlutoMedium';
 }
 
-/* Custom rounded utilities for any number using calc */
 @layer utilities {
-  /* This will apply a dynamic border-radius using a custom class */
-  .rounded-number {
-    border-radius: calc(var(--spacing) * var(--rounded-value));
-  }
 }
 
 :root {
@@ -66,15 +60,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* .swiper-wrapper {
-  display: flex;
-  flex-direction: row;
-  width: max-content;
-  gap: 25px;
-} */
-
-/* .swiper-button-next,
-.swiper-button-prev {
-  all: unset;
-} */

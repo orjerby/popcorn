@@ -3,9 +3,9 @@ import { useSearchParams } from 'react-router'
 import { SnackFlavor, SnackType } from '../../../API/models/product'
 import { useAppContext } from '../context/AppContext'
 import {
-  selectFilteredProducts,
+  selectBundledProducts,
+  selectFilteredBundledProducts,
   selectProductFlavors,
-  selectProducts,
   selectProductTypes,
 } from '../context/selectors'
 
@@ -18,8 +18,8 @@ export default function Filters() {
   const flavorsParam = searchParams.get('flavors')?.split(',') ?? []
 
   // Selectors
-  const allProducts = selectProducts(state)
-  const filterdProducts = selectFilteredProducts(state, {
+  const allProducts = selectBundledProducts(state)
+  const filterdProducts = selectFilteredBundledProducts(state, {
     types: typesParam,
     flavors: flavorsParam,
   })
