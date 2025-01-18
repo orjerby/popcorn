@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
@@ -14,44 +14,37 @@ export default function Bundle() {
 
   const [searchParams] = useSearchParams()
 
-  const bundleId = searchParams.get('box')
+  const [bundle, setBundle] = useState<Product[]>([])
 
-  if (bundleId) {
+  const types = selectProductTypes(state)
+  const singleProducts = selectSingleProducts(state)
+
+  useEffect(() => {
+    const bundleId = searchParams.get('bundle') ?? ''
     const customBundle = selectCustomBundle(state, bundleId)
-    console.log(customBundle)
-  }
+    setBundle(customBundle)
+  }, [searchParams])
 
-  const addToCart = (id: any) => {
-    dispatch({
-      type: 'ADD_TO_CART',
-      payload: { productId: id },
-    })
-  }
-
-  const addToCarts = (productsid: string[]) => {
+  const addCustomBundleToCart = (productsid: string[]) => {
     dispatch({
       type: 'ADD_CUSTOM_BUNDLE_TO_CART',
       payload: { productsId: productsid },
     })
   }
-  const [bundle, setBundle] = useState<Product[]>([])
-  const [productsId, setProductsId] = useState<string[]>([])
-
-  const types = selectProductTypes(state)
-  const singleProducts = selectSingleProducts(state)
 
   const addToBundle = (product: Product) => {
     if (bundle.length < 12) setBundle([...bundle, product])
   }
-  const sendToCart = async (products: Product[]) => {
+
+  const sendToCart = (products: Product[]) => {
     if (bundle.length % 4 === 0) {
       const ids = products.map((p) => p.id) // Get the IDs from the products array
-      await setProductsId(ids) // Update the state (if necessary for other purposes)
-      addToCarts(ids) // Use the IDs directly
+      addCustomBundleToCart(ids) // Use the IDs directly
     } else {
       console.log('wrong num :' + bundle.length)
     }
   }
+
   return (
     <div className="h-1300 overflow-hidden scroll-smooth">
       <h1 className="text-9xl text-black">Bundle</h1>

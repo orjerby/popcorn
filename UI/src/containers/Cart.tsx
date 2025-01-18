@@ -106,7 +106,9 @@ export default function Cart({ open, onClose }: Props) {
               </li>
             ) : (
               <div key={index} className="border">
-                <Link to={`/pages/builder?box=${item.id}`}>EDIT</Link>
+                <Link to={`/pages/builder?bundle=${item.id}`} onClick={onClose}>
+                  EDIT
+                </Link>
                 {item.products.map((product, index) => (
                   <div key={index}>{product.product.title}</div>
                 ))}

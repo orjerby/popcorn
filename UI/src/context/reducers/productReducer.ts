@@ -143,8 +143,10 @@ export const productReducer = (
     case 'ADD_CUSTOM_BUNDLE_TO_CART': {
       const { productsId } = action.payload
 
+      const bundleId = state.customBundles.length + 1
+
       state.customBundles.push({
-        id: '1',
+        id: `${bundleId}`,
         products: productsId.map((product) => ({
           id: product,
         })),
@@ -153,7 +155,7 @@ export const productReducer = (
       state.cart.items.push({
         type: 'customBundle',
         customBundle: {
-          id: '1',
+          id: `${bundleId}`,
         },
       })
 

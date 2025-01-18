@@ -87,9 +87,7 @@ export const selectCartProducts = (
             else throw new Error('Product not exist')
           }),
         }
-      } else {
-        throw new Error('Bundle not exist')
-      }
+      } else throw new Error('Bundle not exist')
     }
   })
 
@@ -110,7 +108,7 @@ export const selectCustomBundle = (state: RootState, id: string) => {
       if (foundProduct) return foundProduct
       else throw new Error('Product not exist')
     })
-  } else {
-    throw new Error('Bundle not exist')
   }
+
+  return []
 }
