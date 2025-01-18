@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoSearchSharp } from 'react-icons/io5'
 import { PiHandbagSimple } from 'react-icons/pi'
-import { NavLink } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useAppContext } from '../context/AppContext'
 import { selectCartTotalQuantity } from '../context/selectors'
 import Cart from './Cart'
@@ -14,7 +14,16 @@ interface HeaderProps {
 function Header({ scrolled }: HeaderProps) {
   const { state } = useAppContext()
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
+  const navigate = useNavigate()
+
   const cartTotalQuantity = selectCartTotalQuantity(state)
+
+  const search = (formData: FormData) => {
+    const query = formData.get('search')
+    navigate(`/search?q=${query}`)
+  }
+
   return (
     <>
       {scrolled ? (
@@ -27,23 +36,23 @@ function Header({ scrolled }: HeaderProps) {
           </div>
           <div className="grid h-80 grid-cols-3">
             <div className="flex items-center justify-center bg-[#f6f3e2] text-center text-[26px] text-black uppercase">
-              <NavLink to="/collections/all-products" className="pl-16">
+              <Link to="/collections/all-products" className="pl-16">
                 shop
-              </NavLink>
-              <NavLink to="/pages/builder">
+              </Link>
+              <Link to="/pages/builder">
                 <span className="pl-16">build a bundle</span>
-              </NavLink>
+              </Link>
               <span className="pl-16">about us</span>
             </div>
             <div className="flex items-center justify-center bg-[#f6f3e2]">
               <div className="absolute flex items-center justify-center rounded-full bg-[#f6f3e2]">
-                <NavLink to="/">
+                <Link to="/">
                   <img
                     className=""
                     src="https://www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945&width=80"
                     alt=""
                   />
-                </NavLink>
+                </Link>
               </div>
             </div>
             <div className="flex items-center justify-center gap-23 bg-[#f6f3e2] text-black">
@@ -61,9 +70,19 @@ function Header({ scrolled }: HeaderProps) {
                   />
                 </span>
               </a>
-              <button aria-label="serach">
-                <IoSearchSharp size={34} />
-              </button>
+              <form action={search}>
+                <input
+                  aria-label="search"
+                  name="search"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  type="text"
+                />
+                <button aria-label="serach">
+                  <IoSearchSharp size={34} />
+                </button>
+              </form>
+
               <button
                 title="Cart"
                 onClick={() => setIsCartOpen(true)}
@@ -89,23 +108,23 @@ function Header({ scrolled }: HeaderProps) {
           </div>
           <div className="grid h-108 grid-cols-3">
             <div className="flex items-center justify-center bg-[#f6f3e2] text-center text-[26px] text-black uppercase">
-              <NavLink to="/collections/all-products" className="pl-16">
+              <Link to="/collections/all-products" className="pl-16">
                 shop
-              </NavLink>
-              <NavLink to="/pages/builder">
+              </Link>
+              <Link to="/pages/builder">
                 <span className="pl-16">build a bundle</span>
-              </NavLink>
+              </Link>
               <span className="pl-16">about us</span>
             </div>
             <div className="flex items-center justify-center bg-[#f6f3e2]">
               <div className="absolute mt-55 flex h-156 w-156 items-center justify-center rounded-full bg-[#f6f3e2]">
-                <NavLink to="/">
+                <Link to="/">
                   <img
                     className=""
                     src="https://www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945&width=140"
                     alt=""
                   />
-                </NavLink>
+                </Link>
               </div>
             </div>
             <div className="flex items-center justify-center gap-23 bg-[#f6f3e2] text-black">
@@ -123,9 +142,18 @@ function Header({ scrolled }: HeaderProps) {
                   />
                 </span>
               </a>
-              <button aria-label="serach">
-                <IoSearchSharp size={34} />
-              </button>
+              <form action={search}>
+                <input
+                  aria-label="search"
+                  name="search"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  type="text"
+                />
+                <button aria-label="serach">
+                  <IoSearchSharp size={34} />
+                </button>
+              </form>
               <button
                 title="Cart"
                 onClick={() => setIsCartOpen(true)}

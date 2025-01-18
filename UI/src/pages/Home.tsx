@@ -1,12 +1,12 @@
 import { Suspense } from 'react'
-import { NavLink } from 'react-router'
+import { Link } from 'react-router'
 import ProductList from '../containers/ProductList'
 
 export default function Home() {
   return (
     <>
       <div className="mt-40 bg-[#f6f3e2]">
-        <NavLink to={'collections/all-products?types=Fries'}>
+        <Link to={'collections/all-products?types=Fries'}>
           <div className="relative block">
             <img
               className="h-auto w-full max-w-full"
@@ -17,7 +17,7 @@ export default function Home() {
             />
             <div className="absolute bottom-[5%] left-1/2 h-full max-h-16 w-full max-w-24 rounded bg-white opacity-80"></div>
           </div>
-        </NavLink>
+        </Link>
         <div className="flex h-128 items-center justify-center bg-white text-center text-black">
           <p className="text-xl font-bold">
             PIPCORN HEIRLOOM SNACKS IS FAMILY-FOUNDED – BORN FROM OUR LOVE OF
@@ -40,20 +40,20 @@ export default function Home() {
           <div className="container mx-auto transform rounded transition hover:scale-105">
             <div className="flex rounded-lg bg-[#b69775]">
               <div className="flex-1 items-center justify-center p-16">
-                <NavLink
+                <Link
                   to={'pages/builder'}
                   className="cursor-pointer justify-center pb-12 pl-32 text-4xl text-black uppercase"
                 >
                   can't pick a favorite? choose your own snack-adventure!
-                </NavLink>
+                </Link>
               </div>
               <div className="flex max-w-320 items-center justify-center gap-4 rounded bg-orange-500 px-8 py-5 text-4xl text-white uppercase">
-                <NavLink
+                <Link
                   to={'pages/builder'}
                   className="cursor-pointer font-light"
                 >
                   Build your <br /> own bundle
-                </NavLink>
+                </Link>
                 <a className="flex items-center justify-center bg-orange-500 px-10">
                   <svg
                     className="text-2xl font-bold text-white"
@@ -77,7 +77,7 @@ export default function Home() {
         <div className="mt-12">
           <div className="container mx-auto">
             <div className="grid grid-cols-2 gap-16">
-              <NavLink to={'collections/all-products?types=Cheese+Balls'}>
+              <Link to={'collections/all-products?types=Cheese+Balls'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
                     className="transform transition duration-200 group-hover:scale-105"
@@ -91,8 +91,8 @@ export default function Home() {
                     height={400}
                   />
                 </div>
-              </NavLink>
-              <NavLink to={'collections/all-products?types=Popcorn'}>
+              </Link>
+              <Link to={'collections/all-products?types=Popcorn'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
                     className="transform transition duration-200 group-hover:scale-105"
@@ -106,8 +106,8 @@ export default function Home() {
                     height={400}
                   />
                 </div>
-              </NavLink>
-              <NavLink to={'collections/all-products?types=Twists'}>
+              </Link>
+              <Link to={'collections/all-products?types=Twists'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
                     className="transform transition duration-200 group-hover:scale-105"
@@ -121,8 +121,8 @@ export default function Home() {
                     height={400}
                   />
                 </div>
-              </NavLink>
-              <NavLink to={'collections/all-products?types=Crunchies'}>
+              </Link>
+              <Link to={'collections/all-products?types=Crunchies'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
                     className="transform transition duration-200 group-hover:scale-105"
@@ -136,7 +136,7 @@ export default function Home() {
                     height={400}
                   />
                 </div>
-              </NavLink>
+              </Link>
             </div>
           </div>
         </div>
