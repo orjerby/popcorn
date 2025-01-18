@@ -1,11 +1,25 @@
 import { useState } from 'react'
 
+import { useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
 import { useAppContext } from '../context/AppContext'
-import { selectProductTypes, selectSingleProducts } from '../context/selectors'
+import {
+  selectCustomBundle,
+  selectProductTypes,
+  selectSingleProducts,
+} from '../context/selectors'
 
 export default function Bundle() {
-  const { dispatch } = useAppContext()
+  const { state, dispatch } = useAppContext()
+
+  const [searchParams] = useSearchParams()
+
+  const bundleId = searchParams.get('box')
+
+  if (bundleId) {
+    const customBundle = selectCustomBundle(state, bundleId)
+    console.log(customBundle)
+  }
 
   const addToCart = (id: any) => {
     dispatch({
@@ -16,14 +30,13 @@ export default function Bundle() {
 
   const addToCarts = (productsid: string[]) => {
     dispatch({
-      type: 'ADD_TO_CARTS',
+      type: 'ADD_CUSTOM_BUNDLE_TO_CART',
       payload: { productsId: productsid },
     })
   }
   const [bundle, setBundle] = useState<Product[]>([])
   const [productsId, setProductsId] = useState<string[]>([])
 
-  const { state } = useAppContext()
   const types = selectProductTypes(state)
   const singleProducts = selectSingleProducts(state)
 

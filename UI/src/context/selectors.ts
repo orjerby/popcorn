@@ -1,4 +1,19 @@
+import { Product } from '../../../API/models/product'
 import { RootState } from './rootReducer'
+
+type CartProduct = {
+  type: 'products'
+  product: Product
+  quantity: number
+}
+
+type CartCustomBundle = {
+  type: 'customBundle'
+  id: string
+  products: {
+    product: Product
+  }[]
+}
 
 export const selectSingleProducts = (state: RootState) =>
   state.productState.products.filter((item) => item.count === 1)
@@ -35,8 +50,67 @@ export const selectSearchedBundledProducts = (
     : []
 }
 
-export const selectCartProducts = (state: RootState) =>
-  state.productState.cart.products
+export const selectCartProducts = (
+  state: RootState,
+): (CartProduct | CartCustomBundle)[] =>
+  state.productState.cart.items.map((item) => {
+    if (item.type === 'products') {
+      const foundProduct = state.productState.products.find(
+        (product) => product.id === item.products.id,
+      )
+
+      if (foundProduct)
+        return {
+          type: 'products',
+          product: foundProduct,
+          quantity: item.products.quantity,
+        }
+      else throw new Error('Product not exist')
+    } else {
+      const foundBundle = state.productState.customBundles.find(
+        (bundle) => bundle.id === item.customBundle.id,
+      )
+
+      if (foundBundle) {
+        return {
+          type: 'customBundle',
+          id: foundBundle.id,
+          products: foundBundle.products.map((bundleProduct) => {
+            const foundProduct = state.productState.products.find(
+              (product) => product.id === bundleProduct.id,
+            )
+
+            if (foundProduct)
+              return {
+                product: foundProduct,
+              }
+            else throw new Error('Product not exist')
+          }),
+        }
+      } else {
+        throw new Error('Bundle not exist')
+      }
+    }
+  })
 
 export const selectCartTotalQuantity = (state: RootState) =>
   state.productState.cart.totalQuantity
+
+export const selectCustomBundle = (state: RootState, id: string) => {
+  const foundBundle = state.productState.customBundles.find(
+    (bundle) => bundle.id === id,
+  )
+
+  if (foundBundle) {
+    return foundBundle.products.map((productBundle) => {
+      const foundProduct = state.productState.products.find(
+        (product) => product.id === productBundle.id,
+      )
+
+      if (foundProduct) return foundProduct
+      else throw new Error('Product not exist')
+    })
+  } else {
+    throw new Error('Bundle not exist')
+  }
+}
