@@ -14,16 +14,17 @@ export default function Bundle() {
 
   const [searchParams] = useSearchParams()
 
-  const [bundle, setBundle] = useState<Product[]>([])
-
   const types = selectProductTypes(state)
   const singleProducts = selectSingleProducts(state)
 
+  const bundleIdParam = searchParams.get('bundle') ?? ''
+  const existCustomBundle = selectCustomBundle(state, bundleIdParam)
+
+  const [currentBundle, setCurrentBundle] = useState<Product[]>([])
+
   useEffect(() => {
-    const bundleId = searchParams.get('bundle') ?? ''
-    const customBundle = selectCustomBundle(state, bundleId)
-    setBundle(customBundle)
-  }, [searchParams])
+    setCurrentBundle(existCustomBundle)
+  }, [bundleIdParam])
 
   const addCustomBundleToCart = (productsid: string[]) => {
     dispatch({
@@ -32,17 +33,22 @@ export default function Bundle() {
     })
   }
 
-  const addToBundle = (product: Product) => {
-    if (bundle.length < 12) setBundle([...bundle, product])
+  const updateCustomBundleToCart = (productsid: string[]) => {
+    dispatch({
+      type: 'UPDATE_CUSTOM_BUNDLE_IN_CART',
+      payload: { bundleId: bundleIdParam, productsId: productsid },
+    })
   }
 
-  const sendToCart = (products: Product[]) => {
-    if (bundle.length % 4 === 0) {
-      const ids = products.map((p) => p.id) // Get the IDs from the products array
-      addCustomBundleToCart(ids) // Use the IDs directly
-    } else {
-      console.log('wrong num :' + bundle.length)
-    }
+  const addToBundle = (product: Product) => {
+    setCurrentBundle([...currentBundle, product])
+  }
+
+  const submit = () => {
+    const productsId = currentBundle.map((p) => p.id)
+
+    if (existCustomBundle.length) updateCustomBundleToCart(productsId)
+    else addCustomBundleToCart(productsId)
   }
 
   return (
@@ -99,14 +105,15 @@ export default function Bundle() {
                             <div className="ml-20 p-3 text-blue-600">
                               {product.id} - {product.title}
                             </div>
-                            <div
-                              className="ml-4 bg-amber-300 p-3"
+                            <button
                               onClick={() => {
                                 addToBundle(product)
                               }}
+                              disabled={currentBundle.length === 12}
+                              className="ml-4 bg-amber-300 p-3 disabled:opacity-50"
                             >
                               ADD TO BUNDLE
-                            </div>
+                            </button>
                           </div>
                         )
                       })}
@@ -116,7 +123,7 @@ export default function Bundle() {
             })}
           </ul>
         </div>
-        <div className="ml-200 grid max-h-500 grid-cols-4 gap-5 text-black">
+        {/* <div className="ml-200 grid max-h-500 grid-cols-4 gap-5 text-black">
           <div className="max-w-240 bg-amber-500">b</div>
           <div>c</div>
           <div>d</div>
@@ -131,10 +138,10 @@ export default function Bundle() {
           <div>c</div>
           <div>d</div>
           <div>a</div>
-        </div>
-        <div className="relative bottom-40 left-700 mt-100 flex-col overflow-hidden text-black">
+        </div> */}
+        <div className="relative bottom-40 mt-100 flex-col overflow-hidden text-black">
           <ul className="flex flex-col gap-10 text-lg font-bold text-black uppercase">
-            {bundle.map((product, index) => {
+            {currentBundle.map((product, index) => {
               return (
                 <li key={index} className="uppercase">
                   <span className="border p-3 text-blue-600">
@@ -142,7 +149,9 @@ export default function Bundle() {
                   </span>
                   <button
                     onClick={() =>
-                      setBundle(bundle.filter((_p, idx) => idx !== index))
+                      setCurrentBundle(
+                        currentBundle.filter((_p, idx) => idx !== index),
+                      )
                     }
                     className="ml-10 cursor-pointer rounded border bg-red-500 p-3"
                   >
@@ -154,10 +163,15 @@ export default function Bundle() {
           </ul>
         </div>
         <button
-          onClick={() => sendToCart(bundle)}
-          className="h-50 cursor-pointer border border-black bg-amber-300 text-3xl"
+          onClick={submit}
+          disabled={
+            currentBundle.length !== 4 &&
+            currentBundle.length !== 8 &&
+            currentBundle.length !== 12
+          }
+          className="h-50 cursor-pointer border border-black bg-amber-300 text-3xl disabled:cursor-auto disabled:opacity-50"
         >
-          send to cart
+          {existCustomBundle.length ? 'update' : 'add'} custom bundle
         </button>
       </div>
     </div>

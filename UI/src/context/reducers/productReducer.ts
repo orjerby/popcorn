@@ -23,9 +23,7 @@ export type Cart = {
 
 type CustomBundles = {
   id: string
-  products: {
-    id: string
-  }[]
+  productsId: string[]
 }[]
 
 export type ProductState = {
@@ -40,9 +38,17 @@ export type ProductAction =
   | { type: 'NO_ACTION'; payload: null }
   | { type: 'SET_PRODUCTS'; payload: Product[] }
   | { type: 'ADD_TO_CART'; payload: { productId: string } }
-  | { type: 'ADD_CUSTOM_BUNDLE_TO_CART'; payload: { productsId: string[] } }
   | { type: 'REMOVE_FROM_CART'; payload: { productId: string } }
   | { type: 'SET_CART'; payload: { productId: string; quantity: number } }
+  | { type: 'ADD_CUSTOM_BUNDLE_TO_CART'; payload: { productsId: string[] } }
+  | {
+      type: 'UPDATE_CUSTOM_BUNDLE_IN_CART'
+      payload: { bundleId: string; productsId: string[] }
+    }
+  | {
+      type: 'REMOVE_CUSTOM_BUNDLE_FROM_CART'
+      payload: { bundleId: string }
+    }
 
 export const initialProductState: ProductState = {
   products: [],
@@ -147,9 +153,7 @@ export const productReducer = (
 
       state.customBundles.push({
         id: `${bundleId}`,
-        products: productsId.map((product) => ({
-          id: product,
-        })),
+        productsId,
       })
 
       state.cart.items.push({
@@ -160,6 +164,35 @@ export const productReducer = (
       })
 
       state.cart.totalQuantity += productsId.length
+      break
+    }
+    case 'UPDATE_CUSTOM_BUNDLE_IN_CART': {
+      const { bundleId, productsId } = action.payload
+
+      const foundBundle = state.customBundles.find(
+        (bundle) => bundle.id === bundleId,
+      )
+
+      if (foundBundle) {
+        foundBundle.productsId = productsId
+      }
+      break
+    }
+    case 'REMOVE_CUSTOM_BUNDLE_FROM_CART': {
+      const { bundleId } = action.payload
+
+      const foundBundleIndex = state.customBundles.findIndex(
+        (bundle) => bundle.id === bundleId,
+      )
+
+      state.customBundles.splice(foundBundleIndex, 1)
+
+      const foundCartBundle = state.cart.items.findIndex(
+        (item) =>
+          item.type === 'customBundle' && item.customBundle.id === bundleId,
+      )
+
+      state.cart.items.splice(foundCartBundle, 1)
       break
     }
     default:

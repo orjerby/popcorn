@@ -10,9 +10,7 @@ type CartProduct = {
 type CartCustomBundle = {
   type: 'customBundle'
   id: string
-  products: {
-    product: Product
-  }[]
+  products: Product[]
 }
 
 export const selectSingleProducts = (state: RootState) =>
@@ -71,23 +69,20 @@ export const selectCartProducts = (
         (bundle) => bundle.id === item.customBundle.id,
       )
 
-      if (foundBundle) {
+      if (foundBundle)
         return {
           type: 'customBundle',
           id: foundBundle.id,
-          products: foundBundle.products.map((bundleProduct) => {
+          products: foundBundle.productsId.map((productId) => {
             const foundProduct = state.productState.products.find(
-              (product) => product.id === bundleProduct.id,
+              (product) => product.id === productId,
             )
 
-            if (foundProduct)
-              return {
-                product: foundProduct,
-              }
+            if (foundProduct) return foundProduct
             else throw new Error('Product not exist')
           }),
         }
-      } else throw new Error('Bundle not exist')
+      else throw new Error('Bundle not exist')
     }
   })
 
@@ -100,9 +95,9 @@ export const selectCustomBundle = (state: RootState, id: string) => {
   )
 
   if (foundBundle) {
-    return foundBundle.products.map((productBundle) => {
+    return foundBundle.productsId.map((productId) => {
       const foundProduct = state.productState.products.find(
-        (product) => product.id === productBundle.id,
+        (product) => product.id === productId,
       )
 
       if (foundProduct) return foundProduct

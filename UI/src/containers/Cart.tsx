@@ -42,10 +42,10 @@ export default function Cart({ open, onClose }: Props) {
   const DrawerList = (
     <div>
       {cart.length > 0 ? (
-        <ul className="flex flex-col items-center justify-center overflow-hidden">
+        <div className="flex flex-col items-center justify-center overflow-hidden">
           {[...cart].reverse().map((item, index) =>
             item.type === 'products' ? (
-              <li
+              <div
                 key={index}
                 className="my-10 ms-40 me-40 w-full max-w-480 space-y-15 space-x-15 rounded border border-[#c9c1b8] bg-white p-10"
               >
@@ -103,19 +103,19 @@ export default function Cart({ open, onClose }: Props) {
                     </div>
                   </div>
                 </div>
-              </li>
+              </div>
             ) : (
               <div key={index} className="border">
                 <Link to={`/pages/builder?bundle=${item.id}`} onClick={onClose}>
                   EDIT
                 </Link>
                 {item.products.map((product, index) => (
-                  <div key={index}>{product.product.title}</div>
+                  <div key={index}>{product.title}</div>
                 ))}
               </div>
             ),
           )}
-        </ul>
+        </div>
       ) : (
         <div>no items in cart!</div>
       )}
