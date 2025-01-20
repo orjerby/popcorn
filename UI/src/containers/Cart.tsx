@@ -32,6 +32,12 @@ export default function Cart({ open, onClose }: Props) {
     })
   }
 
+  const removeBundleFromCart = (bundleId: string) => {
+    dispatch({
+      type: 'REMOVE_CUSTOM_BUNDLE_FROM_CART',
+      payload: { bundleId },
+    })
+  }
   const setCart = (productId: string, quantity: number) => {
     dispatch({
       type: 'SET_CART',
@@ -154,7 +160,10 @@ export default function Cart({ open, onClose }: Props) {
                       >
                         EDIT
                       </Link>
-                      <button className="text-16 rounded bg-[#ff6c68] px-25 py-8 text-black uppercase">
+                      <button
+                        onClick={() => removeBundleFromCart(item.id)}
+                        className="text-16 cursor-pointer rounded bg-[#ff6c68] px-25 py-8 text-black uppercase"
+                      >
                         REMOVE
                       </button>
                     </div>
