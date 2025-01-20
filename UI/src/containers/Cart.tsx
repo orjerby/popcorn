@@ -105,13 +105,61 @@ export default function Cart({ open, onClose }: Props) {
                 </div>
               </div>
             ) : (
-              <div key={index} className="border">
-                <Link to={`/pages/builder?bundle=${item.id}`} onClick={onClose}>
-                  EDIT
-                </Link>
-                {item.products.map((product, index) => (
-                  <div key={index}>{product.title}</div>
-                ))}
+              // BUNDLE DESIGN
+              <div
+                key={index}
+                className="my-10 ms-40 me-40 inline-flex w-full max-w-480 flex-col space-y-15 space-x-15 border border-[#c9c1b8]"
+              >
+                <div>
+                  {item.products.map((product, index) => (
+                    <div key={index} className="bg-white p-10">
+                      <div className="grid max-w-480 grid-cols-[1fr_3fr_1fr]">
+                        <div className="flex items-center justify-center bg-white">
+                          <div>
+                            <img
+                              className="max-w-80"
+                              src={product.images[0]}
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-center overflow-hidden border-gray-300 bg-white">
+                          <div className="overflow-hidden">
+                            {/* <div className="text-xl uppercase line-clamp-1"> */}
+                            <div className="overflow-hidden text-xl text-ellipsis whitespace-nowrap uppercase">
+                              {product.id} - {product.title}
+                            </div>
+                            <span className="text-black uppercase">
+                              [quantity] bag ${product.price}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="mt-15 flex items-center justify-center place-self-start border-gray-300 bg-white">
+                          <div className="ml-20 flex flex-col items-center justify-center">
+                            <div>
+                              <div className="text-black">$20</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr />
+                    </div>
+                  ))}
+                  <div className="me-40 w-full max-w-480 space-y-15 space-x-15 bg-white p-10">
+                    <div className="mb-30 flex gap-10">
+                      <Link
+                        className="rounded border border-gray-200 px-25 py-8 text-black"
+                        to={`/pages/builder?bundle=${item.id}`}
+                        onClick={onClose}
+                      >
+                        EDIT
+                      </Link>
+                      <button className="text-16 rounded bg-[#ff6c68] px-25 py-8 text-black uppercase">
+                        REMOVE
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             ),
           )}
