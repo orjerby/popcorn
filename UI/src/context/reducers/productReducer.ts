@@ -68,40 +68,38 @@ export const productReducer = (
       state.products = action.payload
 
       // Extract and sort unique product types from the payload
-      state.types = Array.from(
-        new Set(action.payload.map((product) => product.type).filter(Boolean)),
-      ).sort()
+      state.types = [
+        ...new Set(
+          action.payload.map((product) => product.type).filter(Boolean),
+        ),
+      ].sort()
 
       // Extract and sort unique product flavors from the payload
-      state.flavors = Array.from(
-        new Set(
+      state.flavors = [
+        ...new Set(
           action.payload.map((product) => product.flavor).filter(Boolean),
         ),
-      ).sort()
+      ].sort()
 
-      // Update custom bundles to only include products that exist in the new payload
-      state.customBundles = state.customBundles.map((bundle) => ({
-        ...bundle,
-        productsId: bundle.productsId.filter((productId) =>
-          action.payload.find((product) => product.id === productId),
-        ),
-      }))
+      // Filter out invalid products from custom bundles and remove empty bundles
+      state.customBundles = state.customBundles
+        .map((bundle) => ({
+          ...bundle,
+          productsId: bundle.productsId.filter((productId) =>
+            action.payload.some((product) => product.id === productId),
+          ),
+        }))
+        .filter((bundle) => bundle.productsId.length > 0)
 
-      // Remove custom bundles that no longer have any valid products
-      state.customBundles = state.customBundles.filter(
-        (bundle) => bundle.productsId.length > 0,
-      )
-
-      // Update the cart items to only include products and custom bundles that exist in the new payload
-      state.cart.items = state.cart.items.filter(
-        (item) =>
-          (item.type === 'customBundle' &&
-            state.customBundles.find(
-              (bundle) => bundle.id === item.customBundle.id,
-            )) ||
-          (item.type === 'products' &&
-            action.payload.find((product) => product.id === item.products.id)),
-      )
+      // Filter out invalid products and custom bundles from the cart
+      state.cart.items = state.cart.items.filter((item) => {
+        if (item.type === 'customBundle') {
+          return state.customBundles.some(
+            (bundle) => bundle.id === item.customBundle.id,
+          )
+        }
+        return action.payload.some((product) => product.id === item.products.id)
+      })
 
       // Recalculate the total quantity in the cart
       state.cart.totalQuantity = state.cart.items.reduce((acc, item) => {
@@ -109,29 +107,29 @@ export const productReducer = (
           const foundBundle = state.customBundles.find(
             (bundle) => bundle.id === item.customBundle.id,
           )
-          return acc + (foundBundle ? foundBundle?.productsId.length : 0)
+          return acc + (foundBundle ? foundBundle.productsId.length : 0)
         }
         return acc + (item.type === 'products' ? item.products.quantity : 0)
       }, 0)
       break
     case 'ADD_TO_CART': {
       const { productId } = action.payload
-      const existingItemIndex = state.cart.items.findIndex(
+      const existingItem = state.cart.items.find(
         (item) => item.type === 'products' && item.products.id === productId,
       )
 
-      if (
-        existingItemIndex !== -1 &&
-        state.cart.items[existingItemIndex].type === 'products'
-      ) {
-        state.cart.items[existingItemIndex].products.quantity++
+      if (existingItem && existingItem.type === 'products') {
+        // If the product is already in the cart, increase its quantity
+        existingItem.products.quantity++
       } else {
+        // If the product is not in the cart, add it with quantity 1
         state.cart.items.push({
           type: 'products',
           products: { id: productId, quantity: 1 },
         })
       }
 
+      // Increase the total quantity in the cart
       state.cart.totalQuantity++
       break
     }
@@ -141,102 +139,97 @@ export const productReducer = (
         (item) => item.type === 'products' && item.products.id === productId,
       )
 
-      if (
-        existingItemIndex !== -1 &&
-        state.cart.items[existingItemIndex].type === 'products'
-      ) {
-        if (state.cart.items[existingItemIndex].products.quantity <= 1) {
-          state.cart.items.splice(existingItemIndex, 1)
-        } else {
-          state.cart.items[existingItemIndex].products.quantity--
+      if (existingItemIndex !== -1) {
+        const existingItem = state.cart.items[existingItemIndex]
+        if (existingItem.type === 'products') {
+          if (existingItem.products.quantity <= 1) {
+            // If the product quantity is 1 or less, remove it from the cart
+            state.cart.items.splice(existingItemIndex, 1)
+          } else {
+            // Otherwise, decrease the product quantity
+            existingItem.products.quantity--
+          }
+          // Decrease the total quantity in the cart
+          state.cart.totalQuantity--
         }
-
-        state.cart.totalQuantity--
       }
       break
     }
     case 'SET_CART': {
       const { productId, quantity } = action.payload
-      const existingItemIndex = state.cart.items.findIndex(
+      const existingItem = state.cart.items.find(
         (item) => item.type === 'products' && item.products.id === productId,
       )
 
-      if (
-        existingItemIndex !== -1 &&
-        state.cart.items[existingItemIndex].type === 'products'
-      ) {
+      if (existingItem && existingItem.type === 'products') {
+        // Adjust the total quantity based on the new quantity
+        state.cart.totalQuantity += quantity - existingItem.products.quantity
         if (quantity <= 0) {
-          state.cart.totalQuantity -=
-            state.cart.items[existingItemIndex].products.quantity
-          state.cart.items.splice(existingItemIndex, 1)
+          // If the new quantity is 0 or less, remove the product from the cart
+          state.cart.items = state.cart.items.filter(
+            (item) =>
+              item.type === 'products' && item.products.id !== productId,
+          )
         } else {
-          state.cart.totalQuantity +=
-            quantity - state.cart.items[existingItemIndex].products.quantity
-          state.cart.items[existingItemIndex].products.quantity = quantity
+          // Otherwise, update the product quantity
+          existingItem.products.quantity = quantity
         }
-      } else {
-        if (quantity > 0) {
-          state.cart.totalQuantity += quantity
-          state.cart.items.push({
-            type: 'products',
-            products: { id: productId, quantity },
-          })
-        }
+      } else if (quantity > 0) {
+        // If the product is not in the cart and quantity is positive, add it
+        state.cart.items.push({
+          type: 'products',
+          products: { id: productId, quantity },
+        })
+        state.cart.totalQuantity += quantity
       }
       break
     }
     case 'ADD_CUSTOM_BUNDLE_TO_CART': {
       const { productsId } = action.payload
+      const bundleId = `${state.customBundles.length + 1}`
 
-      const bundleId = state.customBundles.length + 1
-
-      state.customBundles.push({
-        id: `${bundleId}`,
-        productsId,
-      })
-
+      // Add the new custom bundle to the customBundles array
+      state.customBundles.push({ id: bundleId, productsId })
+      // Add the custom bundle to the cart
       state.cart.items.push({
         type: 'customBundle',
-        customBundle: {
-          id: `${bundleId}`,
-        },
+        customBundle: { id: bundleId },
       })
-
+      // Increase the total quantity in the cart by the number of products in the bundle
       state.cart.totalQuantity += productsId.length
       break
     }
     case 'UPDATE_CUSTOM_BUNDLE_IN_CART': {
       const { bundleId, productsId } = action.payload
-
       const foundBundle = state.customBundles.find(
         (bundle) => bundle.id === bundleId,
       )
 
       if (foundBundle) {
+        // Update the productsId of the found custom bundle
         foundBundle.productsId = productsId
       }
       break
     }
     case 'REMOVE_CUSTOM_BUNDLE_FROM_CART': {
       const { bundleId } = action.payload
-
       const foundBundleIndex = state.customBundles.findIndex(
         (bundle) => bundle.id === bundleId,
       )
 
       if (foundBundleIndex !== -1) {
+        // Decrease the total quantity in the cart by the number of products in the bundle
         state.cart.totalQuantity -=
           state.customBundles[foundBundleIndex].productsId.length
-
+        // Remove the custom bundle from the customBundles array
         state.customBundles.splice(foundBundleIndex, 1)
       }
 
-      const foundCartBundle = state.cart.items.findIndex(
+      // Remove the custom bundle from the cart
+      state.cart.items = state.cart.items.filter(
         (item) =>
-          item.type === 'customBundle' && item.customBundle.id === bundleId,
+          !(item.type === 'customBundle' && item.customBundle.id === bundleId),
       )
-
-      state.cart.items.splice(foundCartBundle, 1)
       break
     }
     default:
