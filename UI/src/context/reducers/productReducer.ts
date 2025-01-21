@@ -1,37 +1,32 @@
 import { Draft } from 'immer'
 import { Product, SnackFlavor, SnackType } from '../../../../API/models/product'
 
-type CartProduct = {
-  type: 'products'
-  products: {
-    id: string
-    quantity: number
-  }
-}
-
-type CartCustomBundle = {
-  type: 'customBundle'
-  customBundle: {
-    id: string
-  }
-}
-
-export type Cart = {
-  totalQuantity: number
-  items: (CartProduct | CartCustomBundle)[]
-}
-
-type CustomBundles = {
-  id: string
-  productsId: string[]
-}[]
-
 export type ProductState = {
   products: Product[]
   types: SnackType[]
   flavors: SnackFlavor[]
-  cart: Cart
-  customBundles: CustomBundles
+  cart: {
+    totalQuantity: number
+    items: (
+      | {
+          type: 'products'
+          products: {
+            id: string
+            quantity: number
+          }
+        }
+      | {
+          type: 'customBundle'
+          customBundle: {
+            id: string
+          }
+        }
+    )[]
+  }
+  customBundles: {
+    id: string
+    productsId: string[]
+  }[]
 }
 
 export type ProductAction =
