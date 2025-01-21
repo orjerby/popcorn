@@ -184,7 +184,8 @@ export const productReducer = (
       const foundBundleIndex = state.customBundles.findIndex(
         (bundle) => bundle.id === bundleId,
       )
-
+      state.cart.totalQuantity -=
+        state.customBundles[foundBundleIndex].productsId.length
       state.customBundles.splice(foundBundleIndex, 1)
 
       const foundCartBundle = state.cart.items.findIndex(
