@@ -20,7 +20,6 @@ export default function App() {
   useData({
     promise: getProducts,
     onLoad: (productsData) => {
-      // console.log('loaded', productsData)
       dispatch({ type: 'SET_PRODUCTS', payload: productsData })
     },
   })

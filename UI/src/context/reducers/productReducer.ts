@@ -64,16 +64,55 @@ export const productReducer = (
 ) => {
   switch (action.type) {
     case 'SET_PRODUCTS':
+      // Update the products list with the new payload
       state.products = action.payload
+
+      // Extract and sort unique product types from the payload
       state.types = Array.from(
         new Set(action.payload.map((product) => product.type).filter(Boolean)),
       ).sort()
 
+      // Extract and sort unique product flavors from the payload
       state.flavors = Array.from(
         new Set(
           action.payload.map((product) => product.flavor).filter(Boolean),
         ),
       ).sort()
+
+      // Update custom bundles to only include products that exist in the new payload
+      state.customBundles = state.customBundles.map((bundle) => ({
+        ...bundle,
+        productsId: bundle.productsId.filter((productId) =>
+          action.payload.find((product) => product.id === productId),
+        ),
+      }))
+
+      // Remove custom bundles that no longer have any valid products
+      state.customBundles = state.customBundles.filter(
+        (bundle) => bundle.productsId.length > 0,
+      )
+
+      // Update the cart items to only include products and custom bundles that exist in the new payload
+      state.cart.items = state.cart.items.filter(
+        (item) =>
+          (item.type === 'customBundle' &&
+            state.customBundles.find(
+              (bundle) => bundle.id === item.customBundle.id,
+            )) ||
+          (item.type === 'products' &&
+            action.payload.find((product) => product.id === item.products.id)),
+      )
+
+      // Recalculate the total quantity in the cart
+      state.cart.totalQuantity = state.cart.items.reduce((acc, item) => {
+        if (item.type === 'customBundle') {
+          const foundBundle = state.customBundles.find(
+            (bundle) => bundle.id === item.customBundle.id,
+          )
+          return acc + (foundBundle ? foundBundle?.productsId.length : 0)
+        }
+        return acc + (item.type === 'products' ? item.products.quantity : 0)
+      }, 0)
       break
     case 'ADD_TO_CART': {
       const { productId } = action.payload
@@ -184,9 +223,13 @@ export const productReducer = (
       const foundBundleIndex = state.customBundles.findIndex(
         (bundle) => bundle.id === bundleId,
       )
-      state.cart.totalQuantity -=
-        state.customBundles[foundBundleIndex].productsId.length
-      state.customBundles.splice(foundBundleIndex, 1)
+
+      if (foundBundleIndex !== -1) {
+        state.cart.totalQuantity -=
+          state.customBundles[foundBundleIndex].productsId.length
+
+        state.customBundles.splice(foundBundleIndex, 1)
+      }
 
       const foundCartBundle = state.cart.items.findIndex(
         (item) =>
