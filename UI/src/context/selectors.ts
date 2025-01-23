@@ -1,18 +1,6 @@
 import { Product } from '../../../API/models/product'
 import { RootState } from './rootReducer'
 
-type CartProduct = {
-  type: 'products'
-  product: Product
-  quantity: number
-}
-
-type CartCustomBundle = {
-  type: 'customBundle'
-  id: string
-  products: Product[]
-}
-
 export const selectSingleProducts = (state: RootState) =>
   state.productState.products.filter((item) => item.count === 1)
 
@@ -50,7 +38,18 @@ export const selectSearchedBundledProducts = (
 
 export const selectCartProducts = (
   state: RootState,
-): (CartProduct | CartCustomBundle)[] =>
+): (
+  | {
+      type: 'products'
+      product: Product
+      quantity: number
+    }
+  | {
+      type: 'customBundle'
+      id: string
+      products: Product[]
+    }
+)[] =>
   state.productState.cart.items.map((item) => {
     if (item.type === 'products') {
       const foundProduct = state.productState.products.find(
