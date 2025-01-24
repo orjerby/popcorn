@@ -1,0 +1,32 @@
+{
+  "atDirectives": [
+    {
+      "name": "@theme",
+      "description": "Tailwind CSS @theme directive to define your project's custom design tokens, like fonts, colors, and breakpoints."
+    },
+    {
+      "name": "@source",
+      "description": "Tailwind CSS @utility directive to explicitly specify source files that aren't picked up by Tailwind's automatic content detection."
+    },
+    {
+      "name": "@utility",
+      "description": "Tailwind CSS @utility directive to add custom utilities to your project that work with variants like hover, focus and lg."
+    },
+    {
+      "name": "@variant",
+      "description": "Tailwind CSS @variant directive to apply a Tailwind variant to styles in your CSS."
+    },
+    {
+      "name": "@custom-variant",
+      "description": "Tailwind CSS @custom-variant directive to add a custom variant in your project."
+    },
+    {
+      "name": "@apply",
+      "description": "Tailwind CSS @apply directive to inline any existing utility classes into your own custom CSS."
+    },
+    {
+      "name": "@reference",
+      "description": "Tailwind CSS @reference directive. If you want to use @apply or @variant in the <style> block of a Vue or Svelte component, or within CSS modules, you will need to import your theme configuration to make those values available in that context."
+    }
+  ]
+}

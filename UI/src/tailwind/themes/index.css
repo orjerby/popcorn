@@ -1,0 +1,10 @@
+@import './px.css';
+@import './text.css';
+@import './radius.css';
+
+@theme {
+  --spacing: 0.0625rem;
+
+  --font-vinyl: 'vinyl';
+  --font-pluto-medium: 'PlutoMedium';
+}

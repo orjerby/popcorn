@@ -1,0 +1,93 @@
+/* @utility text-* { */
+/* font-size: calc(var(--spacing) * --value(number)); */
+/* font-size: --value(--text- *); */
+/* line-height: --value(--font-size- *); */
+/* line-height: clamp(1, calc((1.333 + (1.555 - 1.333))), 1.555); */
+/* } */
+
+/* @utility rounded-* {
+  border-radius: --value(--radius- *);
+  border-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-b-* {
+  border-bottom-right-radius: --value(--radius- *);
+  border-bottom-right-radius: calc(var(--spacing) * --value(number));
+  border-bottom-left-radius: --value(--radius- *);
+  border-bottom-left-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-bl-* {
+  border-bottom-left-radius: --value(--radius- *);
+  border-bottom-left-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-br-* {
+  border-bottom-right-radius: --value(--radius- *);
+  border-bottom-right-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-e-* {
+  border-start-end-radius: --value(--radius- *);
+  border-start-end-radius: calc(var(--spacing) * --value(number));
+  border-end-end-radius: --value(--radius- *);
+  border-end-end-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-ee-* {
+  border-end-end-radius: --value(--radius- *);
+  border-end-end-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-es-* {
+  border-end-start-radius: --value(--radius- *);
+  border-end-start-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-l-* {
+  border-top-left-radius: --value(--radius- *);
+  border-top-left-radius: calc(var(--spacing) * --value(number));
+  border-bottom-left-radius: --value(--radius- *);
+  border-bottom-left-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-r-* {
+  border-top-right-radius: --value(--radius- *);
+  border-top-right-radius: calc(var(--spacing) * --value(number));
+  border-bottom-right-radius: --value(--radius- *);
+  border-bottom-right-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-s-* {
+  border-start-start-radius: --value(--radius- *);
+  border-start-start-radius: calc(var(--spacing) * --value(number));
+  border-end-start-radius: --value(--radius- *);
+  border-end-start-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-se-* {
+  border-start-end-radius: --value(--radius- *);
+  border-start-end-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-ss-* {
+  border-start-start-radius: --value(--radius- *);
+  border-start-start-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-t-* {
+  border-top-left-radius: --value(--radius- *);
+  border-top-left-radius: calc(var(--spacing) * --value(number));
+  border-top-right-radius: --value(--radius- *);
+  border-top-right-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-tl-* {
+  border-top-left-radius: --value(--radius- *);
+  border-top-left-radius: calc(var(--spacing) * --value(number));
+}
+
+@utility rounded-tr-* {
+  border-top-right-radius: --value(--radius- *);
+  border-top-right-radius: calc(var(--spacing) * --value(number));
+} */
