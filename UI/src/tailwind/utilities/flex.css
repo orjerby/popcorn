@@ -1,0 +1,67 @@
+@utility flex-0-0-* {
+  flex: 0 0 calc(var(--spacing) * --value(number));
+  flex: 0 0 --value([ *]);
+}
+
+@utility flex-0-0-min {
+  flex: 0 0 min-content;
+}
+
+@utility flex-0-0-max {
+  flex: 0 0 max-content;
+}
+
+@utility flex-0-0-fit {
+  flex: 0 0 fit-content;
+}
+
+@utility flex-0-1-* {
+  flex: 0 1 calc(var(--spacing) * --value(number));
+  flex: 0 1 --value([ *]);
+}
+
+@utility flex-0-1-min {
+  flex: 0 1 min-content;
+}
+
+@utility flex-0-1-max {
+  flex: 0 1 max-content;
+}
+
+@utility flex-0-1-fit {
+  flex: 0 1 fit-content;
+}
+
+@utility flex-1-0-* {
+  flex: 1 0 calc(var(--spacing) * --value(number));
+  flex: 1 0 --value([ *]);
+}
+
+@utility flex-1-0-min {
+  flex: 1 0 min-content;
+}
+
+@utility flex-1-0-max {
+  flex: 1 0 max-content;
+}
+
+@utility flex-1-0-fit {
+  flex: 1 0 fit-content;
+}
+
+@utility flex-1-1-* {
+  flex: 1 1 calc(var(--spacing) * --value(number));
+  flex: 1 1 --value([ *]);
+}
+
+@utility flex-1-1-min {
+  flex: 1 1 min-content;
+}
+
+@utility flex-1-1-max {
+  flex: 1 1 max-content;
+}
+
+@utility flex-1-1-fit {
+  flex: 1 1 fit-content;
+}
