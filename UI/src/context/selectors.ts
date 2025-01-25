@@ -93,7 +93,7 @@ export const selectCustomBundle = (state: RootState, id: string) => {
     (bundle) => bundle.id === id,
   )
 
-  if (foundBundle) {
+  if (foundBundle)
     return foundBundle.productsId.map((productId) => {
       const foundProduct = state.productState.products.find(
         (product) => product.id === productId,
@@ -102,7 +102,14 @@ export const selectCustomBundle = (state: RootState, id: string) => {
       if (foundProduct) return foundProduct
       else throw new Error('Product not exist')
     })
-  }
 
   return []
+}
+
+export const selectProduct = (state: RootState, id: string) => {
+  const foundProduct = state.productState.products.find(
+    (product) => product.id === id,
+  )
+
+  return foundProduct ? foundProduct : null
 }
