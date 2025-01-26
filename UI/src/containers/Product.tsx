@@ -25,7 +25,7 @@ export default function Product({
   const addToCart = () => {
     dispatch({
       type: 'ADD_TO_CART',
-      payload: { productId: id },
+      payload: { productId: id, quantity: 1 },
     })
   }
 

@@ -18,10 +18,11 @@ export default function Cart({ open, onClose }: Props) {
 
   const img =
     'https://cdn.shopify.com/s/files/1/0162/2468/products/cinnamon-sugar-twists-pipcorn-381635.png?v=1673391008'
+
   const addToCart = (productId: string) => {
     dispatch({
       type: 'ADD_TO_CART',
-      payload: { productId },
+      payload: { productId, quantity: 1 },
     })
   }
 
@@ -38,6 +39,7 @@ export default function Cart({ open, onClose }: Props) {
       payload: { bundleId },
     })
   }
+
   const setCart = (productId: string, quantity: number) => {
     dispatch({
       type: 'SET_CART',
@@ -105,7 +107,9 @@ export default function Cart({ open, onClose }: Props) {
                           <HiOutlineTrash color="black" size={25} />
                         </button>
                       </div>
-                      <div className="align-bottom text-black">$20</div>
+                      <div className="align-bottom text-black">
+                        ${item.product.price * item.quantity}
+                      </div>
                     </div>
                   </div>
                 </div>
