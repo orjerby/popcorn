@@ -44,9 +44,13 @@ export default function Product() {
       </div>
 
       <div className="flex-[0.45]">
-        <p className="text-14 font-normal text-[#c59259]">{product.type}</p>
+        <p className="text-14 font-normal text-[#c59259] uppercase">
+          {product.type}
+        </p>
 
-        <h1 className="text-48 font-normal text-black">{product.title}</h1>
+        <h1 className="text-48 font-normal text-black uppercase">
+          {product.title}
+        </h1>
 
         <div>
           <p className="text-18 font-normal text-black">
@@ -63,7 +67,7 @@ export default function Product() {
         <div className="mt-16 flex">
           <div className="rounded-6 bg-white"></div>
 
-          <div className="flex gap-12">
+          <div className="flex w-full gap-12">
             <NumberField
               defaultValue={1}
               minValue={0}
@@ -125,9 +129,9 @@ export default function Product() {
 
             <Button
               onPress={() => addToCart(quantity)}
-              className="rounded-6 bg-[#3EADB8] p-[12px]"
+              className="rounded-6 flex-1 bg-[#3EADB8] p-[12px]"
             >
-              <span className="text-18 font-normal text-white">
+              <span className="text-18 font-normal text-white uppercase">
                 add to cart | {totalPrice}$
               </span>
             </Button>
