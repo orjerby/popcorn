@@ -30,41 +30,41 @@ export default function Product({
   }
 
   return (
-    <div className="flex max-h-522 flex-col overflow-hidden">
-      <div className="mt-37 flex max-h-481 max-w-268 flex-col items-center justify-center rounded-sm bg-white">
-        <div className="group flex flex-col items-center gap-10">
+    <div className="flex flex-col">
+      <div className="flex flex-col items-center justify-center rounded-sm bg-white">
+        <div className="group flex flex-col items-center px-[12px] pt-[24px] pb-[28px]">
           <Link
             to={`/products/${id}`}
-            className="mt-105 max-h-256 w-full transition-all duration-300 group-hover:scale-105"
+            className="-mt-87 w-full max-w-373 transition-all duration-300 group-hover:scale-105"
           >
             <img src={image} alt="Popcorn" />
           </Link>
 
           <h3 className="text-xl font-bold text-black">{title}</h3>
-          <div className="mt-16 flex flex-col items-center gap-10">
-            <div className="flex gap-x-5 font-bold text-black">
-              <span>{count}-Pack</span>
-              <span>|</span>
-              <span>${price}</span>
-            </div>
-            <div className="flex h-24 items-center">
-              <Stars />
-              <span className="justify-center pl-5 text-base font-bold text-[#337d9c]">
-                {reviewsCount} REVIEWS
-              </span>
-            </div>
+
+          <div className="mt-28 flex gap-x-5 font-bold text-black">
+            <span>{count}-Pack</span>
+            <span>|</span>
+            <span>${price}</span>
           </div>
 
-          <div className="mt-20 mb-190 flex flex-col gap-10">
+          <div className="mt-8 flex items-center gap-4">
+            <Stars />
+            <span className="justify-center text-base font-bold text-[#337d9c]">
+              {reviewsCount} REVIEWS
+            </span>
+          </div>
+
+          <div className="mt-24 flex w-full flex-col gap-12 px-28">
             <button
               onClick={addToCart}
-              className="w-188 cursor-pointer rounded bg-[#3eadb8] p-12 font-sans font-bold text-white hover:opacity-70"
+              className="cursor-pointer rounded bg-[#3eadb8] p-12 font-sans font-bold text-white hover:opacity-70"
             >
               ADD TO CART
             </button>
             <Link
               to={`/products/${id}`}
-              className="w-188 rounded bg-[#b69775] p-12 text-center font-sans font-bold text-white hover:opacity-70"
+              className="rounded bg-[#b69775] p-12 text-center font-sans font-bold text-white hover:opacity-70"
             >
               VIEW MORE
             </Link>

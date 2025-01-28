@@ -138,8 +138,14 @@ export default function Filters() {
 
   return (
     <>
-      <div className="flex justify-center gap-16">
-        <div className="rounded-6 sticky top-200 h-full w-full max-w-250 border border-[#CBC1B7] bg-white p-16">
+      <div className="flex items-center justify-center bg-[#24dee4] bg-[url(https://www.pipsnacks.com/cdn/shop/files/plp-chips.webp?v=1727948416)] bg-cover bg-right">
+        <h1 className="text-96 px-[48px] py-[80px] font-normal text-white [-webkit-text-stroke-color:#303132] [-webkit-text-stroke-width:thin] [text-shadow:5px_5px_#303132]">
+          SHOP ALL
+        </h1>
+      </div>
+
+      <div className="flex justify-center gap-16 px-[16px] py-[24px]">
+        <div className="rounded-6 sticky top-144 hidden h-full w-full max-w-250 border border-[#CBC1B7] bg-white p-[16px] lg:block">
           <CheckboxGroup value={typesParam}>
             <Label className="text-24 mb-16 block font-normal text-[#C1803E] uppercase">
               Filter by snack type
@@ -192,7 +198,7 @@ export default function Filters() {
         </div>
 
         {filterdProducts.length > 0 ? (
-          <div className="grid gap-y-112 lg:grid-cols-[repeat(3,minmax(0,274px))] lg:gap-x-16">
+          <div className="grid w-full gap-y-80 border-t border-t-[#CBC1B7] pt-72 lg:w-auto lg:grid-cols-[repeat(3,minmax(0,274px))] lg:gap-x-16">
             {filterdProducts.map((item) => (
               <Product
                 key={item.id}
