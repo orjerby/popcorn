@@ -5,12 +5,26 @@ import { Link, useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
 import Stars from '../components/Stars'
 import { useAppContext } from '../context/AppContext'
-import {
-  selectCustomBundle,
-  selectProductTypes,
-  selectSingleProducts,
-} from '../context/selectors'
-
+import { selectProductTypes, selectSingleProducts } from '../context/selectors'
+const defaultProduct: Product = {
+  id: '',
+  title: 'Default Snack',
+  count: 1,
+  size: 'Medium',
+  price: 10.99,
+  description: 'A default snack description.',
+  images: [''],
+  type: 'Cheese Balls',
+  flavor: 'Cheddar',
+  reviews: [
+    {
+      rate: 5,
+      title: 'Great Product',
+      description: 'This is a sample review for the default product.',
+      name: 'John Doe',
+    },
+  ],
+}
 export default function Bundle() {
   const { state, dispatch } = useAppContext()
 
@@ -20,26 +34,40 @@ export default function Bundle() {
   const singleProducts = selectSingleProducts(state)
 
   const bundleIdParam = searchParams.get('bundle') ?? ''
-  const existCustomBundle = selectCustomBundle(state, bundleIdParam)
+  // const existCustomBundle = selectCustomBundle(state, bundleIdParam)
 
-  const [currentBundle, setCurrentBundle] = useState<Product[]>([])
-  const [currentBundleImages1, setCurrentBundleImages1] = useState<string[]>(
-    Array(4).fill(null),
+  const [currentBundle, setCurrentBundle] = useState<Product[]>(
+    Array(12).fill(defaultProduct),
   )
+  console.log(currentBundle)
+  // const [currentBundleImages1, setCurrentBundleImages1] = useState<string[]>(
+  //   Array(4).fill(null),
+  // )
 
-  const [currentBundleImages2, setCurrentBundleImages2] = useState<string[]>(
-    Array(4).fill(null),
-  )
+  // const [currentBundleImages2, setCurrentBundleImages2] = useState<string[]>(
+  //   Array(4).fill(null),
+  // )
 
-  const [currentBundleImages3, setCurrentBundleImages3] = useState<string[]>(
-    Array(4).fill(null),
-  )
+  // const [currentBundleImages3, setCurrentBundleImages3] = useState<string[]>(
+  //   Array(4).fill(null),
+  // )
+
+  const firstFourProducts = currentBundle.slice(0, 4)
+  console.log(firstFourProducts)
+
+  const secondFourProducts = currentBundle.slice(4, 8)
+
+  const thirdFourProducts = currentBundle.slice(8, 12)
 
   const [count, setCount] = useState<number>(0)
 
+  // useEffect(() => {
+  //   setCurrentBundle(existCustomBundle)
+  // }, [bundleIdParam])
+
   useEffect(() => {
-    setCurrentBundle(existCustomBundle)
-  }, [bundleIdParam])
+    setCurrentBundle(currentBundle)
+  }, [currentBundle])
 
   const addCustomBundleToCart = (productsid: string[]) => {
     dispatch({
@@ -61,31 +89,48 @@ export default function Bundle() {
 
   const PrepareToAddToBundle = (product: Product) => {
     if (count === 12) return
-    if (count >= 0 && count < 4)
-      setCurrentBundleImages1((prevState) => {
-        const newState = [...prevState]
-        newState[count] = product.images[0]
-        return newState
-      })
-    else if (count >= 4 && count < 8)
-      setCurrentBundleImages2((prevState) => {
-        const newState = [...prevState]
-        newState[count - 4] = product.images[0]
-        return newState
-      })
-    else
-      setCurrentBundleImages3((prevState) => {
-        const newState = [...prevState]
-        newState[count - 8] = product.images[0]
-        return newState
-      })
+    setCurrentBundle((prevState) => {
+      const newState = [...prevState]
+      newState[count] = product
+      return newState
+    })
+
     setCount(count + 1)
+
+    // const PrepareToAddToBundle = (product: Product) => {
+    //   if (count === 12) return
+    //   if (count >= 0 && count < 4)
+    //     setCurrentBundleImages1((prevState) => {
+    //       const newState = [...prevState]
+    //       newState[count] = product.images[0]
+    //       return newState
+    //     })
+    //   else if (count >= 4 && count < 8)
+    //     setCurrentBundleImages2((prevState) => {
+    //       const newState = [...prevState]
+    //       newState[count - 4] = product.images[0]
+    //       return newState
+    //     })
+    //   else
+    //     setCurrentBundleImages3((prevState) => {
+    //       const newState = [...prevState]
+    //       newState[count - 8] = product.images[0]
+    //       return newState
+    //     })
+    //   setCount(count + 1)
   }
+
+  // const submit = () => {
+  //   const productsId = currentBundle.map((p) => p.id)
+
+  //   if (existCustomBundle.length) updateCustomBundleToCart(productsId)
+  //   else addCustomBundleToCart(productsId)
+  // }
 
   const submit = () => {
     const productsId = currentBundle.map((p) => p.id)
 
-    if (existCustomBundle.length) updateCustomBundleToCart(productsId)
+    if (currentBundle.length) updateCustomBundleToCart(productsId)
     else addCustomBundleToCart(productsId)
   }
 
@@ -231,10 +276,10 @@ export default function Bundle() {
               <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
                 <span className="ml-30 text-black">4 PACK</span>
                 <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                  {currentBundleImages1.map((image, index) =>
-                    image === null || image === '' ? (
+                  {firstFourProducts.map((product, index) =>
+                    product.id === '' ? (
                       <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                        <img src={image} alt="" />
+                        <img src={product.images[0]} alt="" />
                         <span className="absolute right-0 bottom-0 text-black">
                           {index + 1}
                         </span>
@@ -243,30 +288,58 @@ export default function Bundle() {
                       <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
                         <button
                           onClick={() => {
-                            setCurrentBundleImages1((prevState) => {
+                            setCurrentBundle((prevState) => {
                               const newState = [...prevState]
-                              newState[index] = ''
+                              newState[index] = defaultProduct
                               return newState
                             })
-                            // if (index - 1 >= 0)
-                            //   setCurrentBundleImages1((prevState) => {
-                            //     const newState = [...prevState]
-
-                            //     newState[index] = currentBundleImages1[index + 1]
-                            //     newState[index + 1] = ''
-
-                            //     return newState
-                            //   })
-                            setCount(count - 1)
+                            setCount(index)
                           }}
                           aria-label="delete"
-                          className="absolute top-[-10px] right-[-8px] text-black"
+                          className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
                         >
                           <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
                         </button>
                         <img
                           className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                          src={image}
+                          src={product.images[0]}
+                          alt="1"
+                        />
+                      </div>
+                    ),
+                  )}
+                </div>
+              </div>
+
+              {/* <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
+                <span className="ml-30 text-black">8 PACK</span>
+                <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
+                  {secondFourProducts.map((product, index) =>
+                    product.id === '' ? (
+                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
+                        <img src={product.images[0]} alt="" />
+                        <span className="absolute right-0 bottom-0 text-black">
+                          {index + 1}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
+                        <button
+                          onClick={() => {
+                            setCurrentBundle((prevState) => {
+                              const newState = [...prevState]
+                              newState[index] = defaultProduct
+                              return newState
+                            })
+                          }}
+                          aria-label="delete"
+                          className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
+                        >
+                          <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
+                        </button>
+                        <img
+                          className="rounded-8 h-full w-full bg-[#f5d6c7]"
+                          src={product.images[0]}
                           alt="1"
                         />
                       </div>
@@ -276,6 +349,37 @@ export default function Bundle() {
               </div>
 
               <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
+                <span className="ml-30 text-black">12 PACK</span>
+                <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
+                  {thirdFourProducts.map((product, index) =>
+                    product.id === '' ? (
+                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
+                        <img src={product.images[0]} alt="" />
+                        <span className="absolute right-0 bottom-0 text-black">
+                          {index + 1}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
+                        <button
+                          onClick={() => {}}
+                          aria-label="delete"
+                          className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
+                        >
+                          <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
+                        </button>
+                        <img
+                          className="rounded-8 h-full w-full bg-[#f5d6c7]"
+                          src={product.images[0]}
+                          alt="1"
+                        />
+                      </div>
+                    ),
+                  )}
+                </div>
+              </div> */}
+
+              {/* <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
                 <span className="ml-30 text-black">8 PACK</span>
                 <div className="mt-10 flex justify-center gap-10 bg-[#F5F5F3] p-10">
                   {currentBundleImages2.map((image, index) =>
@@ -308,7 +412,7 @@ export default function Bundle() {
                             setCount(count - 1)
                           }}
                           aria-label="delete"
-                          className="absolute top-[-10px] right-[-8px] text-black"
+                          className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
                         >
                           <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
                         </button>
@@ -355,7 +459,7 @@ export default function Bundle() {
                             setCount(count - 1)
                           }}
                           aria-label="delete"
-                          className="absolute top-[-10px] right-[-8px] text-black"
+                          className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
                         >
                           <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
                         </button>
@@ -368,7 +472,8 @@ export default function Bundle() {
                     ),
                   )}
                 </div>
-              </div>
+              </div> */}
+
               <button className="text-20 mt-4 w-full rounded bg-[#3EADB8] p-14 text-white uppercase opacity-75">
                 add custom bundle to cart
               </button>
