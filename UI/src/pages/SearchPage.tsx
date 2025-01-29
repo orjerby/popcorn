@@ -3,7 +3,7 @@ import Product from '../containers/Product'
 import { useAppContext } from '../context/AppContext'
 import { selectSearchedBundledProducts } from '../context/selectors'
 
-export default function Search() {
+export default function SearchPage() {
   const [searchParams] = useSearchParams()
   const { state } = useAppContext()
 
@@ -15,7 +15,7 @@ export default function Search() {
   )
 
   return (
-    <div className="flex flex-wrap gap-10">
+    <div className="grid max-w-1090 gap-16 p-20 pt-100 md:items-center lg:grid-cols-4">
       {searchedProducts.map((product) => (
         <Product
           key={product.id}

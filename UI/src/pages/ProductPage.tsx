@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import { useAppContext } from '../context/AppContext'
 import { selectProduct } from '../context/selectors'
 
-export default function Product() {
+export default function ProductPage() {
   let { id } = useParams()
   const { state, dispatch } = useAppContext()
   const product = selectProduct(state, id ?? '')

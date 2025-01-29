@@ -10,7 +10,7 @@ export default function ProductList() {
   const bundledProducts = selectBundledProducts(state)
 
   return (
-    <div className="h-550 overflow-hidden bg-[#f6f3e2] uppercase">
+    <div className="bg-[#f6f3e2] uppercase">
       <Swiper
         // install Swiper modules
         modules={[Navigation]}
@@ -19,7 +19,7 @@ export default function ProductList() {
         navigation
       >
         {bundledProducts.map((product) => (
-          <SwiperSlide key={product.id} className="!w-268">
+          <SwiperSlide key={product.id} className="!w-268 pt-100">
             <Product
               id={product.id}
               image={product.images[0]}

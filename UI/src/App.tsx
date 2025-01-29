@@ -6,11 +6,11 @@ import Header from './containers/Header'
 import ScrollToTop from './containers/ScrollToTop'
 import { useAppContext } from './context/AppContext'
 import { useData } from './hooks/useData'
-import Bundle from './pages/Bundle'
-import Filters from './pages/Filters'
-import Home from './pages/Home'
-import Product from './pages/Product'
-import Search from './pages/Search'
+import BundlePage from './pages/BundlePage'
+import Filters from './pages/FiltersPage'
+import HomePage from './pages/HomePage'
+import ProductPage from './pages/ProductPage'
+import SearchPage from './pages/SearchPage'
 import { getProducts } from './services/productService'
 
 export default function App() {
@@ -48,13 +48,13 @@ export default function App() {
       <div className="mt-140">
         <ScrollToTop />
         <Routes>
-          <Route index element={<Home />} />
+          <Route index element={<HomePage />} />
           <Route path="products">
-            <Route path=":id" element={<Product />} />
+            <Route path=":id" element={<ProductPage />} />
           </Route>
-          <Route path="search" element={<Search />} />
+          <Route path="search" element={<SearchPage />} />
           <Route path="collections/all-products" element={<Filters />} />
-          <Route path="pages/builder" element={<Bundle />} />
+          <Route path="pages/builder" element={<BundlePage />} />
         </Routes>
         <Footer />
       </div>

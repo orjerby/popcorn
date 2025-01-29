@@ -25,7 +25,7 @@ const defaultProduct: Product = {
     },
   ],
 }
-export default function Bundle() {
+export default function BundlePage() {
   const { state, dispatch } = useAppContext()
 
   const [searchParams] = useSearchParams()

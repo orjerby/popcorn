@@ -11,7 +11,7 @@ import {
   selectProductTypes,
 } from '../context/selectors'
 
-export default function Filters() {
+export default function FiltersPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { state } = useAppContext()
 

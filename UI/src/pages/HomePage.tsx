@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Link } from 'react-router'
 import ProductList from '../containers/ProductList'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <div className="mt-40 bg-[#f6f3e2]">
@@ -36,7 +36,7 @@ export default function Home() {
           </Suspense>
         </div>
         {/* Build your own bundle section */}
-        <div className="py-16">
+        <div className="py-32">
           <div className="container mx-auto transform rounded transition hover:scale-105">
             <div className="flex rounded-lg bg-[#b69775]">
               <div className="flex-1 items-center justify-center p-16">
