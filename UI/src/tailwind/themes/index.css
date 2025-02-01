@@ -3,6 +3,8 @@
 @import './radius.css';
 
 @theme {
+  --header-height: 7.25rem;
+
   --spacing: 0.0625rem;
 
   --font-vinyl: 'vinyl';

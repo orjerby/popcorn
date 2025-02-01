@@ -1,11 +1,177 @@
-import { useEffect, useState } from 'react'
+import {
+  ComponentProps,
+  ElementType,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import {
+  AriaLinkOptions,
+  useFocusVisible,
+  useHover,
+  useLink,
+  useObjectRef,
+} from 'react-aria'
+import { Link } from 'react-aria-components'
 import { MdOutlineCancel } from 'react-icons/md'
-
-import { Link, useSearchParams } from 'react-router'
-import { Product } from '../../../API/models/product'
+import { useSearchParams } from 'react-router'
+import { Product, SnackType } from '../../../API/models/product'
 import Stars from '../components/Stars'
 import { useAppContext } from '../context/AppContext'
 import { selectProductTypes, selectSingleProducts } from '../context/selectors'
+
+//
+
+// Types for ScrollSection component
+
+type ScrollSectionProps = ComponentProps<'section'> & {
+  as?: ElementType
+}
+
+function ScrollSection({
+  ref,
+  as: Component = 'div',
+  children,
+  ...props
+}: ScrollSectionProps) {
+  return (
+    <Component
+      {...props}
+      ref={ref}
+      tabIndex={-1}
+      className={`${props.className} outline-none`}
+    >
+      {children}
+    </Component>
+  )
+}
+
+// Types for ScrollButton component
+
+type ScrollButtonProps = ComponentProps<'a'> & {
+  sectionRef?: RefObject<HTMLElement | null>
+  ariaLinkProps?: AriaLinkOptions
+  isCurrent?: boolean
+  onSelected?: () => void
+}
+
+function ScrollButton({
+  ref,
+  sectionRef,
+  ariaLinkProps,
+  isCurrent,
+  onSelected,
+  children,
+  ...props
+}: ScrollButtonProps) {
+  const { hoverProps, isHovered } = useHover({})
+  const [isFocused, setIsFocused] = useState(false)
+  const { isFocusVisible } = useFocusVisible()
+  const { linkProps, isPressed } = useLink(
+    {
+      ...ariaLinkProps,
+      elementType: 'span',
+      onFocus: () => setIsFocused(true),
+      onBlur: () => setIsFocused(false),
+      onPress: () => {
+        sectionRef?.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+
+        sectionRef?.current?.focus({ preventScroll: true })
+
+        onSelected?.()
+      },
+    },
+    useObjectRef(ref),
+  )
+
+  return (
+    <a
+      tabIndex={0}
+      {...props}
+      {...linkProps}
+      {...hoverProps}
+      ref={ref}
+      aria-current={isCurrent}
+      data-current={isCurrent || undefined}
+      data-hovered={isHovered || undefined}
+      data-pressed={(isPressed && isHovered) || undefined}
+      data-focused={isFocused || undefined}
+      data-focus-visible={(isFocused && isFocusVisible) || undefined}
+    >
+      {children}
+    </a>
+  )
+}
+
+//
+
+type SnackTypeSelectorProps = {
+  types: SnackType[]
+}
+
+export const SnackTypeSelector = ({ types }: SnackTypeSelectorProps) => {
+  const [selectedType, setSelectedType] = useState<SnackType | null>(null)
+
+  return (
+    <ul className="flex items-center gap-x-8">
+      <li className="text-16 font-normal text-black">JUMP TO:</li>
+      {types.map((type) => (
+        <li key={type} className="cursor-pointer">
+          <Link
+            aria-current={selectedType === type}
+            onPress={() => {
+              setSelectedType(type)
+            }}
+            className="text-14 rounded-6 block border border-[#C1803E] px-[8px] py-[2px] font-normal text-black data-current:bg-[#C1803E] data-current:text-white data-pressed:outline-none"
+          >
+            {type}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+type SnackItemProps = {
+  product: Product
+  onAddToBundle: (product: Product) => void
+}
+
+export const SnackItem = ({ product, onAddToBundle }: SnackItemProps) => (
+  <div className="mt-20 flex max-h-96 items-center rounded border-2 border-amber-600 bg-white">
+    <div className="max-h-130 max-w-130 flex-1 -rotate-6">
+      <img src={product.images[0]} alt={product.title} />
+    </div>
+    <div className="flex-3 flex-col">
+      <div>
+        <span className="text-xl text-black uppercase">
+          {product.id} -- {product.title}
+        </span>
+        <div className="flex text-black">
+          {/* Assuming you pass Stars here */}
+          <span className="ml-20 text-sm underline">25 reviews</span>
+          <Link className="ml-10 text-sm underline">view product</Link>
+        </div>
+        <span className="text-sm text-black">
+          1 - {product.size} - ${product.price.toFixed(2)} ea.
+        </span>
+      </div>
+    </div>
+    <div className="flex h-full !items-end !justify-end self-end">
+      <button
+        onClick={() => onAddToBundle(product)}
+        className="cursor-pointer rounded-tl-xl bg-amber-500 p-7 text-xl text-white uppercase"
+      >
+        Add to Bundle
+      </button>
+    </div>
+  </div>
+)
+
 const defaultProduct: Product = {
   id: '',
   title: 'Default Snack',
@@ -32,6 +198,8 @@ export default function BundlePage() {
 
   const types = selectProductTypes(state)
   const singleProducts = selectSingleProducts(state)
+
+  // const refs = useRef<(HTMLElement | null)[]>([])
 
   const bundleIdParam = searchParams.get('bundle') ?? ''
   // const existCustomBundle = selectCustomBundle(state, bundleIdParam)
@@ -134,6 +302,20 @@ export default function BundlePage() {
     else addCustomBundleToCart(productsId)
   }
 
+  const [selectedType, setSelectedType] = useState<SnackType | null>(null)
+
+  const focusRefs = useRef<Map<string, React.RefObject<HTMLElement | null>>>(
+    new Map(),
+  )
+
+  const getFocusRefs = () => {
+    if (!focusRefs.current) {
+      focusRefs.current = new Map()
+    }
+
+    return focusRefs.current
+  }
+
   return (
     // NEW DESIGN
     <div className="">
@@ -167,44 +349,53 @@ export default function BundlePage() {
         <div className="flex">
           <div className="flex h-2200 w-720 flex-col bg-[#F9F1E6]">
             <div className="mx-auto p-10 text-center">
-              <ul className="flex gap-x-10 text-sm font-bold text-black uppercase">
-                <li className="p-5">Jump to: </li>
-                {types.map((type) => {
-                  return (
-                    <li key={type} className="cursor-pointer">
-                      <button
-                        onClick={() => {
-                          const element = document.getElementById(type)
-                          if (element) {
-                            const yOffset = -120
-                            const y =
-                              element.getBoundingClientRect().top +
-                              window.scrollY +
-                              yOffset
-                            window.scrollTo({ top: y, behavior: 'smooth' })
-                          }
-                        }}
-                        className="border p-5"
-                      >
-                        {type}
-                      </button>
-                    </li>
-                  )
-                })}
+              {/* <SnackTypeSelector types={types} /> */}
+
+              <ul className="flex items-center gap-x-8">
+                <li className="text-16 font-normal text-black">JUMP TO:</li>
+                {types.map((type) => (
+                  <li key={type} className="cursor-pointer">
+                    <ScrollButton
+                      sectionRef={getFocusRefs().get(type)}
+                      isCurrent={selectedType === type}
+                      onSelected={() => setSelectedType(type)}
+                      className="text-14 rounded-6 block border border-[#C1803E] px-[8px] py-[2px] font-normal text-black data-current:bg-[#C1803E] data-current:text-white data-pressed:outline-none"
+                    >
+                      {type}
+                    </ScrollButton>
+
+                    {/* <Link
+                      aria-current={selectedType === type}
+                      onPress={() => {
+                        setSelectedType(type)
+                        onSelectedType(type)
+                      }}
+                      className="text-14 rounded-6 block border border-[#C1803E] px-[8px] py-[2px] font-normal text-black data-current:bg-[#C1803E] data-current:text-white data-pressed:outline-none"
+                    >
+                      {type}
+                    </Link> */}
+                  </li>
+                ))}
               </ul>
             </div>
             {/* add to bundle comp */}
             <ul className="flex flex-col gap-x-10 text-sm font-bold text-black uppercase">
               {types.map((type) => {
                 return (
-                  <li key={type}>
-                    <ul>
-                      <li key={type}>
-                        <h2 id={type} className="p-5 text-2xl text-[#52525B]">
-                          {type}
-                        </h2>
-                      </li>
-                    </ul>
+                  <ScrollSection
+                    as={'li'}
+                    key={type}
+                    ref={(node) => {
+                      const focusRefs = getFocusRefs()
+                      if (node) {
+                        focusRefs.set(type, { current: node })
+                      } else {
+                        focusRefs.delete(type)
+                      }
+                    }}
+                    className="outline-4 outline-blue-300"
+                  >
+                    <h2 className="p-5 text-2xl text-[#52525B]">{type}</h2>
                     {singleProducts
                       .filter((product) => product.type === type)
                       .map((product) => {
@@ -226,10 +417,7 @@ export default function BundlePage() {
                                   <span className="ml-20 text-sm underline">
                                     25 reviews
                                   </span>
-                                  <Link
-                                    className="ml-10 text-sm underline"
-                                    to=""
-                                  >
+                                  <Link className="ml-10 text-sm underline">
                                     view product
                                   </Link>
                                 </div>
@@ -251,11 +439,11 @@ export default function BundlePage() {
                               >
                                 add to bundle
                               </button>
-                            </div>{' '}
+                            </div>
                           </div>
                         )
                       })}
-                  </li>
+                  </ScrollSection>
                 )
               })}
             </ul>

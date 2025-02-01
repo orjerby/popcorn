@@ -27,7 +27,7 @@ function Header({ scrolled }: HeaderProps) {
   return (
     <>
       {scrolled ? (
-        <div className="header fixed top-0 z-50 w-full">
+        <div className="header fixed top-0 z-50 h-(--header-height) w-full">
           <Cart open={isCartOpen} onClose={() => setIsCartOpen(false)} />
           <div className="flex h-36 flex-col items-center justify-center bg-[#eb6600]">
             <p className="font-pluto-medium text-center text-sm font-medium text-white uppercase">
@@ -99,7 +99,7 @@ function Header({ scrolled }: HeaderProps) {
           </div>
         </div>
       ) : (
-        <div className="header fixed top-0 z-50 w-full">
+        <div className="header fixed top-0 z-50 h-(--header-height) w-full">
           <Cart open={isCartOpen} onClose={() => setIsCartOpen(false)} />
           <div className="flex h-36 flex-col items-center justify-center bg-[#eb6600]">
             <p className="font-pluto-medium text-center text-sm font-medium text-white uppercase">
