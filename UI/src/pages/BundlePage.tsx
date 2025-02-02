@@ -199,35 +199,23 @@ export default function BundlePage() {
   const { state, dispatch } = useAppContext()
 
   const [searchParams] = useSearchParams()
-  const [bundle, setBundle] = useState<Product[]>([])
 
   const types = selectProductTypes(state)
+
   const singleProducts = selectSingleProducts(state)
 
-  // const refs = useRef<(HTMLElement | null)[]>([])
-
   const bundleIdParam = searchParams.get('bundle') ?? ''
-  const existCustomBundle = selectCustomBundle(state, bundleIdParam)
 
-  // const [currentBundle, setCurrentBundle] = useState<Product[]>(
-  //   Array(12).fill(defaultProduct),
-  // )
-  // const [currentBundle, setCurrentBundle] = useState<Product[]>(
-  //   existCustomBundle.length > 0
-  //     ? existCustomBundle
-  //     : Array(12).fill(defaultProduct),
-  // )
+  const existCustomBundle = selectCustomBundle(state, bundleIdParam)
 
   const [currentBundle, setCurrentBundle] = useState<Product[]>(
     existCustomBundle.length > 0
       ? [
-          ...existCustomBundle, // Include the existing products
-          ...Array(12 - existCustomBundle.length).fill(defaultProduct), // Fill the rest with defaultProduct
+          ...existCustomBundle,
+          ...Array(12 - existCustomBundle.length).fill(defaultProduct),
         ]
-      : Array(12).fill(defaultProduct), // If no products, fill the whole array with defaultProduct
+      : Array(12).fill(defaultProduct),
   )
-
-  // if (existCustomBundle) setCurrentBundle(existCustomBundle)
 
   const firstFourProducts = currentBundle.slice(0, 4)
 
@@ -237,35 +225,18 @@ export default function BundlePage() {
 
   const [count, setCount] = useState<number>(0)
 
-  // useEffect(() => {
-  //   setCurrentBundle(existCustomBundle)
-  // }, [bundleIdParam])
-
-  // useEffect(() => {
-  //   setCurrentBundle(currentBundle)
-  // }, [bundleIdParam])
-
-  // useEffect(() => {
-  //   const bundleId = searchParams.get('bundle') ?? ''
-  //   const customBundle = selectCustomBundle(state, bundleId)
-  //   setBundle(customBundle)
-  // }, [searchParams])
-  //   setCurrentBundle(existCustomBundle)
-  // }, [bundleIdParam])
-
   useEffect(() => {
     if (bundleIdParam) {
       setCurrentBundle([
-        ...existCustomBundle, // Include the existing products
-        ...Array(12 - existCustomBundle.length).fill(defaultProduct), // Fill the rest with defaultProduct
+        ...existCustomBundle,
+        ...Array(12 - existCustomBundle.length).fill(defaultProduct),
       ])
       setCount(existCustomBundle.length)
     } else {
-      setCurrentBundle(currentBundle)
-      console.log('bundleIdParam')
+      setCurrentBundle(Array(12).fill(defaultProduct))
+      setCount(0)
     }
   }, [bundleIdParam])
-
   const addCustomBundleToCart = (productsid: string[]) => {
     dispatch({
       type: 'ADD_CUSTOM_BUNDLE_TO_CART',
@@ -290,25 +261,14 @@ export default function BundlePage() {
     setCount(count + 1)
   }
 
-  // const submit = () => {
-  //   const productsId = currentBundle.map((p) => p.id)
-
-  //   if (existCustomBundle.length) updateCustomBundleToCart(productsId)
-  //   else addCustomBundleToCart(productsId)
-  // }
   const deletefromBundle = (index: number) => {
-    // setCurrentBundle((prevState) => {
-    //   const newState = [...prevState]
-    //   newState[index] = defaultProduct
-    //   return newState
-    // })
-
     let arr = currentBundle
     for (let i = index; i < arr.length - 1; i++) {
       arr[i] = arr[i + 1]
     }
 
     setCurrentBundle(arr)
+
     if (index === 11) {
       arr = currentBundle
       arr[11] = defaultProduct
@@ -339,7 +299,6 @@ export default function BundlePage() {
   }
 
   return (
-    // NEW DESIGN
     <div className="">
       <div className="">
         <div className="relative">
