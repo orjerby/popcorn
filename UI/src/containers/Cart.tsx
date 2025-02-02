@@ -16,9 +16,6 @@ export default function Cart({ open, onClose }: Props) {
   const { state, dispatch } = useAppContext()
   const cart = selectCartProducts(state)
 
-  const img =
-    'https://cdn.shopify.com/s/files/1/0162/2468/products/cinnamon-sugar-twists-pipcorn-381635.png?v=1673391008'
-
   const addToCart = (productId: string) => {
     dispatch({
       type: 'ADD_TO_CART',
@@ -60,7 +57,11 @@ export default function Cart({ open, onClose }: Props) {
                 <div className="grid max-w-480 grid-cols-[1fr_3fr_1fr]">
                   <div className="flex items-center justify-center border-gray-300 bg-white">
                     <div>
-                      <img className="max-w-80" src={img} alt="" />
+                      <img
+                        className="max-w-80"
+                        src={item.product.images[0]}
+                        alt=""
+                      />
                     </div>
                   </div>
                   <div className="flex items-center border-gray-300 bg-white">
@@ -121,14 +122,14 @@ export default function Cart({ open, onClose }: Props) {
                 className="my-10 ms-40 me-40 inline-flex w-full max-w-480 flex-col space-y-15 space-x-15 border border-[#c9c1b8]"
               >
                 <div>
-                  {item.products.map((product, index) => (
+                  {item.products.map((productData, index) => (
                     <div key={index} className="bg-white p-10">
                       <div className="grid max-w-480 grid-cols-[1fr_3fr_1fr]">
                         <div className="flex items-center justify-center bg-white">
                           <div>
                             <img
                               className="max-w-80"
-                              src={product.images[0]}
+                              src={productData.product.images[0]}
                               alt=""
                             />
                           </div>
@@ -137,17 +138,23 @@ export default function Cart({ open, onClose }: Props) {
                           <div className="overflow-hidden">
                             {/* <div className="text-xl uppercase line-clamp-1"> */}
                             <div className="overflow-hidden text-xl text-ellipsis whitespace-nowrap uppercase">
-                              {product.id} - {product.title}
+                              {productData.product.id} -{' '}
+                              {productData.product.title}
                             </div>
                             <span className="text-black uppercase">
-                              [quantity] bag ${product.price}
+                              {productData.quantity} bag $
+                              {productData.product.price}
                             </span>
                           </div>
                         </div>
                         <div className="mt-15 flex items-center justify-center place-self-start border-gray-300 bg-white">
                           <div className="ml-20 flex flex-col items-center justify-center">
                             <div>
-                              <div className="text-black">$20</div>
+                              <div className="text-black">
+                                $
+                                {productData.product.price *
+                                  productData.quantity}
+                              </div>
                             </div>
                           </div>
                         </div>

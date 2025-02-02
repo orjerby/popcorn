@@ -27,6 +27,7 @@ export type Product = {
   images: string[]
   type: SnackType
   flavor: SnackFlavor
+  color?: `#${string}`
   reviews: {
     rate: number
     title: string

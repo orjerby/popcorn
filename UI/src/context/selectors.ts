@@ -47,7 +47,8 @@ export const selectCartProducts = (
   | {
       type: 'customBundle'
       id: string
-      products: Product[]
+      products: { product: Product; quantity: number }[]
+      totalPrice: number
     }
 )[] =>
   state.productState.cart.items.map((item) => {
@@ -68,20 +69,42 @@ export const selectCartProducts = (
         (bundle) => bundle.id === item.customBundle.id,
       )
 
-      if (foundBundle)
+      if (foundBundle) {
+        const productMap = new Map<
+          string,
+          { product: Product; quantity: number }
+        >()
+
+        let totalPrice = 0
+
+        foundBundle.productsId.forEach((productId) => {
+          const foundProduct = state.productState.products.find(
+            (product) => product.id === productId,
+          )
+
+          if (foundProduct) {
+            totalPrice += foundProduct.price
+
+            const productInMap = productMap.get(productId)
+            if (productInMap) {
+              productInMap.quantity += 1
+            } else {
+              productMap.set(productId, { product: foundProduct, quantity: 1 })
+            }
+          } else {
+            throw new Error('Product not exist')
+          }
+        })
+
         return {
           type: 'customBundle',
           id: foundBundle.id,
-          products: foundBundle.productsId.map((productId) => {
-            const foundProduct = state.productState.products.find(
-              (product) => product.id === productId,
-            )
-
-            if (foundProduct) return foundProduct
-            else throw new Error('Product not exist')
-          }),
+          products: [...productMap.values()],
+          totalPrice,
         }
-      else throw new Error('Bundle not exist')
+      } else {
+        throw new Error('Bundle not exist')
+      }
     }
   })
 
