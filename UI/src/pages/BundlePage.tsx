@@ -1,22 +1,8 @@
-import {
-  ComponentProps,
-  ElementType,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import {
-  AriaLinkOptions,
-  useFocusVisible,
-  useHover,
-  useLink,
-  useObjectRef,
-} from 'react-aria'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-aria-components'
 import { MdOutlineCancel } from 'react-icons/md'
 import { useSearchParams } from 'react-router'
-import { Product, SnackType } from '../../../API/models/product'
+import { Product } from '../../../API/models/product'
 import Stars from '../components/Stars'
 import { useAppContext } from '../context/AppContext'
 import {
@@ -24,157 +10,8 @@ import {
   selectProductTypes,
   selectSingleProducts,
 } from '../context/selectors'
-
-//
-
-// Types for ScrollSection component
-
-type ScrollSectionProps = ComponentProps<'section'> & {
-  as?: ElementType
-}
-
-function ScrollSection({
-  ref,
-  as: Component = 'div',
-  children,
-  ...props
-}: ScrollSectionProps) {
-  return (
-    <Component
-      {...props}
-      ref={ref}
-      tabIndex={-1}
-      className={`${props.className} outline-none`}
-    >
-      {children}
-    </Component>
-  )
-}
-
-// Types for ScrollButton component
-
-type ScrollButtonProps = ComponentProps<'a'> & {
-  sectionRef?: RefObject<HTMLElement | null>
-  ariaLinkProps?: AriaLinkOptions
-  isCurrent?: boolean
-  onSelected?: () => void
-}
-
-function ScrollButton({
-  ref,
-  sectionRef,
-  ariaLinkProps,
-  isCurrent,
-  onSelected,
-  children,
-  ...props
-}: ScrollButtonProps) {
-  const { hoverProps, isHovered } = useHover({})
-  const [isFocused, setIsFocused] = useState(false)
-  const { isFocusVisible } = useFocusVisible()
-  const { linkProps, isPressed } = useLink(
-    {
-      ...ariaLinkProps,
-      elementType: 'span',
-      onFocus: () => setIsFocused(true),
-      onBlur: () => setIsFocused(false),
-      onPress: () => {
-        sectionRef?.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
-
-        sectionRef?.current?.focus({ preventScroll: true })
-
-        onSelected?.()
-      },
-    },
-    useObjectRef(ref),
-  )
-
-  return (
-    <a
-      tabIndex={0}
-      {...props}
-      {...linkProps}
-      {...hoverProps}
-      ref={ref}
-      aria-current={isCurrent}
-      data-current={isCurrent || undefined}
-      data-hovered={isHovered || undefined}
-      data-pressed={(isPressed && isHovered) || undefined}
-      data-focused={isFocused || undefined}
-      data-focus-visible={(isFocused && isFocusVisible) || undefined}
-    >
-      {children}
-    </a>
-  )
-}
-
-//
-
-type SnackTypeSelectorProps = {
-  types: SnackType[]
-}
-
-export const SnackTypeSelector = ({ types }: SnackTypeSelectorProps) => {
-  const [selectedType, setSelectedType] = useState<SnackType | null>(null)
-
-  return (
-    <ul className="flex items-center gap-x-8">
-      <li className="text-16 font-normal text-black">JUMP TO:</li>
-      {types.map((type) => (
-        <li key={type} className="cursor-pointer">
-          <Link
-            aria-current={selectedType === type}
-            onPress={() => {
-              setSelectedType(type)
-            }}
-            className="text-14 rounded-6 block border border-[#C1803E] px-[8px] py-[2px] font-normal text-black data-current:bg-[#C1803E] data-current:text-white data-pressed:outline-none"
-          >
-            {type}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
-type SnackItemProps = {
-  product: Product
-  onAddToBundle: (product: Product) => void
-}
-
-export const SnackItem = ({ product, onAddToBundle }: SnackItemProps) => (
-  <div className="mt-20 flex max-h-96 items-center rounded border-2 border-amber-600 bg-white">
-    <div className="max-h-130 max-w-130 flex-1 -rotate-6">
-      <img src={product.images[0]} alt={product.title} />
-    </div>
-    <div className="flex-3 flex-col">
-      <div>
-        <span className="text-xl text-black uppercase">
-          {product.id} -- {product.title}
-        </span>
-        <div className="flex text-black">
-          {/* Assuming you pass Stars here */}
-          <span className="ml-20 text-sm underline">25 reviews</span>
-          <Link className="ml-10 text-sm underline">view product</Link>
-        </div>
-        <span className="text-sm text-black">
-          1 - {product.size} - ${product.price.toFixed(2)} ea.
-        </span>
-      </div>
-    </div>
-    <div className="flex h-full !items-end !justify-end self-end">
-      <button
-        onClick={() => onAddToBundle(product)}
-        className="cursor-pointer rounded-tl-xl bg-amber-500 p-7 text-xl text-white uppercase"
-      >
-        Add to Bundle
-      </button>
-    </div>
-  </div>
-)
+import { ToggleButton } from '../ui/ToggleButton'
+import { ToggleButtonGroup } from '../ui/ToggleButtonGroup'
 
 const defaultProduct: Product = {
   id: '',
@@ -237,6 +74,7 @@ export default function BundlePage() {
       setCount(0)
     }
   }, [bundleIdParam])
+
   const addCustomBundleToCart = (productsid: string[]) => {
     dispatch({
       type: 'ADD_CUSTOM_BUNDLE_TO_CART',
@@ -284,23 +122,9 @@ export default function BundlePage() {
     else addCustomBundleToCart(productsId)
   }
 
-  const [selectedType, setSelectedType] = useState<SnackType | null>(null)
-
-  const focusRefs = useRef<Map<string, React.RefObject<HTMLElement | null>>>(
-    new Map(),
-  )
-
-  const getFocusRefs = () => {
-    if (!focusRefs.current) {
-      focusRefs.current = new Map()
-    }
-
-    return focusRefs.current
-  }
-
   return (
-    <div className="">
-      <div className="">
+    <div>
+      <div>
         <div className="relative">
           <img
             className="w-full"
@@ -334,47 +158,35 @@ export default function BundlePage() {
 
               <ul className="flex items-center gap-x-8">
                 <li className="text-16 font-normal text-black">JUMP TO:</li>
-                {types.map((type) => (
-                  <li key={type} className="cursor-pointer">
-                    <ScrollButton
-                      sectionRef={getFocusRefs().get(type)}
-                      isCurrent={selectedType === type}
-                      onSelected={() => setSelectedType(type)}
-                      className="text-14 rounded-6 block border border-[#C1803E] px-[8px] py-[2px] font-normal text-black data-current:bg-[#C1803E] data-current:text-white data-pressed:outline-none"
-                    >
+                <ToggleButtonGroup
+                  disallowEmptySelection
+                  onSelectionChange={(keys) => {
+                    const sectionId = `section-${[...keys.values()][0]}`
+                    const section = document.getElementById(sectionId)
+                    section?.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start',
+                    })
+                    section?.focus({ preventScroll: true })
+                  }}
+                >
+                  {types.map((type) => (
+                    <ToggleButton key={type} id={type}>
                       {type}
-                    </ScrollButton>
-
-                    {/* <Link
-                      aria-current={selectedType === type}
-                      onPress={() => {
-                        setSelectedType(type)
-                        onSelectedType(type)
-                      }}
-                      className="text-14 rounded-6 block border border-[#C1803E] px-[8px] py-[2px] font-normal text-black data-current:bg-[#C1803E] data-current:text-white data-pressed:outline-none"
-                    >
-                      {type}
-                    </Link> */}
-                  </li>
-                ))}
+                    </ToggleButton>
+                  ))}
+                </ToggleButtonGroup>
               </ul>
             </div>
             {/* add to bundle comp */}
             <ul className="flex flex-col gap-x-10 text-sm font-bold text-black uppercase">
               {types.map((type) => {
                 return (
-                  <ScrollSection
-                    as={'li'}
+                  <div
                     key={type}
-                    ref={(node) => {
-                      const focusRefs = getFocusRefs()
-                      if (node) {
-                        focusRefs.set(type, { current: node })
-                      } else {
-                        focusRefs.delete(type)
-                      }
-                    }}
-                    className="outline-4 outline-blue-300"
+                    id={`section-${type}`}
+                    tabIndex={-1}
+                    className={`outline-none`}
                   >
                     <h2 className="p-5 text-2xl text-[#52525B]">{type}</h2>
                     {singleProducts
@@ -423,7 +235,7 @@ export default function BundlePage() {
                           </div>
                         )
                       })}
-                  </ScrollSection>
+                  </div>
                 )
               })}
             </ul>

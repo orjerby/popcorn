@@ -10,5 +10,10 @@
     {
       "path": "UI"
     }
-  ]
+  ],
+  "settings": {
+    "tailwindCSS.experimental.classRegex": [
+      ["tv\\(([^)]*)\\)", "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?"]
+    ]
+  }
 }

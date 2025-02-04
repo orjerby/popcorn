@@ -34,12 +34,20 @@
       }
     },
     {
+      "label": "Start Storybook",
+      "type": "shell",
+      "command": "npm run storybook",
+      "options": {
+        "cwd": "${workspaceFolder}/UI"
+      }
+    },
+    {
       "label": "Build All",
       "dependsOn": ["Build API", "Build UI"]
     },
     {
       "label": "Start All",
-      "dependsOn": ["Start API", "Start UI"]
+      "dependsOn": ["Start API", "Start UI", "Start Storybook"]
     },
     {
       "label": "Build And Start All",
