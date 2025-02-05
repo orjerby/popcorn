@@ -374,7 +374,7 @@ export default function BundlePage() {
                         focusRefs.delete(type)
                       }
                     }}
-                    className="outline-4 outline-blue-300"
+                    className="border-b-2 border-solid border-b-gray-400 px-12 py-32 outline-4 outline-blue-300"
                   >
                     <h2 className="p-5 text-2xl text-[#52525B]">{type}</h2>
                     {singleProducts
@@ -383,39 +383,49 @@ export default function BundlePage() {
                         return (
                           <div
                             key={product.id}
-                            className="mt-20 flex max-h-96 items-center rounded border-2 border-amber-600 bg-white"
+                            className={`rounded-8 relative mt-20 flex max-h-96 items-center gap-8 border-2 bg-white px-3 py-2`}
+                            style={{
+                              borderColor: product.color,
+                            }}
                           >
-                            <div className="max-h-130 max-w-130 flex-1 -rotate-6">
-                              <img src={product.images[0]} alt="" />
+                            <div className="">
+                              <img
+                                className="mr-auto ml-auto max-h-138 max-w-138 -rotate-6"
+                                src={product.images[0]}
+                                alt=""
+                              />
                             </div>
-                            <div className="flex-3 flex-col">
+                            <div className="flex-3 flex-col px-12 py-8">
                               <div>
-                                <span className="text-xl text-black uppercase">
+                                <span className="text-xl text-zinc-600 uppercase">
                                   {product.id} -- {product.title}
                                 </span>
                                 <div className="flex text-black">
-                                  <Stars></Stars>
-                                  <span className="ml-20 text-sm underline">
+                                  <Stars color={product.color}></Stars>
+                                  <span className="ml-20 text-sm text-zinc-600 underline">
                                     25 reviews
                                   </span>
-                                  <Link className="ml-10 text-sm underline">
+                                  <Link className="ml-10 text-sm text-zinc-600 underline">
                                     view product
                                   </Link>
                                 </div>
 
                                 <span className="text-sm text-black">
-                                  1 - {product.size} - $5.00 ea.
+                                  1 - {product.size} - ${product.price} ea.
                                 </span>
                               </div>
                               <div></div>
                               <div></div>
                             </div>
-                            <div className="flex h-full !items-end !justify-end self-end">
+                            <div className="absolute right-0 bottom-0">
                               <button
                                 onClick={() => {
                                   addToBundle(product)
                                 }}
-                                className="cursor-pointer rounded-tl-xl bg-amber-500 p-7 text-xl text-white uppercase"
+                                className="cursor-pointer rounded-tl-xl px-16 py-4 text-xl text-white uppercase"
+                                style={{
+                                  backgroundColor: product.color,
+                                }}
                               >
                                 add to bundle
                               </button>
@@ -423,6 +433,7 @@ export default function BundlePage() {
                           </div>
                         )
                       })}
+                    {/* <div className="mt-50 border-b-2 bg-red-300"></div> */}
                   </ScrollSection>
                 )
               })}

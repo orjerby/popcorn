@@ -1,4 +1,4 @@
-function Stars() {
+function Stars({ color }: { color: `#${string}` | undefined }) {
   return (
     <span className="flex flex-row justify-center gap-x-5">
       <svg
@@ -6,6 +6,7 @@ function Stars() {
         version="1.1"
         className="h-15 w-15"
         viewBox="0 0 256 256"
+        style={{ fill: color }}
       >
         <defs></defs>
         <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -21,6 +22,7 @@ function Stars() {
         version="1.1"
         className="h-15 w-15"
         viewBox="0 0 256 256"
+        style={{ fill: color }}
       >
         <defs></defs>
         <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -36,6 +38,7 @@ function Stars() {
         version="1.1"
         className="h-15 w-15"
         viewBox="0 0 256 256"
+        style={{ fill: color }}
       >
         <defs></defs>
         <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -51,6 +54,7 @@ function Stars() {
         version="1.1"
         className="h-15 w-15"
         viewBox="0 0 256 256"
+        style={{ fill: color }}
       >
         <defs></defs>
         <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -66,6 +70,7 @@ function Stars() {
         version="1.1"
         className="h-15 w-15"
         viewBox="0 0 256 256"
+        style={{ fill: color }}
       >
         <defs></defs>
         <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
