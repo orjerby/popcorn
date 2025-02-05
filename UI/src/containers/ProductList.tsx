@@ -17,6 +17,7 @@ export default function ProductList() {
         slidesPerView={'auto'}
         spaceBetween={30}
         navigation
+        className="swiper-container-grid-col"
       >
         {bundledProducts.map((product) => (
           <SwiperSlide key={product.id} className="!w-268 pt-100">

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-aria-components'
 import { MdOutlineCancel } from 'react-icons/md'
-import { useSearchParams } from 'react-router'
+import { Link, useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
 import Stars from '../components/Stars'
 import { useAppContext } from '../context/AppContext'
@@ -217,8 +216,11 @@ export default function BundlePage() {
                                   <span className="ml-20 text-sm text-zinc-600 underline">
                                     25 reviews
                                   </span>
-                                  <Link className="ml-10 text-sm text-zinc-600 underline">
-                                    view product
+                                  <Link
+                                    to={`/products/${product.id}`}
+                                    className="ml-10 text-sm text-zinc-600 underline"
+                                  >
+                                    VIEW MORE
                                   </Link>
                                 </div>
 
