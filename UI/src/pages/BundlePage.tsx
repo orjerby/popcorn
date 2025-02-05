@@ -186,7 +186,7 @@ export default function BundlePage() {
                     key={type}
                     id={`section-${type}`}
                     tabIndex={-1}
-                    className={`outline-none`}
+                    className={`border-b-2 border-solid border-b-gray-400 py-32 outline-none`}
                   >
                     <h2 className="p-5 text-2xl text-[#52525B]">{type}</h2>
                     {singleProducts
