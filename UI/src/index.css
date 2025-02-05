@@ -3,3 +3,5 @@
 @import './tailwind/themes/index.css';
 @import './tailwind/bases/index.css';
 @import './tailwind/utilities/index.css';
+
+@import './swiper.scss';

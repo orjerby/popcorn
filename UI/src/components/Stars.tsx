@@ -1,4 +1,4 @@
-function Stars({ color }: { color: `#${string}` | undefined }) {
+function Stars({ color = '#000000' }: { color?: `#${string}` }) {
   return (
     <span className="flex flex-row justify-center gap-x-5">
       <svg

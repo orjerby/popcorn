@@ -5,7 +5,7 @@ import {
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
 
-let styles = tv(
+const styles = tv(
   {
     base: 'text-14 rounded-6 block cursor-pointer border border-[#C1803E] px-[8px] py-[2px] font-normal text-black',
     variants: {
