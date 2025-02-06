@@ -199,14 +199,14 @@ export default function BundlePage() {
                               borderColor: product.color,
                             }}
                           >
-                            <div className="">
+                            <div className="absolute -left-30">
                               <img
-                                className="mr-auto ml-auto max-h-138 max-w-138 -rotate-6"
+                                className="mr-auto ml-auto max-h-126 max-w-126 -rotate-6"
                                 src={product.images[0]}
                                 alt=""
                               />
                             </div>
-                            <div className="flex-3 flex-col px-12 py-8">
+                            <div className="ml-100 flex-3 flex-col px-12 py-8">
                               <div>
                                 <span className="text-xl text-zinc-600 uppercase">
                                   {product.id} -- {product.title}
@@ -224,7 +224,7 @@ export default function BundlePage() {
                                   </Link>
                                 </div>
 
-                                <span className="text-sm text-black">
+                                <span className="text-sm text-black lowercase">
                                   1 - {product.size} - ${product.price} ea.
                                 </span>
                               </div>
@@ -252,125 +252,160 @@ export default function BundlePage() {
               })}
             </ul>
           </div>
-          <div className="sticky top-130 ml-20 flex h-660 w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white">
-            <div className="p-10">
-              <div>
-                <h1 className="text-36 text-zinc-600 uppercase">Your bundle</h1>
-                <hr className="mt-5 border-1 text-[#CBC1B7]" />
-              </div>
-              <div className="mt-10">
-                <span className="text-18 text-black">
-                  add 8 or more and score free shipping!
-                </span>
-                <div className="rounded-10 mt-10 bg-[#CBC1B773] p-7"></div>
-              </div>
+          <div className="sticky top-130 ml-20 flex h-660 w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16">
+            <div>
+              <h1 className="text-36 text-zinc-600 uppercase">Your bundle</h1>
+              <hr className="mt-5 border-1 text-[#CBC1B7]" />
+            </div>
+            <div className="mt-10">
+              <span className="text-18 text-black">
+                add 8 or more and score free shipping!
+              </span>
+              <div className="rounded-10 mt-10 bg-[#CBC1B773] p-7"></div>
+            </div>
 
-              <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-                <span className="ml-30 text-black">4 PACK</span>
-                <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                  {firstFourProducts.map((product, index) =>
-                    product.id === '' ? (
-                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                        <img src={product.images[0]} alt="" />
-                        <span className="absolute right-0 bottom-0 text-black">
-                          {index + 1}
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                        <button
-                          onClick={() => deletefromBundle(index)}
-                          aria-label="delete"
-                          className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                        >
-                          <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                        </button>
-                        <img
-                          className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                          src={product.images[0]}
-                          alt="1"
-                        />
-                      </div>
-                    ),
-                  )}
-                </div>
+            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
+              <span className="ml-30 text-black">4 PACK</span>
+              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
+                {firstFourProducts.map((product, index) =>
+                  index === 3 && product.id === '' ? (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
+                      <img src={product.images[0]} alt="" />
+                      <span className="absolute right-0 bottom-0 text-black">
+                        {index + 1}
+                      </span>
+                    </div>
+                  ) : product.id === '' ? (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
+                      <img src={product.images[0]} alt="" />
+                      <span className="absolute right-0 bottom-0 text-black">
+                        {index + 1}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
+                      <button
+                        onClick={() => deletefromBundle(index)}
+                        aria-label="delete"
+                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
+                      >
+                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
+                      </button>
+                      <img
+                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
+                        src={product.images[0]}
+                        alt="1"
+                      />
+                    </div>
+                  ),
+                )}
               </div>
+            </div>
 
-              <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-                <span className="ml-30 text-black">8 PACK</span>
-                <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                  {secondFourProducts.map((product, index) =>
-                    product.id === '' ? (
-                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                        <img src={product.images[0]} alt="" />
-                        <span className="absolute right-0 bottom-0 text-black">
-                          {index + 1}
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                        <button
-                          onClick={() => deletefromBundle(index + 4)}
-                          aria-label="delete"
-                          className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                        >
-                          <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                        </button>
-                        <img
-                          className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                          src={product.images[0]}
-                          alt="1"
-                        />
-                      </div>
-                    ),
-                  )}
-                </div>
+            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
+              <span className="ml-30 text-black">8 PACK</span>
+              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
+                {secondFourProducts.map((product, index) =>
+                  index === 3 && product.id === '' ? (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
+                      <img src={product.images[0]} alt="" />
+                      <span className="absolute right-0 bottom-0 text-black">
+                        {index + 1}
+                      </span>
+                    </div>
+                  ) : product.id === '' ? (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
+                      <img src={product.images[0]} alt="" />
+                      <span className="absolute right-0 bottom-0 text-black">
+                        {index + 1}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
+                      <button
+                        onClick={() => deletefromBundle(index + 4)}
+                        aria-label="delete"
+                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
+                      >
+                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
+                      </button>
+                      <img
+                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
+                        src={product.images[0]}
+                        alt="1"
+                      />
+                    </div>
+                  ),
+                )}
               </div>
+            </div>
 
-              <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-                <span className="ml-30 text-black">12 PACK</span>
-                <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                  {thirdFourProducts.map((product, index) =>
-                    product.id === '' ? (
-                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                        <img src={product.images[0]} alt="" />
-                        <span className="absolute right-0 bottom-0 text-black">
-                          {index + 1}
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                        <button
-                          onClick={() => deletefromBundle(index + 8)}
-                          aria-label="delete"
-                          className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                        >
-                          <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                        </button>
-                        <img
-                          className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                          src={product.images[0]}
-                          alt="1"
-                        />
-                      </div>
-                    ),
-                  )}
-                </div>
+            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
+              <span className="ml-30 text-black">12 PACK</span>
+              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
+                {thirdFourProducts.map((product, index) =>
+                  index === 3 && product.id === '' ? (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
+                      <img src={product.images[0]} alt="" />
+                      <span className="absolute right-0 bottom-0 text-black">
+                        {index + 1}
+                      </span>
+                    </div>
+                  ) : product.id === '' ? (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
+                      <img src={product.images[0]} alt="" />
+                      <span className="absolute right-0 bottom-0 text-black">
+                        {index + 1}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
+                      <button
+                        onClick={() => deletefromBundle(index + 8)}
+                        aria-label="delete"
+                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
+                      >
+                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
+                      </button>
+                      <img
+                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
+                        src={product.images[0]}
+                        alt="1"
+                      />
+                    </div>
+                  ),
+                )}
               </div>
-
-              <button
-                onClick={submit}
-                disabled={count !== 4 && count !== 8 && count !== 12}
-                className="text-20 mt-4 w-full cursor-pointer rounded bg-[#3EADB8] p-14 text-white uppercase opacity-75 disabled:cursor-auto disabled:opacity-50"
-              >
+            </div>
+            <button
+              onClick={submit}
+              disabled={count !== 4 && count !== 8 && count !== 12}
+              className="text-20 mt-4 w-full cursor-pointer rounded bg-[#3EADB8] p-14 text-white uppercase disabled:cursor-auto"
+            >
+              <div className="disabled:opacity-50">
+                {' '}
                 {existCustomBundle.length
                   ? 'update custom bundle'
                   : 'add custom bundle to cart'}
-              </button>
-              <div></div>
+              </div>
+              <div className="text-18 text-black lowercase">
+                {' '}
+                {(() => {
+                  switch (existCustomBundle.length) {
+                    case 0:
+                      return 'add 4 more items'
+                    case 1:
+                      return 'add 3 more items'
+                    default:
+                      return null
+                  }
+                })()}
+              </div>
+            </button>
 
-              <div></div>
-            </div>
+            <div></div>
+
+            <div></div>
           </div>
         </div>
       </div>
