@@ -26,7 +26,6 @@ export default function ProductList() {
               image={product.images[0]}
               title={product.title}
               count={product.count}
-              size={product.size}
               price={product.price}
               reviewsCount={product.reviews.length}
             />

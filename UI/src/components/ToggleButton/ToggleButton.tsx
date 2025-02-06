@@ -7,10 +7,10 @@ import { tv } from 'tailwind-variants'
 
 const styles = tv(
   {
-    base: 'text-14 rounded-6 block cursor-pointer border border-[#C1803E] px-[8px] py-[2px] font-normal text-black',
+    base: 'text-14 rounded-6 block cursor-pointer border border-[#C1803E] px-[8px] py-[2px] font-normal',
     variants: {
       isSelected: {
-        false: '',
+        false: 'bg-[#F9F1E6] text-black',
         true: 'bg-[#C1803E] text-white',
       },
       isDisabled: {

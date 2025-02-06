@@ -3,13 +3,13 @@ import { MdOutlineCancel } from 'react-icons/md'
 import { Link, useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
 import Stars from '../components/Stars'
+import { ToggleButton } from '../components/ToggleButton/ToggleButton'
 import { useAppContext } from '../context/AppContext'
 import {
   selectCustomBundle,
   selectProductTypes,
   selectSingleProducts,
 } from '../context/selectors'
-import { ToggleButton } from '../ui/ToggleButton'
 import { ToggleButtonGroup } from '../ui/ToggleButtonGroup'
 
 const defaultProduct: Product = {
