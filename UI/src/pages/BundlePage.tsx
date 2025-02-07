@@ -99,6 +99,7 @@ export default function BundlePage() {
   }
 
   const deletefromBundle = (index: number) => {
+    console.log(count)
     let arr = currentBundle
     for (let i = index; i < arr.length - 1; i++) {
       arr[i] = arr[i + 1]
@@ -106,10 +107,18 @@ export default function BundlePage() {
 
     setCurrentBundle(arr)
 
-    if (index === 11) {
+    if (index >= 11) {
+      arr = currentBundle
+      arr[index] = defaultProduct
+      setCurrentBundle(arr)
+      console.log(arr)
+    }
+
+    if (count === 12) {
       arr = currentBundle
       arr[11] = defaultProduct
       setCurrentBundle(arr)
+      console.log(arr)
     }
     setCount(count - 1)
   }
