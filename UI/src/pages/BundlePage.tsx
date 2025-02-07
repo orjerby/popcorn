@@ -319,14 +319,14 @@ export default function BundlePage() {
                     <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
                       <img src={product.images[0]} alt="" />
                       <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
+                        {index + 5}
                       </span>
                     </div>
                   ) : product.id === '' ? (
                     <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
                       <img src={product.images[0]} alt="" />
                       <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
+                        {index + 5}
                       </span>
                     </div>
                   ) : (
@@ -357,14 +357,14 @@ export default function BundlePage() {
                     <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
                       <img src={product.images[0]} alt="" />
                       <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
+                        {index + 9}
                       </span>
                     </div>
                   ) : product.id === '' ? (
                     <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
                       <img src={product.images[0]} alt="" />
                       <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
+                        {index + 9}
                       </span>
                     </div>
                   ) : (
@@ -400,7 +400,7 @@ export default function BundlePage() {
               <div className="text-18 text-black lowercase">
                 {' '}
                 {(() => {
-                  switch (existCustomBundle.length) {
+                  switch (count) {
                     case 0:
                       return 'add 4 more items'
                     case 1:
