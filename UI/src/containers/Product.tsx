@@ -35,7 +35,7 @@ export default function Product({
       count={count}
       price={price}
       reviewsCount={reviewsCount}
-      addToCart={addToCart}
+      onAddToCart={addToCart}
     />
   )
 }
