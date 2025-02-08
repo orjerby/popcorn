@@ -7,6 +7,7 @@ import ScrollToTop from './containers/ScrollToTop'
 import { useAppContext } from './context/AppContext'
 import { useData } from './hooks/useData'
 import BundlePage from './pages/BundlePage'
+import CheckoutPage from './pages/CheckoutPage'
 import Filters from './pages/FiltersPage'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
@@ -55,6 +56,7 @@ export default function App() {
           <Route path="search" element={<SearchPage />} />
           <Route path="collections/all-products" element={<Filters />} />
           <Route path="pages/builder" element={<BundlePage />} />
+          <Route path="checkouts" element={<CheckoutPage />} />
         </Routes>
         <Footer />
       </div>

@@ -8,7 +8,8 @@ export type ProductCardProps = {
   count: number
   price: number
   reviewsCount: number
-  addToCart?: () => void
+  onViewMore?: () => void
+  onAddToCart?: () => void
 }
 
 export default function ProductCard({
@@ -18,7 +19,8 @@ export default function ProductCard({
   count,
   price,
   reviewsCount,
-  addToCart,
+  onViewMore,
+  onAddToCart,
 }: ProductCardProps) {
   return (
     <div className="flex h-full flex-col rounded-sm bg-white">
@@ -26,6 +28,7 @@ export default function ProductCard({
         <div className="group flex h-full flex-col items-center justify-between px-[12px] pt-[24px] pb-[28px]">
           <Link
             to={`/products/${id}`}
+            onClick={onViewMore}
             className="-mt-87 w-full max-w-373 transition-all duration-300 group-hover:scale-105"
           >
             <img src={image} alt="Popcorn" />
@@ -51,13 +54,14 @@ export default function ProductCard({
 
             <div className="mt-24 flex w-full flex-col gap-12 px-28">
               <button
-                onClick={addToCart}
+                onClick={onAddToCart}
                 className="cursor-pointer rounded bg-[#3eadb8] p-12 font-sans font-bold text-white hover:opacity-70"
               >
                 ADD TO CART
               </button>
               <Link
                 to={`/products/${id}`}
+                onClick={onViewMore}
                 className="rounded bg-[#b69775] p-12 text-center font-sans font-bold text-white hover:opacity-70"
               >
                 VIEW MORE

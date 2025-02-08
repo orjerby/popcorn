@@ -206,7 +206,6 @@ export default function FiltersPage() {
                 image={item.images[0]}
                 title={item.title}
                 count={item.count}
-                size={item.size}
                 price={item.price}
                 reviewsCount={item.reviews.length}
               />
