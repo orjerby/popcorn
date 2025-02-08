@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { MdOutlineCancel } from 'react-icons/md'
 import { Link, useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
+import BundleProductsRow from '../components/BundleProductsRow'
 import Stars from '../components/Stars'
 import { ToggleButton } from '../components/ToggleButton/ToggleButton'
 import { useAppContext } from '../context/AppContext'
@@ -244,13 +244,10 @@ export default function BundlePage() {
                                     VIEW MORE
                                   </Link>
                                 </div>
-
                                 <span className="text-sm text-black lowercase">
                                   1 - {product.size} - ${product.price} ea.
                                 </span>
                               </div>
-                              <div></div>
-                              <div></div>
                             </div>
                             <div className="absolute right-0 bottom-0">
                               <button
@@ -284,120 +281,25 @@ export default function BundlePage() {
               </span>
               <div className="rounded-10 mt-10 bg-[#CBC1B773] p-7"></div>
             </div>
+            <BundleProductsRow
+              rowTitle={'4 PACK'}
+              rowStartLocation={0}
+              products={firstFourProducts}
+              deleteFromBundle={deletefromBundle}
+            />
+            <BundleProductsRow
+              rowTitle={'8 PACK'}
+              rowStartLocation={4}
+              products={secondFourProducts}
+              deleteFromBundle={deletefromBundle}
+            />
+            <BundleProductsRow
+              rowTitle={'12 PACK'}
+              rowStartLocation={8}
+              products={thirdFourProducts}
+              deleteFromBundle={deletefromBundle}
+            />
 
-            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-              <span className="ml-30 text-black">4 PACK</span>
-              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                {firstFourProducts.map((product, index) =>
-                  index === 3 && product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
-                      </span>
-                    </div>
-                  ) : product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                      <button
-                        onClick={() => deletefromBundle(index)}
-                        aria-label="delete"
-                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                      >
-                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                      </button>
-                      <img
-                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                        src={product.images[0]}
-                        alt="1"
-                      />
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
-
-            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-              <span className="ml-30 text-black">8 PACK</span>
-              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                {secondFourProducts.map((product, index) =>
-                  index === 3 && product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 5}
-                      </span>
-                    </div>
-                  ) : product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 5}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                      <button
-                        onClick={() => deletefromBundle(index + 4)}
-                        aria-label="delete"
-                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                      >
-                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                      </button>
-                      <img
-                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                        src={product.images[0]}
-                        alt="1"
-                      />
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
-
-            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-              <span className="ml-30 text-black">12 PACK</span>
-              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                {thirdFourProducts.map((product, index) =>
-                  index === 3 && product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 9}
-                      </span>
-                    </div>
-                  ) : product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 9}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                      <button
-                        onClick={() => deletefromBundle(index + 8)}
-                        aria-label="delete"
-                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                      >
-                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                      </button>
-                      <img
-                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                        src={product.images[0]}
-                        alt="1"
-                      />
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
             <button
               onClick={submit}
               disabled={count !== 4 && count !== 8 && count !== 12}
@@ -419,10 +321,6 @@ export default function BundlePage() {
                 {count === 12 ? 'you scored free shipping (-:' : ''}
               </div>
             </button>
-
-            <div></div>
-
-            <div></div>
           </div>
         </div>
       </div>
