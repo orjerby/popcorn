@@ -277,7 +277,9 @@ export default function BundlePage() {
             </div>
             <div className="mt-10">
               <span className="text-18 text-black">
-                add 8 or more and score free shipping!
+                {count < 8
+                  ? `add ${8 - count} or more and score free shipping!`
+                  : 'YOU SCORED FREE SHIPPING! 🥳'}
               </span>
               <div className="rounded-10 mt-10 bg-[#CBC1B773] p-7"></div>
             </div>
@@ -316,9 +318,15 @@ export default function BundlePage() {
                 {count >= 4 && count < 8
                   ? `add ${8 - count} more items and score free shipping!`
                   : ''}
-                {count === 8 ? 'you scored free shipping  (-:' : ''}
+                <span className="uppercase">
+                  {' '}
+                  {count === 8 ? 'YOU SCORED FREE SHIPPING! 🥳' : ''}
+                </span>
                 {count >= 9 && count < 12 ? `add ${12 - count} more items` : ''}
-                {count === 12 ? 'you scored free shipping (-:' : ''}
+                <span className="uppercase">
+                  {' '}
+                  {count === 12 ? 'YOU SCORED FREE SHIPPING! 🥳' : ''}
+                </span>
               </div>
             </button>
           </div>
