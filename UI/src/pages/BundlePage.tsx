@@ -32,6 +32,18 @@ const defaultProduct: Product = {
   ],
 }
 export default function BundlePage() {
+  function hexToRgba(hex: any, alpha = 0.3) {
+    // Remove the hash (#) if present
+    hex = hex.replace('#', '')
+
+    // Extract the red, green, and blue values
+    let r = parseInt(hex.slice(0, 2), 16)
+    let g = parseInt(hex.slice(2, 4), 16)
+    let b = parseInt(hex.slice(4, 6), 16)
+
+    // Return the RGBA value
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`
+  }
   const { state, dispatch } = useAppContext()
 
   const [searchParams] = useSearchParams()
@@ -398,17 +410,13 @@ export default function BundlePage() {
                   : 'add custom bundle to cart'}
               </div>
               <div className="text-18 text-black lowercase">
-                {' '}
-                {(() => {
-                  switch (count) {
-                    case 0:
-                      return 'add 4 more items'
-                    case 1:
-                      return 'add 3 more items'
-                    default:
-                      return null
-                  }
-                })()}
+                {count < 4 ? `add ${4 - count} more items` : ''}
+                {count >= 4 && count < 8
+                  ? `add ${8 - count} more items and score free shipping!`
+                  : ''}
+                {count === 8 ? 'you scored free shipping  (-:' : ''}
+                {count >= 9 && count < 12 ? `add ${12 - count} more items` : ''}
+                {count === 12 ? 'you scored free shipping (-:' : ''}
               </div>
             </button>
 
