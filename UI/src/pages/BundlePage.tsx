@@ -270,7 +270,7 @@ export default function BundlePage() {
               })}
             </ul>
           </div>
-          <div className="sticky top-130 ml-20 flex h-660 w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16">
+          <div className="sticky top-80 ml-20 flex h-fit w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16">
             <div>
               <h1 className="text-36 text-zinc-600 uppercase">Your bundle</h1>
               <hr className="mt-5 border-1 text-[#CBC1B7]" />

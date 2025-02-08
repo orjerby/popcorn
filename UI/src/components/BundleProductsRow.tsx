@@ -29,53 +29,62 @@ export default function BundleProductsRow({
         {products.map((product, index) => {
           if (index === 3 && product.id === '') {
             return (
-              <div
-                className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]"
-                key={index}
-              >
-                <img src={product.images[0]} alt="" />
-                <span className="absolute right-0 bottom-0 text-black">
-                  {index + 1 + rowStartLocation}
-                </span>
+              <div className="min-h-68 w-full max-w-68">
+                <div
+                  className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]"
+                  key={index}
+                >
+                  <img src={product.images[0]} alt="" />
+                  <span className="absolute right-0 bottom-0 text-black">
+                    {index + 1 + rowStartLocation}
+                  </span>
+                </div>
               </div>
             )
           } else if (product.id === '') {
             return (
-              <div
-                className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]"
-                key={index}
-              >
-                <img src={product.images[0]} alt="" />
-                <span className="absolute right-0 bottom-0 text-black">
-                  {index + 1 + rowStartLocation}
-                </span>
+              <div className="min-h-68 w-full max-w-68">
+                <div
+                  className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]"
+                  key={index}
+                >
+                  <img src={product.images[0]} alt="" />
+                  <span className="absolute right-0 bottom-0 text-black">
+                    {index + 1 + rowStartLocation}
+                  </span>
+                </div>
               </div>
             )
           } else {
             return (
-              <div
-                key={index}
-                style={{
-                  backgroundColor: hexToRgba(
-                    product.color ? product.color : '',
-                    0.3,
-                  ),
-                  borderColor: product.color,
-                }}
-                className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]"
-              >
-                <button
-                  onClick={() => deleteFromBundle(index + rowStartLocation)}
-                  aria-label="delete"
-                  className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
+              <div className="min-h-68 w-full max-w-68">
+                <div
+                  key={index}
+                  style={{
+                    backgroundColor: hexToRgba(
+                      product.color ? product.color : '',
+                      0.3,
+                    ),
+                    borderColor: product.color,
+                  }}
+                  className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]"
                 >
-                  <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                </button>
-                <img
-                  className="rounded-8 h-full w-full"
-                  src={product.images[0]}
-                  alt="1"
-                />
+                  <button
+                    onClick={() => deleteFromBundle(index + rowStartLocation)}
+                    aria-label="delete"
+                    className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
+                  >
+                    <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
+                  </button>
+                  <img
+                    className="rounded-8 h-full w-full"
+                    src={product.images[0]}
+                    alt="1"
+                  />
+                </div>
+                <p className="text-center text-xs text-black">
+                  {product.title}
+                </p>
               </div>
             )
           }
