@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { MdOutlineCancel } from 'react-icons/md'
 import { Link, useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
+import BundleProductsRow from '../components/BundleProductsRow'
 import Stars from '../components/Stars'
 import { ToggleButton } from '../components/ToggleButton/ToggleButton'
 import { useAppContext } from '../context/AppContext'
@@ -32,6 +32,18 @@ const defaultProduct: Product = {
   ],
 }
 export default function BundlePage() {
+  function hexToRgba(hex: any, alpha = 0.3) {
+    // Remove the hash (#) if present
+    hex = hex.replace('#', '')
+
+    // Extract the red, green, and blue values
+    let r = parseInt(hex.slice(0, 2), 16)
+    let g = parseInt(hex.slice(2, 4), 16)
+    let b = parseInt(hex.slice(4, 6), 16)
+
+    // Return the RGBA value
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`
+  }
   const { state, dispatch } = useAppContext()
 
   const [searchParams] = useSearchParams()
@@ -99,6 +111,7 @@ export default function BundlePage() {
   }
 
   const deletefromBundle = (index: number) => {
+    console.log(count)
     let arr = currentBundle
     for (let i = index; i < arr.length - 1; i++) {
       arr[i] = arr[i + 1]
@@ -106,10 +119,18 @@ export default function BundlePage() {
 
     setCurrentBundle(arr)
 
-    if (index === 11) {
+    if (index >= 11) {
+      arr = currentBundle
+      arr[index] = defaultProduct
+      setCurrentBundle(arr)
+      console.log(arr)
+    }
+
+    if (count === 12) {
       arr = currentBundle
       arr[11] = defaultProduct
       setCurrentBundle(arr)
+      console.log(arr)
     }
     setCount(count - 1)
   }
@@ -223,13 +244,10 @@ export default function BundlePage() {
                                     VIEW MORE
                                   </Link>
                                 </div>
-
                                 <span className="text-sm text-black lowercase">
                                   1 - {product.size} - ${product.price} ea.
                                 </span>
                               </div>
-                              <div></div>
-                              <div></div>
                             </div>
                             <div className="absolute right-0 bottom-0">
                               <button
@@ -252,7 +270,7 @@ export default function BundlePage() {
               })}
             </ul>
           </div>
-          <div className="sticky top-130 ml-20 flex h-660 w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16">
+          <div className="sticky top-80 ml-20 flex h-fit w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16">
             <div>
               <h1 className="text-36 text-zinc-600 uppercase">Your bundle</h1>
               <hr className="mt-5 border-1 text-[#CBC1B7]" />
@@ -263,120 +281,25 @@ export default function BundlePage() {
               </span>
               <div className="rounded-10 mt-10 bg-[#CBC1B773] p-7"></div>
             </div>
+            <BundleProductsRow
+              rowTitle={'4 PACK'}
+              rowStartLocation={0}
+              products={firstFourProducts}
+              deleteFromBundle={deletefromBundle}
+            />
+            <BundleProductsRow
+              rowTitle={'8 PACK'}
+              rowStartLocation={4}
+              products={secondFourProducts}
+              deleteFromBundle={deletefromBundle}
+            />
+            <BundleProductsRow
+              rowTitle={'12 PACK'}
+              rowStartLocation={8}
+              products={thirdFourProducts}
+              deleteFromBundle={deletefromBundle}
+            />
 
-            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-              <span className="ml-30 text-black">4 PACK</span>
-              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                {firstFourProducts.map((product, index) =>
-                  index === 3 && product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
-                      </span>
-                    </div>
-                  ) : product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                      <button
-                        onClick={() => deletefromBundle(index)}
-                        aria-label="delete"
-                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                      >
-                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                      </button>
-                      <img
-                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                        src={product.images[0]}
-                        alt="1"
-                      />
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
-
-            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-              <span className="ml-30 text-black">8 PACK</span>
-              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                {secondFourProducts.map((product, index) =>
-                  index === 3 && product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
-                      </span>
-                    </div>
-                  ) : product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                      <button
-                        onClick={() => deletefromBundle(index + 4)}
-                        aria-label="delete"
-                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                      >
-                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                      </button>
-                      <img
-                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                        src={product.images[0]}
-                        alt="1"
-                      />
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
-
-            <div className="mt-10 flex flex-col bg-[#F5F5F3] p-5">
-              <span className="ml-30 text-black">12 PACK</span>
-              <div className="flex justify-center gap-10 bg-[#F5F5F3] p-10">
-                {thirdFourProducts.map((product, index) =>
-                  index === 3 && product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
-                      </span>
-                    </div>
-                  ) : product.id === '' ? (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]">
-                      <img src={product.images[0]} alt="" />
-                      <span className="absolute right-0 bottom-0 text-black">
-                        {index + 1}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-[#de7846]">
-                      <button
-                        onClick={() => deletefromBundle(index + 8)}
-                        aria-label="delete"
-                        className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
-                      >
-                        <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
-                      </button>
-                      <img
-                        className="rounded-8 h-full w-full bg-[#f5d6c7]"
-                        src={product.images[0]}
-                        alt="1"
-                      />
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
             <button
               onClick={submit}
               disabled={count !== 4 && count !== 8 && count !== 12}
@@ -389,23 +312,15 @@ export default function BundlePage() {
                   : 'add custom bundle to cart'}
               </div>
               <div className="text-18 text-black lowercase">
-                {' '}
-                {(() => {
-                  switch (existCustomBundle.length) {
-                    case 0:
-                      return 'add 4 more items'
-                    case 1:
-                      return 'add 3 more items'
-                    default:
-                      return null
-                  }
-                })()}
+                {count < 4 ? `add ${4 - count} more items` : ''}
+                {count >= 4 && count < 8
+                  ? `add ${8 - count} more items and score free shipping!`
+                  : ''}
+                {count === 8 ? 'you scored free shipping  (-:' : ''}
+                {count >= 9 && count < 12 ? `add ${12 - count} more items` : ''}
+                {count === 12 ? 'you scored free shipping (-:' : ''}
               </div>
             </button>
-
-            <div></div>
-
-            <div></div>
           </div>
         </div>
       </div>
