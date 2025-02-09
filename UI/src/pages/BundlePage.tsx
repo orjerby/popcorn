@@ -32,20 +32,8 @@ const defaultProduct: Product = {
   ],
 }
 export default function BundlePage() {
-  function hexToRgba(hex: any, alpha = 0.3) {
-    // Remove the hash (#) if present
-    hex = hex.replace('#', '')
-
-    // Extract the red, green, and blue values
-    let r = parseInt(hex.slice(0, 2), 16)
-    let g = parseInt(hex.slice(2, 4), 16)
-    let b = parseInt(hex.slice(4, 6), 16)
-
-    // Return the RGBA value
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`
-  }
   const { state, dispatch } = useAppContext()
-
+  const [barWidth, setBarWidth] = useState(0)
   const [searchParams] = useSearchParams()
 
   const types = selectProductTypes(state)
@@ -55,6 +43,8 @@ export default function BundlePage() {
   const bundleIdParam = searchParams.get('bundle') ?? ''
 
   const existCustomBundle = selectCustomBundle(state, bundleIdParam)
+
+  const [num, setnum] = useState<number>(0)
 
   const [currentBundle, setCurrentBundle] = useState<Product[]>(
     existCustomBundle.length > 0
@@ -101,6 +91,23 @@ export default function BundlePage() {
   }
 
   const addToBundle = (product: Product) => {
+    console.log('num ', num)
+    console.log('barwidth ', barWidth)
+
+    const bar = document.getElementById('my-bar')
+    const barwidth = bar?.offsetWidth
+
+    if (bar) {
+      const computedWidth = parseFloat(getComputedStyle(bar).width) // Get computed width as a number
+
+      setBarWidth(computedWidth)
+    }
+    if (barwidth)
+      if (count <= 7) {
+        console.log('count ', count)
+        setnum(num + barwidth / 8)
+      }
+
     if (count === 12) return
     setCurrentBundle(() => {
       let arr = currentBundle
@@ -111,7 +118,10 @@ export default function BundlePage() {
   }
 
   const deletefromBundle = (index: number) => {
-    console.log(count)
+    const bar = document.getElementById('my-bar')
+    const barwidth = bar?.offsetWidth
+    if (count > 0 && count <= 8 && barwidth) setnum(num - barwidth / 8)
+
     let arr = currentBundle
     for (let i = index; i < arr.length - 1; i++) {
       arr[i] = arr[i + 1]
@@ -123,14 +133,12 @@ export default function BundlePage() {
       arr = currentBundle
       arr[index] = defaultProduct
       setCurrentBundle(arr)
-      console.log(arr)
     }
 
     if (count === 12) {
       arr = currentBundle
       arr[11] = defaultProduct
       setCurrentBundle(arr)
-      console.log(arr)
     }
     setCount(count - 1)
   }
@@ -281,7 +289,27 @@ export default function BundlePage() {
                   ? `add ${8 - count} or more and score free shipping!`
                   : 'YOU SCORED FREE SHIPPING! 🥳'}
               </span>
-              <div className="rounded-10 mt-10 bg-[#CBC1B773] p-7"></div>
+              <div className="relative mt-10">
+                <div
+                  id="my-bar"
+                  className="rounded-10 absolute inset-0 bg-[#CBC1B773] p-7"
+                ></div>
+                <div
+                  style={{
+                    maxWidth: num, // Control width based on `num`
+                    padding: '7px', // Always have padding from the start
+                    clipPath:
+                      num < barWidth
+                        ? 'polygon(100% 0%, 0% 0%, 0% 100%, 98% 100%)'
+                        : 'none',
+                    borderTopRightRadius: num >= barWidth ? 10 : 0,
+                    borderBottomRightRadius: num >= barWidth ? 10 : 0,
+                  }}
+                  className={`rounded-l-10 relative transform bg-[#C1803E] transition-all ${
+                    num > 0 ? 'opacity-100' : 'opacity-0'
+                  }`}
+                ></div>
+              </div>
             </div>
             <BundleProductsRow
               rowTitle={'4 PACK'}
