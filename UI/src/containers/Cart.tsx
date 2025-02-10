@@ -187,12 +187,38 @@ export default function Cart({ open, onClose }: Props) {
       ) : (
         <div>no items in cart!</div>
       )}
+      <div className="flex flex-col">
+        <div className="flex justify-between bg-[#e5d1b3] px-16 py-8 text-black">
+          <span className="text-black">Discounts</span>
+          <span className="">-$0</span>
+        </div>
+        <div className="bg-[#ebe6d3] p-16">
+          <div className="flex justify-between">
+            <div className="text-20 uppercase">shipping</div>
+            <div className="text-20 uppercase">subtotal</div>
+          </div>
+          <div className="flex justify-between">
+            <div className="text-14 text-black uppercase">
+              Woo hoo! you scored free shipping 🥳
+            </div>
+            <div className="text-20 uppercase">$666</div>
+          </div>
+        </div>
+        <div className="flex justify-center bg-[#3eadb8]">
+          <Link
+            className="text-20 px-16 py-14 text-white uppercase"
+            to={'checkouts'}
+          >
+            continue to checkout
+          </Link>
+        </div>
+      </div>
     </div>
   )
 
   return (
     <Drawer anchor={'right'} open={open} onClose={onClose}>
-      <div className="relative flex h-full w-full flex-col">
+      <div className="relative flex h-auto w-full flex-col">
         <div className="z-40 flex justify-between px-20 py-15 text-4xl text-[#953300] uppercase">
           <h2>Cart</h2>
           <Button
