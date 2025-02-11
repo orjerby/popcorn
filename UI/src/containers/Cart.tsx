@@ -47,7 +47,7 @@ export default function Cart({ open, onClose }: Props) {
   const DrawerList = (
     <div>
       {cart.length > 0 ? (
-        <div className="flex flex-col items-center justify-center overflow-hidden">
+        <div className="flex flex-col items-center justify-center">
           {[...cart].reverse().map((item, index) =>
             item.type === 'products' ? (
               <div
@@ -187,6 +187,32 @@ export default function Cart({ open, onClose }: Props) {
       ) : (
         <div>no items in cart!</div>
       )}
+    </div>
+  )
+
+  return (
+    <Drawer anchor={'right'} open={open} onClose={onClose}>
+      <div className="relative flex h-auto w-full flex-col overflow-hidden">
+        <div className="z-40 flex justify-between px-20 py-15 text-4xl text-[#953300] uppercase">
+          <h2>Cart</h2>
+          <Button
+            className="cursor-pointer text-red-500"
+            onClick={() => onClose()}
+          >
+            <IoCloseOutline color="#953300" size={20} />
+          </Button>
+        </div>
+        <hr className="z-40 opacity-20" />
+        <img
+          className="absolute z-10 h-full w-full bg-[#f6f3e2] bg-cover"
+          src="https://www.pipsnacks.com/cdn/shop/t/205/assets/rice-paper.webp?v=15630725387464339411709904553"
+          alt=""
+        />
+        <div className="z-40 flex overflow-y-scroll text-[#953300]">
+          {DrawerList}
+        </div>
+      </div>
+
       <div className="flex flex-col">
         <div className="flex justify-between bg-[#e5d1b3] px-16 py-8 text-black">
           <span className="text-black">Discounts</span>
@@ -212,29 +238,6 @@ export default function Cart({ open, onClose }: Props) {
             continue to checkout
           </Link>
         </div>
-      </div>
-    </div>
-  )
-
-  return (
-    <Drawer anchor={'right'} open={open} onClose={onClose}>
-      <div className="relative flex h-auto w-full flex-col">
-        <div className="z-40 flex justify-between px-20 py-15 text-4xl text-[#953300] uppercase">
-          <h2>Cart</h2>
-          <Button
-            className="cursor-pointer text-red-500"
-            onClick={() => onClose()}
-          >
-            <IoCloseOutline color="#953300" size={20} />
-          </Button>
-        </div>
-        <hr className="z-40 opacity-20" />
-        <img
-          className="absolute z-10 h-full w-full bg-[#f6f3e2] bg-cover"
-          src="https://www.pipsnacks.com/cdn/shop/t/205/assets/rice-paper.webp?v=15630725387464339411709904553"
-          alt=""
-        />
-        <div className="z-40 flex text-[#953300]">{DrawerList}</div>
       </div>
     </Drawer>
   )
