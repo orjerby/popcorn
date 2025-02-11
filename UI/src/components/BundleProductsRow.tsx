@@ -72,7 +72,7 @@ export default function BundleProductsRow({
                   <button
                     onClick={() => deleteFromBundle(index + rowStartLocation)}
                     aria-label="delete"
-                    className="absolute top-[-10px] right-[-8px] cursor-pointer text-black"
+                    className="absolute -top-10 -right-8 cursor-pointer text-black"
                   >
                     <MdOutlineCancel className="z-20 m-0 h-auto w-auto rounded-full bg-white p-0 drop-shadow-none" />
                   </button>
