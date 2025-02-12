@@ -220,14 +220,14 @@ export default function Cart({ open, onClose }: Props) {
         </div>
         <div className="bg-[#ebe6d3] p-16">
           <div className="flex justify-between">
-            <div className="text-20 uppercase">shipping</div>
-            <div className="text-20 uppercase">subtotal</div>
+            <div className="text-20 text-[#b74600] uppercase">shipping</div>
+            <div className="text-20 text-[#b74600] uppercase">subtotal</div>
           </div>
           <div className="flex justify-between">
             <div className="text-14 text-black uppercase">
               Woo hoo! you scored free shipping 🥳
             </div>
-            <div className="text-20 uppercase">$666</div>
+            <div className="text-20 text-[#b74600] uppercase">$666</div>
           </div>
         </div>
         <div className="flex justify-center bg-[#3eadb8]">
