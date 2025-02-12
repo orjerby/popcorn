@@ -214,12 +214,16 @@ export default function BundlePage() {
                     key={type}
                     id={`section-${type}`}
                     tabIndex={-1}
-                    className={`border-b-2 border-solid border-b-gray-400 py-32 outline-none`}
+                    className={`border-b-2 border-solid border-b-gray-400 px-16 py-32 outline-none`}
                   >
                     <h2 className="p-5 text-2xl text-[#52525B]">{type}</h2>
                     {singleProducts
                       .filter((product) => product.type === type)
                       .map((product) => {
+                        const sizeSplited = product.size.split('-')
+                        const sizeSingle = sizeSplited[1].split(' ')
+                        console.log(sizeSingle[0])
+
                         return (
                           <div
                             key={product.id}
@@ -242,18 +246,19 @@ export default function BundlePage() {
                                 </span>
                                 <div className="flex text-black">
                                   <Stars color={product.color}></Stars>
-                                  <span className="ml-20 text-sm text-zinc-600 underline">
+                                  <span className="ml-20 text-sm text-zinc-600 lowercase underline">
                                     25 reviews
                                   </span>
                                   <Link
                                     to={`/products/${product.id}`}
-                                    className="ml-10 text-sm text-zinc-600 underline"
+                                    className="ml-10 text-sm text-zinc-600 lowercase underline"
                                   >
                                     VIEW MORE
                                   </Link>
                                 </div>
                                 <span className="text-sm text-black lowercase">
-                                  1 - {product.size} - ${product.price} ea.
+                                  1 - {sizeSingle[0]} - $
+                                  {product.price.toFixed(2)} ea.
                                 </span>
                               </div>
                             </div>
