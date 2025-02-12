@@ -4,12 +4,20 @@ import {
   useActionState,
   useEffect,
 } from 'react'
-import { Button, Form } from 'react-aria-components'
-import { FieldErrors, FieldValues, useForm } from 'react-hook-form'
-import { FormField } from '../components/FormField/FormField'
+import { Button, Form, Key } from 'react-aria-components'
+import {
+  FieldErrors,
+  FieldValues,
+  FormProvider,
+  useForm,
+} from 'react-hook-form'
+import { StandardSelect } from '../components/Select'
+import { StandardSelectItem } from '../components/Select/Bases/StandardSelectBase'
+import { StandardTextField } from '../components/TextField'
 import { myAction } from './myAction'
 
 export type MyFormData = {
+  country: Key
   email: string
   firstName: string
   lastName: string
@@ -22,14 +30,17 @@ export type MyFormData = {
   phone: string
 }
 
+const options = [{ id: 1, value: 'United States' }]
+
 export default function CheckoutPage() {
   const [returnedApiData, submitAction, isPending] = useActionState(
     myAction,
     null,
   )
 
-  const { control, handleSubmit, setFocus } = useForm<MyFormData>({
+  const methods = useForm<MyFormData>({
     defaultValues: {
+      country: 1,
       email: '',
       firstName: '',
       lastName: '',
@@ -44,6 +55,8 @@ export default function CheckoutPage() {
     errors: returnedApiData?.errors,
     mode: 'onTouched',
   })
+
+  const { handleSubmit, setFocus } = methods
 
   function getFirstError<T extends FieldValues>(errors?: FieldErrors<T>) {
     if (errors) {
@@ -72,139 +85,143 @@ export default function CheckoutPage() {
     <>
       <div className="mt-200 flex">
         <div className="flex flex-1 justify-end bg-white">
-          <Form
-            onSubmit={handleSubmit((_, event) => onSubmit(_, event))}
-            validationErrors={{ email: 'Please select a frequency.' }}
-            className="flex w-full max-w-660 flex-col gap-32 p-38"
-          >
-            <p className="text-30 text-black">{isPending && 'Loading...'}</p>
-
-            <div className="flex flex-col gap-14">
-              <h2 className="text-21 font-semibold text-black">Contact</h2>
-
-              <FormField
-                control={control}
-                name="email"
-                type="email"
-                label="Email"
-                placeholder="Email"
-                rules={{
-                  required: 'Enter an email',
-                  pattern: {
-                    value: /\S+@\S+\.\S+/,
-                    message: 'Enter a valid email',
-                  },
-                }}
-              />
-            </div>
-
-            <div className="flex flex-col gap-14">
-              <h2 className="text-21 font-semibold text-black">Delivery</h2>
+          <FormProvider {...methods}>
+            <Form
+              onSubmit={handleSubmit((_, event) => onSubmit(_, event))}
+              validationErrors={{ email: 'Please select a frequency.' }}
+              className="flex w-full max-w-660 flex-col gap-32 p-38"
+            >
+              <p className="text-30 text-black">{isPending && 'Loading...'}</p>
 
               <div className="flex flex-col gap-14">
-                <div className="flex gap-14">
-                  <FormField
-                    control={control}
-                    name="firstName"
-                    label="First name"
-                    placeholder="First name"
-                    rules={{
-                      required: 'Enter a first name',
-                    }}
-                    className="w-full"
-                  />
+                <h2 className="text-21 font-semibold text-black">Contact</h2>
 
-                  <FormField
-                    control={control}
-                    name="lastName"
-                    label="Last name"
-                    placeholder="Last name"
-                    rules={{
-                      required: 'Enter a last name',
-                    }}
-                    className="w-full"
-                  />
-                </div>
-
-                <FormField
-                  control={control}
-                  name="company"
-                  label="Company (optional)"
-                  placeholder="Company (optional)"
-                />
-
-                <FormField
-                  control={control}
-                  name="address"
-                  label="Address"
-                  placeholder="Address"
+                <StandardTextField
+                  name="email"
+                  type="email"
+                  label="Email"
+                  placeholder="Email"
                   rules={{
-                    required: 'Enter an address',
+                    required: 'Enter an email',
+                    pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: 'Enter a valid email',
+                    },
                   }}
                 />
+              </div>
 
-                <FormField
-                  control={control}
-                  name="apartment"
-                  label="Apartment, suite, etc. (optional)"
-                  placeholder="Apartment, suite, etc. (optional)"
-                />
+              <div className="flex flex-col gap-14">
+                <h2 className="text-21 font-semibold text-black">Delivery</h2>
 
-                <div className="flex gap-14">
-                  <FormField
-                    control={control}
-                    name="city"
-                    label="City"
-                    placeholder="City"
-                    rules={{
-                      required: 'Enter a city',
-                    }}
-                    className="w-full"
+                <div className="flex flex-col gap-14">
+                  <StandardSelect
+                    name="country"
+                    label="Country/Region"
+                    items={options}
+                  >
+                    {({ value }) => (
+                      <StandardSelectItem>{value}</StandardSelectItem>
+                    )}
+                  </StandardSelect>
+
+                  <div className="flex gap-14">
+                    <StandardTextField
+                      name="firstName"
+                      label="First name"
+                      placeholder="First name"
+                      rules={{
+                        required: 'Enter a first name',
+                      }}
+                      className="w-full"
+                    />
+
+                    <StandardTextField
+                      name="lastName"
+                      label="Last name"
+                      placeholder="Last name"
+                      rules={{
+                        required: 'Enter a last name',
+                      }}
+                      className="w-full"
+                    />
+                  </div>
+
+                  <StandardTextField
+                    name="company"
+                    label="Company (optional)"
+                    placeholder="Company (optional)"
                   />
 
-                  <FormField
-                    control={control}
-                    name="state"
-                    label="State"
-                    placeholder="State"
+                  <StandardTextField
+                    name="address"
+                    label="Address"
+                    placeholder="Address"
                     rules={{
-                      required: 'Select a state / province',
+                      required: 'Enter an address',
                     }}
-                    className="w-full"
                   />
 
-                  <FormField
-                    control={control}
-                    name="zip"
-                    label="ZIP code"
-                    placeholder="ZIP code"
-                    rules={{
-                      required: 'Enter a ZIP / postal code',
-                    }}
-                    className="w-full"
+                  <StandardTextField
+                    name="apartment"
+                    label="Apartment, suite, etc. (optional)"
+                    placeholder="Apartment, suite, etc. (optional)"
+                  />
+
+                  <div className="flex gap-14">
+                    <StandardTextField
+                      name="city"
+                      label="City"
+                      placeholder="City"
+                      rules={{
+                        required: 'Enter a city',
+                      }}
+                      className="w-full"
+                    />
+
+                    <StandardTextField
+                      name="state"
+                      label="State"
+                      placeholder="State"
+                      rules={{
+                        required: 'Select a state / province',
+                      }}
+                      className="w-full"
+                    />
+
+                    <StandardTextField
+                      name="zip"
+                      label="ZIP code"
+                      placeholder="ZIP code"
+                      rules={{
+                        required: 'Enter a ZIP / postal code',
+                      }}
+                      className="w-full"
+                    />
+                  </div>
+
+                  <StandardTextField
+                    name="phone"
+                    label="Phone (optional)"
+                    placeholder="Phone (optional)"
                   />
                 </div>
-
-                <FormField
-                  control={control}
-                  name="phone"
-                  label="Phone (optional)"
-                  placeholder="Phone (optional)"
-                />
               </div>
-            </div>
 
-            <Button
-              type="submit"
-              className={
-                'text-19 rounded-5 cursor-pointer bg-[#3eadb8] p-[14px] font-semibold text-white'
-              }
-            >
-              Pay now
-            </Button>
+              <Button
+                type="submit"
+                className={
+                  'text-19 rounded-5 cursor-pointer bg-[#3eadb8] p-[14px] font-semibold text-white'
+                }
+              >
+                Pay now
+              </Button>
 
-            <p className="text-14 text-[#dd1d1d]">{returnedApiData?.message}</p>
-          </Form>
+              <p className="text-14 text-[#dd1d1d]">
+                {returnedApiData?.message}
+              </p>
+            </Form>
+          </FormProvider>
         </div>
         <div className="flex-1"></div>
       </div>
