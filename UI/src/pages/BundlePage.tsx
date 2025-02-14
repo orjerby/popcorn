@@ -289,7 +289,7 @@ export default function BundlePage() {
               <hr className="mt-5 border-1 text-[#CBC1B7]" />
             </div>
             <div className="mt-10">
-              <span className="text-18 text-black">
+              <span aria-live="polite" className="text-18 text-black">
                 {count < 8
                   ? `add ${8 - count} or more and score free shipping!`
                   : 'YOU SCORED FREE SHIPPING! 🥳'}

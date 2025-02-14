@@ -11,6 +11,7 @@ import {
   FormProvider,
   useForm,
 } from 'react-hook-form'
+import { StandardCheckbox } from '../components/Checkbox'
 import { StandardSelect } from '../components/Select'
 import { StandardSelectItem } from '../components/Select/Bases/StandardSelectBase'
 import { StandardTextField } from '../components/TextField'
@@ -19,6 +20,7 @@ import { myAction } from './myAction'
 export type MyFormData = {
   country: Key
   email: string
+  emailOffers: boolean
   firstName: string
   lastName: string
   company: string
@@ -28,6 +30,7 @@ export type MyFormData = {
   state: string
   zip: string
   phone: string
+  textOffers: boolean
 }
 
 const options = [{ id: 1, value: 'United States' }]
@@ -42,6 +45,7 @@ export default function CheckoutPage() {
     defaultValues: {
       country: 1,
       email: '',
+      emailOffers: false,
       firstName: '',
       lastName: '',
       company: '',
@@ -51,6 +55,7 @@ export default function CheckoutPage() {
       state: '',
       zip: '',
       phone: '',
+      textOffers: false,
     },
     errors: returnedApiData?.errors,
     mode: 'onTouched',
@@ -73,8 +78,10 @@ export default function CheckoutPage() {
     }
   }, [returnedApiData])
 
-  const onSubmit = (_: MyFormData, event?: BaseSyntheticEvent) => {
+  const onSubmit = (data: MyFormData, event?: BaseSyntheticEvent) => {
     const formData = new FormData(event?.target)
+
+    console.log(data)
 
     startTransition(() => {
       submitAction(formData)
@@ -96,19 +103,25 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-14">
                 <h2 className="text-21 font-semibold text-black">Contact</h2>
 
-                <StandardTextField
-                  name="email"
-                  type="email"
-                  label="Email"
-                  placeholder="Email"
-                  rules={{
-                    required: 'Enter an email',
-                    pattern: {
-                      value: /\S+@\S+\.\S+/,
-                      message: 'Enter a valid email',
-                    },
-                  }}
-                />
+                <div className="flex flex-col gap-14">
+                  <StandardTextField
+                    name="email"
+                    type="email"
+                    label="Email"
+                    placeholder="Email"
+                    rules={{
+                      required: 'Enter an email',
+                      pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: 'Enter a valid email',
+                      },
+                    }}
+                  />
+                </div>
+
+                <StandardCheckbox name="emailOffers">
+                  Email me with news and offers
+                </StandardCheckbox>
               </div>
 
               <div className="flex flex-col gap-14">
@@ -200,11 +213,17 @@ export default function CheckoutPage() {
                     />
                   </div>
 
-                  <StandardTextField
-                    name="phone"
-                    label="Phone (optional)"
-                    placeholder="Phone (optional)"
-                  />
+                  <div className="flex flex-col gap-14">
+                    <StandardTextField
+                      name="phone"
+                      label="Phone (optional)"
+                      placeholder="Phone (optional)"
+                    />
+
+                    <StandardCheckbox name="textOffers">
+                      Text me with news and offers
+                    </StandardCheckbox>
+                  </div>
                 </div>
               </div>
 
