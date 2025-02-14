@@ -1,23 +1,23 @@
+import { ComponentType } from 'react'
 import type { FieldValues, RegisterOptions } from 'react-hook-form'
 import { Controller, useFormContext } from 'react-hook-form'
-import { StandardSelectBaseProps } from './Bases/StandardSelectBase'
-import { SelectItem } from './types'
+import { StandardCheckboxBaseProps } from './Bases/StandardCheckboxBase'
 
-type SelectBaseProps<T extends SelectItem> = StandardSelectBaseProps<T>
+type CheckboxBaseProps = StandardCheckboxBaseProps
 
-export function createSelect<T extends SelectItem>(
-  SelectBase: React.ComponentType<SelectBaseProps<T>>,
+export function createCheckbox<T extends CheckboxBaseProps>(
+  CheckboxBase: ComponentType<T>,
 ) {
-  type Props = SelectBaseProps<T> & {
+  type Props = T & {
     rules?: RegisterOptions<FieldValues>
   }
 
-  return function FormSelect(props: Props) {
-    const { name, rules, children } = props
+  return function Checkbox(props: Props) {
+    const { name, rules } = props
     const form = useFormContext()
 
     if (!name || !form) {
-      return <SelectBase {...props} />
+      return <CheckboxBase {...props} />
     }
 
     return (
@@ -29,23 +29,21 @@ export function createSelect<T extends SelectItem>(
           field: { ref, name, disabled, value, onBlur, onChange },
           fieldState: { invalid, isDirty, isTouched, error },
         }) => (
-          <SelectBase
+          <CheckboxBase
             {...props}
             inputRef={ref}
             name={name}
             isDisabled={disabled}
-            selectedKey={value}
+            value={value}
             onBlur={onBlur}
-            onSelectionChange={onChange}
+            onChange={onChange}
             isRequired={!!rules?.required}
             isInvalid={invalid}
             isDirty={isDirty}
             isTouched={isTouched}
             errorMessage={error?.message}
             validationBehavior="aria"
-          >
-            {children}
-          </SelectBase>
+          />
         )}
       />
     )
