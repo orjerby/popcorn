@@ -27,7 +27,7 @@ export function createSelect<T extends SelectItem>(
         rules={rules}
         render={({
           field: { ref, name, disabled, value, onBlur, onChange },
-          fieldState: { invalid, isDirty, isTouched, error },
+          fieldState: { error, isDirty, isTouched, invalid },
         }) => (
           <SelectBase
             {...props}
@@ -38,10 +38,10 @@ export function createSelect<T extends SelectItem>(
             onBlur={onBlur}
             onSelectionChange={onChange}
             isRequired={!!rules?.required}
-            isInvalid={invalid}
+            errorMessage={error?.message}
             isDirty={isDirty}
             isTouched={isTouched}
-            errorMessage={error?.message}
+            isInvalid={invalid}
             validationBehavior="aria"
           >
             {children}

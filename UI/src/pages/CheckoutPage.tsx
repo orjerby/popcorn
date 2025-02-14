@@ -218,6 +218,9 @@ export default function CheckoutPage() {
                       name="phone"
                       label="Phone (optional)"
                       placeholder="Phone (optional)"
+                      format={(value) =>
+                        value.length > 3 ? '###-#######' : '####'
+                      }
                     />
 
                     <StandardCheckbox name="textOffers">

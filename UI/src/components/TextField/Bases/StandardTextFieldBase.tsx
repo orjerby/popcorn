@@ -9,6 +9,7 @@ import {
   ValidationResult,
 } from 'react-aria-components'
 import { RefCallBack } from 'react-hook-form'
+import { PatternFormat } from 'react-number-format'
 import { twMerge } from 'tailwind-merge'
 
 export type StandardTextFieldBaseProps = AriaTextFieldProps & {
@@ -18,6 +19,7 @@ export type StandardTextFieldBaseProps = AriaTextFieldProps & {
   isDirty?: boolean
   isTouched?: boolean
   errorMessage?: string | ((validation: ValidationResult) => string)
+  format?: string | ((value: string) => string)
   onChange?: (value: string) => void
 }
 
@@ -28,10 +30,22 @@ export function StandardTextFieldBase({
   isDirty = false,
   isTouched = false,
   errorMessage,
+  format,
   onChange,
   ...props
 }: StandardTextFieldBaseProps) {
-  const [value, setValue] = useState<string>()
+  const [value, setValue] = useState('')
+
+  const commonInputProps = {
+    placeholder,
+    className:
+      'text-14 rounded-5 border border-[#dedede] bg-white px-11 py-13.5 text-black outline-0 transition-all duration-200 [grid-area:1/1] group-data-has-value:pt-19.5 group-data-has-value:pb-7.5 group-data-invalid:!border-[#dd1d1d] group-data-invalid:!shadow-[0_0_0_1px_#dd1d1d] data-focused:border-[#b69775] data-focused:shadow-[0_0_0_1px_#b69775]',
+  }
+
+  const handleChange = (newValue: string) => {
+    setValue(newValue)
+    onChange?.(newValue)
+  }
 
   return (
     <AriaTextField
@@ -39,10 +53,6 @@ export function StandardTextFieldBase({
       data-dirty={isDirty || undefined}
       data-touched={isTouched || undefined}
       data-has-value={value ? true : undefined}
-      onChange={(value) => {
-        setValue(value)
-        onChange?.(value)
-      }}
       className={composeRenderProps(props.className, (className) =>
         twMerge('group font-segoe-ui flex flex-col gap-5', className),
       )}
@@ -51,11 +61,22 @@ export function StandardTextFieldBase({
         <Label className="text-12 pointer-events-none mx-11 -translate-y-6 text-[#707070] opacity-0 transition-all duration-200 [grid-area:1/1] group-data-has-value:-translate-y-10 group-data-has-value:opacity-100">
           {label}
         </Label>
-        <Input
-          ref={inputRef}
-          placeholder={placeholder}
-          className="text-14 rounded-5 border border-[#dedede] bg-white px-11 py-13.5 text-black outline-0 transition-all duration-200 [grid-area:1/1] group-data-has-value:pt-19.5 group-data-has-value:pb-7.5 group-data-invalid:!border-[#dd1d1d] group-data-invalid:!shadow-[0_0_0_1px_#dd1d1d] data-focused:border-[#b69775] data-focused:shadow-[0_0_0_1px_#b69775]"
-        />
+        {format ? (
+          <PatternFormat
+            getInputRef={inputRef}
+            {...commonInputProps}
+            format={typeof format === 'string' ? format : format(value)}
+            onValueChange={({ value }) => handleChange(value)}
+            customInput={Input}
+          />
+        ) : (
+          <Input
+            ref={inputRef}
+            {...commonInputProps}
+            value={value}
+            onChange={(e) => handleChange(e.target.value)}
+          />
+        )}
       </div>
       <FieldError className="text-14 text-[#dd1d1d]">{errorMessage}</FieldError>
     </AriaTextField>

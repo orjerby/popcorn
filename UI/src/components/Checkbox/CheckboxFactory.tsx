@@ -27,7 +27,7 @@ export function createCheckbox<T extends CheckboxBaseProps>(
         rules={rules}
         render={({
           field: { ref, name, disabled, value, onBlur, onChange },
-          fieldState: { invalid, isDirty, isTouched, error },
+          fieldState: { error, isDirty, isTouched, invalid },
         }) => (
           <CheckboxBase
             {...props}
@@ -38,10 +38,10 @@ export function createCheckbox<T extends CheckboxBaseProps>(
             onBlur={onBlur}
             onChange={onChange}
             isRequired={!!rules?.required}
-            isInvalid={invalid}
+            errorMessage={error?.message}
             isDirty={isDirty}
             isTouched={isTouched}
-            errorMessage={error?.message}
+            isInvalid={invalid}
             validationBehavior="aria"
           />
         )}

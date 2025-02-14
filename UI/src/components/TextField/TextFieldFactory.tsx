@@ -27,7 +27,7 @@ export function createTextField<T extends TextFieldBaseProps>(
         rules={rules}
         render={({
           field: { ref, name, disabled, value, onBlur, onChange },
-          fieldState: { invalid, isDirty, isTouched, error },
+          fieldState: { error, isDirty, isTouched, invalid },
         }) => (
           <TextFieldBase
             {...props}
@@ -38,10 +38,10 @@ export function createTextField<T extends TextFieldBaseProps>(
             onBlur={onBlur}
             onChange={onChange}
             isRequired={!!rules?.required}
-            isInvalid={invalid}
+            errorMessage={error?.message}
             isDirty={isDirty}
             isTouched={isTouched}
-            errorMessage={error?.message}
+            isInvalid={invalid}
             validationBehavior="aria"
           />
         )}
