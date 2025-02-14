@@ -46,20 +46,18 @@ export default function App() {
   return (
     <div className="relative bg-[#f6f3e2]">
       <Header scrolled={scrolled} />
-      <div className="mt-140">
-        <ScrollToTop />
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="products">
-            <Route path=":id" element={<ProductPage />} />
-          </Route>
-          <Route path="search" element={<SearchPage />} />
-          <Route path="collections/all-products" element={<Filters />} />
-          <Route path="pages/builder" element={<BundlePage />} />
-          <Route path="checkouts" element={<CheckoutPage />} />
-        </Routes>
-        <Footer />
-      </div>
+      <ScrollToTop />
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route path="products">
+          <Route path=":id" element={<ProductPage />} />
+        </Route>
+        <Route path="search" element={<SearchPage />} />
+        <Route path="collections/all-products" element={<Filters />} />
+        <Route path="pages/builder" element={<BundlePage />} />
+        <Route path="checkouts" element={<CheckoutPage />} />
+      </Routes>
+      <Footer />
     </div>
   )
 }

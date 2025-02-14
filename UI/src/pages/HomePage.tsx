@@ -5,7 +5,7 @@ import ProductList from '../containers/ProductList'
 export default function HomePage() {
   return (
     <>
-      <div className="mt-40 bg-[#f6f3e2]">
+      <div className="bg-[#f6f3e2]">
         <Link to={'collections/all-products?types=Fries'}>
           <div className="relative block">
             <img
