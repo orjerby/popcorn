@@ -11,10 +11,13 @@ import {
   FormProvider,
   useForm,
 } from 'react-hook-form'
-import { StandardCheckbox } from '../components/Checkbox'
+import { createTypedStandardCheckbox } from '../components/Checkbox'
 import { StandardSelect } from '../components/Select'
 import { StandardSelectItem } from '../components/Select/Bases/StandardSelectBase'
-import { StandardTextField } from '../components/TextField'
+import {
+  createTypedPhoneTextField,
+  createTypedStandardTextField,
+} from '../components/TextField'
 import { myAction } from './myAction'
 
 export type MyFormData = {
@@ -32,6 +35,10 @@ export type MyFormData = {
   phone: string
   textOffers: boolean
 }
+
+const PhoneTextField = createTypedPhoneTextField<MyFormData>()
+const StandardTextField = createTypedStandardTextField<MyFormData>()
+const StandardCheckbox = createTypedStandardCheckbox<MyFormData>()
 
 const options = [{ id: 1, value: 'United States' }]
 
@@ -102,7 +109,6 @@ export default function CheckoutPage() {
 
               <div className="flex flex-col gap-14">
                 <h2 className="text-21 font-semibold text-black">Contact</h2>
-
                 <div className="flex flex-col gap-14">
                   <StandardTextField
                     name="email"
@@ -214,13 +220,11 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="flex flex-col gap-14">
-                    <StandardTextField
+                    <PhoneTextField
                       name="phone"
                       label="Phone (optional)"
+                      selectLabel="Country/Region"
                       placeholder="Phone (optional)"
-                      format={(value) =>
-                        value.length > 3 ? '###-#######' : '####'
-                      }
                     />
 
                     <StandardCheckbox name="textOffers">

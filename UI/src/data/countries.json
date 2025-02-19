@@ -1,0 +1,1424 @@
+[
+  {
+    "name": "Afghanistan",
+    "code": "AF",
+    "phoneNumberPrefix": 93,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/af.BiOSzWK6.svg"
+  },
+  {
+    "name": "Åland Islands",
+    "code": "AX",
+    "phoneNumberPrefix": 358,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ax.BzARwTbf.svg"
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "phoneNumberPrefix": 355,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/al.BipLuVbn.svg"
+  },
+  {
+    "name": "Algeria",
+    "code": "DZ",
+    "phoneNumberPrefix": 213,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/dz.CP5t3KQf.svg"
+  },
+  {
+    "name": "Andorra",
+    "code": "AD",
+    "phoneNumberPrefix": 376,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ad.BAueQZQ7.svg"
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "phoneNumberPrefix": 244,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ao.Cz4G0ILK.svg"
+  },
+  {
+    "name": "Anguilla",
+    "code": "AI",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ai.BjjnBUtn.svg"
+  },
+  {
+    "name": "Antigua & Barbuda",
+    "code": "AG",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ag.CJw2o7HW.svg"
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "phoneNumberPrefix": 54,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ar.CXZaB8cr.svg"
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "phoneNumberPrefix": 374,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/am.Bnwp8KEp.svg"
+  },
+  {
+    "name": "Aruba",
+    "code": "AW",
+    "phoneNumberPrefix": 297,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/aw.D4y0Cz9V.svg"
+  },
+  {
+    "name": "Ascension Island",
+    "code": "AC",
+    "phoneNumberPrefix": 247,
+    "image": ""
+  },
+  {
+    "name": "Australia",
+    "code": "AU",
+    "phoneNumberPrefix": 61,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/au.XTK0rcAb.svg"
+  },
+  {
+    "name": "Austria",
+    "code": "AT",
+    "phoneNumberPrefix": 43,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/at.34JrX3vV.svg"
+  },
+  {
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "phoneNumberPrefix": 994,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/az.B_98FsNM.svg"
+  },
+  {
+    "name": "Bahamas",
+    "code": "BS",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bs.CXKpHGk-.svg"
+  },
+  {
+    "name": "Bahrain",
+    "code": "BH",
+    "phoneNumberPrefix": 973,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bh.BZMEExjJ.svg"
+  },
+  {
+    "name": "Bangladesh",
+    "code": "BD",
+    "phoneNumberPrefix": 880,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bd.CqasGyYY.svg"
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bb.mIgPTqCX.svg"
+  },
+  {
+    "name": "Belarus",
+    "code": "BY",
+    "phoneNumberPrefix": 375,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/by.D1vCEx0e.svg"
+  },
+  {
+    "name": "Belgium",
+    "code": "BE",
+    "phoneNumberPrefix": 32,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/be.v5MaJti7.svg"
+  },
+  {
+    "name": "Belize",
+    "code": "BZ",
+    "phoneNumberPrefix": 501,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bz.BJ0coOnz.svg"
+  },
+  {
+    "name": "Benin",
+    "code": "BJ",
+    "phoneNumberPrefix": 229,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bj.CLF2dzQI.svg"
+  },
+  {
+    "name": "Bermuda",
+    "code": "BM",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bm.owP27Je_.svg"
+  },
+  {
+    "name": "Bhutan",
+    "code": "BT",
+    "phoneNumberPrefix": 975,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bt.BGF_oxll.svg"
+  },
+  {
+    "name": "Bolivia",
+    "code": "BO",
+    "phoneNumberPrefix": 591,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bo.BnXEVVPZ.svg"
+  },
+  {
+    "name": "Bosnia & Herzegovina",
+    "code": "BA",
+    "phoneNumberPrefix": 387,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ba.C7a1xQTL.svg"
+  },
+  {
+    "name": "Botswana",
+    "code": "BW",
+    "phoneNumberPrefix": 267,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bw.ClD3VxOq.svg"
+  },
+  {
+    "name": "Brazil",
+    "code": "BR",
+    "phoneNumberPrefix": 55,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/br.DQKU8KoT.svg"
+  },
+  {
+    "name": "British Indian Ocean Territory",
+    "code": "IO",
+    "phoneNumberPrefix": 246,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/io.BZD7xDKV.svg"
+  },
+  {
+    "name": "British Virgin Islands",
+    "code": "VG",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/vg.Disph98H.svg"
+  },
+  {
+    "name": "Brunei",
+    "code": "BN",
+    "phoneNumberPrefix": 673,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bn.DZwXaeEE.svg"
+  },
+  {
+    "name": "Bulgaria",
+    "code": "BG",
+    "phoneNumberPrefix": 359,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bg.BnCGz7Cy.svg"
+  },
+  {
+    "name": "Burkina Faso",
+    "code": "BF",
+    "phoneNumberPrefix": 226,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bf.UFmzBopE.svg"
+  },
+  {
+    "name": "Burundi",
+    "code": "BI",
+    "phoneNumberPrefix": 257,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bi.C2S2ZHun.svg"
+  },
+  {
+    "name": "Cambodia",
+    "code": "KH",
+    "phoneNumberPrefix": 855,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/kh.CH4Gl5R4.svg"
+  },
+  {
+    "name": "Cameroon",
+    "code": "CM",
+    "phoneNumberPrefix": 237,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cm.C3RxYTaS.svg"
+  },
+  {
+    "name": "Canada",
+    "code": "CA",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ca.BmTmRgSp.svg"
+  },
+  {
+    "name": "Cape Verde",
+    "code": "CV",
+    "phoneNumberPrefix": 238,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cv.ilQYsWVq.svg"
+  },
+  {
+    "name": "Caribbean Netherlands",
+    "code": "BQ",
+    "phoneNumberPrefix": 599,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bq.CLg4X62Z.svg"
+  },
+  {
+    "name": "Cayman Islands",
+    "code": "KY",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ky.0OoJcNUr.svg"
+  },
+  {
+    "name": "Central African Republic",
+    "code": "CF",
+    "phoneNumberPrefix": 236,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cf.DDjcEB9U.svg"
+  },
+  {
+    "name": "Chad",
+    "code": "TD",
+    "phoneNumberPrefix": 235,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/td.SJxMayPD.svg"
+  },
+  {
+    "name": "Chile",
+    "code": "CL",
+    "phoneNumberPrefix": 56,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cl.Cw9NR8cL.svg"
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "phoneNumberPrefix": 86,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cn.JoknfU_Z.svg"
+  },
+  {
+    "name": "Christmas Island",
+    "code": "CX",
+    "phoneNumberPrefix": 61,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cx.Cc_JSwVU.svg"
+  },
+  {
+    "name": "Cocos (Keeling) Islands",
+    "code": "CC",
+    "phoneNumberPrefix": 891,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cc.B0KcFz6Y.svg"
+  },
+  {
+    "name": "Colombia",
+    "code": "CO",
+    "phoneNumberPrefix": 57,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/co.CTEUF9PJ.svg"
+  },
+  {
+    "name": "Comoros",
+    "code": "KM",
+    "phoneNumberPrefix": 269,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/km.AzKDvAf_.svg"
+  },
+  {
+    "name": "Congo - Brazzaville",
+    "code": "CG",
+    "phoneNumberPrefix": 242,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cg.l-GXfw9V.svg"
+  },
+  {
+    "name": "Congo - Kinshasa",
+    "code": "CD",
+    "phoneNumberPrefix": 243,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cd.1f9CfmwD.svg"
+  },
+  {
+    "name": "Cook Islands",
+    "code": "CK",
+    "phoneNumberPrefix": 682,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ck.BO0vbk-D.svg"
+  },
+  {
+    "name": "Costa Rica",
+    "code": "CR",
+    "phoneNumberPrefix": 506,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cr.CyQxjSrv.svg"
+  },
+  {
+    "name": "Croatia",
+    "code": "HR",
+    "phoneNumberPrefix": 385,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/hr.rCBb7Lb5.svg"
+  },
+  {
+    "name": "Curaçao",
+    "code": "CW",
+    "phoneNumberPrefix": 599,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cw.C52PGJ8e.svg"
+  },
+  {
+    "name": "Cyprus",
+    "code": "CY",
+    "phoneNumberPrefix": 357,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cy.B3SuHvcY.svg"
+  },
+  {
+    "name": "Czechia",
+    "code": "CZ",
+    "phoneNumberPrefix": 420,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/cz.CCEdEuzi.svg"
+  },
+  {
+    "name": "Côte d’Ivoire",
+    "code": "CI",
+    "phoneNumberPrefix": 225,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ci.DYzagfnR.svg"
+  },
+  {
+    "name": "Denmark",
+    "code": "DK",
+    "phoneNumberPrefix": 45,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/dk.CuxTe9Fb.svg"
+  },
+  {
+    "name": "Djibouti",
+    "code": "DJ",
+    "phoneNumberPrefix": 253,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/dj.CMkRaV9w.svg"
+  },
+  {
+    "name": "Dominica",
+    "code": "DM",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/dm.B4yD1K3J.svg"
+  },
+  {
+    "name": "Dominican Republic",
+    "code": "DO",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/do.BL75qdD4.svg"
+  },
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "phoneNumberPrefix": 593,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ec.HhpxILaX.svg"
+  },
+  {
+    "name": "Egypt",
+    "code": "EG",
+    "phoneNumberPrefix": 20,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/eg.CTMekvvU.svg"
+  },
+  {
+    "name": "El Salvador",
+    "code": "SV",
+    "phoneNumberPrefix": 503,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sv.IhUWuI9F.svg"
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "phoneNumberPrefix": 240,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gq.DsLt_giQ.svg"
+  },
+  {
+    "name": "Eritrea",
+    "code": "ER",
+    "phoneNumberPrefix": 291,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/er.GCOTTxa_.svg"
+  },
+  {
+    "name": "Estonia",
+    "code": "EE",
+    "phoneNumberPrefix": 372,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ee.CYfy3sgD.svg"
+  },
+  {
+    "name": "Eswatini",
+    "code": "SZ",
+    "phoneNumberPrefix": 268,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sz.D0BNmkP7.svg"
+  },
+  {
+    "name": "Ethiopia",
+    "code": "ET",
+    "phoneNumberPrefix": 251,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/et.KSh5Xvtt.svg"
+  },
+  {
+    "name": "Falkland Islands",
+    "code": "FK",
+    "phoneNumberPrefix": 500,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/fk.DBAk-mvD.svg"
+  },
+  {
+    "name": "Faroe Islands",
+    "code": "FO",
+    "phoneNumberPrefix": 298,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/fo.bj0gQ8-Y.svg"
+  },
+  {
+    "name": "Fiji",
+    "code": "FJ",
+    "phoneNumberPrefix": 679,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/fj.DSBdLQz2.svg"
+  },
+  {
+    "name": "Finland",
+    "code": "FI",
+    "phoneNumberPrefix": 358,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/fi.ql-MnHJY.svg"
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "phoneNumberPrefix": 33,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/fr.CvJDduyw.svg"
+  },
+  {
+    "name": "French Guiana",
+    "code": "GF",
+    "phoneNumberPrefix": 594,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gf.eepjRsnY.svg"
+  },
+  {
+    "name": "French Polynesia",
+    "code": "PF",
+    "phoneNumberPrefix": 689,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/pf.BPRqB575.svg"
+  },
+  {
+    "name": "French Southern Territories",
+    "code": "TF",
+    "phoneNumberPrefix": 262,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tf.DHFGsmLO.svg"
+  },
+  {
+    "name": "Gabon",
+    "code": "GA",
+    "phoneNumberPrefix": 241,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ga.BQqL3B9D.svg"
+  },
+  {
+    "name": "Gambia",
+    "code": "GM",
+    "phoneNumberPrefix": 220,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gm.DQKA5sIB.svg"
+  },
+  {
+    "name": "Georgia",
+    "code": "GE",
+    "phoneNumberPrefix": 995,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ge.p2goQqNK.svg"
+  },
+  {
+    "name": "Germany",
+    "code": "DE",
+    "phoneNumberPrefix": 49,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/de.QIkpdT_k.svg"
+  },
+  {
+    "name": "Ghana",
+    "code": "GH",
+    "phoneNumberPrefix": 233,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gh.u8q88LNE.svg"
+  },
+  {
+    "name": "Gibraltar",
+    "code": "GI",
+    "phoneNumberPrefix": 350,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gi.CDZUSDLV.svg"
+  },
+  {
+    "name": "Greece",
+    "code": "GR",
+    "phoneNumberPrefix": 30,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gr.BfBZdHv1.svg"
+  },
+  {
+    "name": "Greenland",
+    "code": "GL",
+    "phoneNumberPrefix": 299,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gl.VFSi-r-6.svg"
+  },
+  {
+    "name": "Grenada",
+    "code": "GD",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gd.Drjl2Pnw.svg"
+  },
+  {
+    "name": "Guadeloupe",
+    "code": "GP",
+    "phoneNumberPrefix": 590,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/fr.CvJDduyw.svg"
+  },
+  {
+    "name": "Guatemala",
+    "code": "GT",
+    "phoneNumberPrefix": 502,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gt.DwIh7i-a.svg"
+  },
+  {
+    "name": "Guernsey",
+    "code": "GG",
+    "phoneNumberPrefix": 44,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gg.CRObib7O.svg"
+  },
+  {
+    "name": "Guinea",
+    "code": "GN",
+    "phoneNumberPrefix": 224,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gn.B3qInJCu.svg"
+  },
+  {
+    "name": "Guinea-Bissau",
+    "code": "GW",
+    "phoneNumberPrefix": 245,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gw.B7fBUocT.svg"
+  },
+  {
+    "name": "Guyana",
+    "code": "GY",
+    "phoneNumberPrefix": 592,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gy.HDrnPHNI.svg"
+  },
+  {
+    "name": "Haiti",
+    "code": "HT",
+    "phoneNumberPrefix": 509,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ht.DnizvfU7.svg"
+  },
+  {
+    "name": "Honduras",
+    "code": "HN",
+    "phoneNumberPrefix": 504,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/hn.DZdvEQLG.svg"
+  },
+  {
+    "name": "Hong Kong SAR",
+    "code": "HK",
+    "phoneNumberPrefix": 852,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/hk.DQKxLB8p.svg"
+  },
+  {
+    "name": "Hungary",
+    "code": "HU",
+    "phoneNumberPrefix": 36,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/hu.DeLqwUS3.svg"
+  },
+  {
+    "name": "Iceland",
+    "code": "IS",
+    "phoneNumberPrefix": 354,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/is.DEWi2QFD.svg"
+  },
+  {
+    "name": "India",
+    "code": "IN",
+    "phoneNumberPrefix": 91,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/in.5QH_r_CK.svg"
+  },
+  {
+    "name": "Indonesia",
+    "code": "ID",
+    "phoneNumberPrefix": 62,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/id.BEoOSM93.svg"
+  },
+  {
+    "name": "Iraq",
+    "code": "IQ",
+    "phoneNumberPrefix": 964,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/iq.De6Ewn5c.svg"
+  },
+  {
+    "name": "Ireland",
+    "code": "IE",
+    "phoneNumberPrefix": 353,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ie.CL2bapxv.svg"
+  },
+  {
+    "name": "Isle of Man",
+    "code": "IM",
+    "phoneNumberPrefix": 44,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/im.pEB6D7i7.svg"
+  },
+  {
+    "name": "Israel",
+    "code": "IL",
+    "phoneNumberPrefix": 972,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/il.D-ILqwhl.svg"
+  },
+  {
+    "name": "Italy",
+    "code": "IT",
+    "phoneNumberPrefix": 39,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/it.19TCnoAF.svg"
+  },
+  {
+    "name": "Jamaica",
+    "code": "JM",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/jm.BcM9ggJJ.svg"
+  },
+  {
+    "name": "Japan",
+    "code": "JP",
+    "phoneNumberPrefix": 81,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/jp.CTWEPhDV.svg"
+  },
+  {
+    "name": "Jersey",
+    "code": "JE",
+    "phoneNumberPrefix": 44,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/je.BmOZ2BCg.svg"
+  },
+  {
+    "name": "Jordan",
+    "code": "JO",
+    "phoneNumberPrefix": 962,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/jo.0sMGChsB.svg"
+  },
+  {
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "phoneNumberPrefix": 7,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/kz.BT1OaOdL.svg"
+  },
+  {
+    "name": "Kenya",
+    "code": "KE",
+    "phoneNumberPrefix": 254,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ke.BmHkVwtN.svg"
+  },
+  {
+    "name": "Kiribati",
+    "code": "KI",
+    "phoneNumberPrefix": 686,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ki.BVyzQkTT.svg"
+  },
+  {
+    "name": "Kosovo",
+    "code": "XK",
+    "phoneNumberPrefix": 383,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/xk.ByMsBiQM.svg"
+  },
+  {
+    "name": "Kuwait",
+    "code": "KW",
+    "phoneNumberPrefix": 965,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/kw.BO1mln62.svg"
+  },
+  {
+    "name": "Kyrgyzstan",
+    "code": "KG",
+    "phoneNumberPrefix": 996,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/kg.CBH-JE5x.svg"
+  },
+  {
+    "name": "Laos",
+    "code": "LA",
+    "phoneNumberPrefix": 856,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/la.rnjudWq-.svg"
+  },
+  {
+    "name": "Latvia",
+    "code": "LV",
+    "phoneNumberPrefix": 371,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/lv.2Vvuo0hf.svg"
+  },
+  {
+    "name": "Lebanon",
+    "code": "LB",
+    "phoneNumberPrefix": 961,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/lb.CxZCHG_M.svg"
+  },
+  {
+    "name": "Lesotho",
+    "code": "LS",
+    "phoneNumberPrefix": 266,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ls.ElcnZbJL.svg"
+  },
+  {
+    "name": "Liberia",
+    "code": "LR",
+    "phoneNumberPrefix": 231,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/lr.BkESDYVM.svg"
+  },
+  {
+    "name": "Libya",
+    "code": "LY",
+    "phoneNumberPrefix": 218,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ly.AWgU6oFQ.svg"
+  },
+  {
+    "name": "Liechtenstein",
+    "code": "LI",
+    "phoneNumberPrefix": 423,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/li.DPgm9e3b.svg"
+  },
+  {
+    "name": "Lithuania",
+    "code": "LT",
+    "phoneNumberPrefix": 370,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/lt.B8g37z5V.svg"
+  },
+  {
+    "name": "Luxembourg",
+    "code": "LU",
+    "phoneNumberPrefix": 352,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/lu.CbU5hMlU.svg"
+  },
+  {
+    "name": "Macao SAR",
+    "code": "MO",
+    "phoneNumberPrefix": 853,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mo.BP56VUvA.svg"
+  },
+  {
+    "name": "Madagascar",
+    "code": "MG",
+    "phoneNumberPrefix": 261,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mg.CgNyvXjo.svg"
+  },
+  {
+    "name": "Malawi",
+    "code": "MW",
+    "phoneNumberPrefix": 265,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mw.vX5_t2b4.svg"
+  },
+  {
+    "name": "Malaysia",
+    "code": "MY",
+    "phoneNumberPrefix": 60,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/my.z_EhColi.svg"
+  },
+  {
+    "name": "Maldives",
+    "code": "MV",
+    "phoneNumberPrefix": 960,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mv.Dyyvar1Z.svg"
+  },
+  {
+    "name": "Mali",
+    "code": "ML",
+    "phoneNumberPrefix": 223,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ml.CRVxghb_.svg"
+  },
+  {
+    "name": "Malta",
+    "code": "MT",
+    "phoneNumberPrefix": 356,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mt.OqUS3o7f.svg"
+  },
+  {
+    "name": "Martinique",
+    "code": "MQ",
+    "phoneNumberPrefix": 596,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mq.C2VGCknW.svg"
+  },
+  {
+    "name": "Mauritania",
+    "code": "MR",
+    "phoneNumberPrefix": 222,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mr.CzLbEa4l.svg"
+  },
+  {
+    "name": "Mauritius",
+    "code": "MU",
+    "phoneNumberPrefix": 230,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mu.CPnlWc5P.svg"
+  },
+  {
+    "name": "Mayotte",
+    "code": "YT",
+    "phoneNumberPrefix": 262,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bl.CtQQKLp3.svg"
+  },
+  {
+    "name": "Mexico",
+    "code": "MX",
+    "phoneNumberPrefix": 52,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mx.Dwc05L0I.svg"
+  },
+  {
+    "name": "Moldova",
+    "code": "MD",
+    "phoneNumberPrefix": 373,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/md.gJu3QvjK.svg"
+  },
+  {
+    "name": "Monaco",
+    "code": "MC",
+    "phoneNumberPrefix": 377,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mc.HF-hWSt2.svg"
+  },
+  {
+    "name": "Mongolia",
+    "code": "MN",
+    "phoneNumberPrefix": 976,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mn.DXeA6lf_.svg"
+  },
+  {
+    "name": "Montenegro",
+    "code": "ME",
+    "phoneNumberPrefix": 382,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/me.9tBK-mKT.svg"
+  },
+  {
+    "name": "Montserrat",
+    "code": "MS",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ms.DQq3DqCJ.svg"
+  },
+  {
+    "name": "Morocco",
+    "code": "MA",
+    "phoneNumberPrefix": 212,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ma.C1dL7CTP.svg"
+  },
+  {
+    "name": "Mozambique",
+    "code": "MZ",
+    "phoneNumberPrefix": 258,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mz.4fXHR3rL.svg"
+  },
+  {
+    "name": "Myanmar (Burma)",
+    "code": "MM",
+    "phoneNumberPrefix": 95,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mm.Dx3NCp56.svg"
+  },
+  {
+    "name": "Namibia",
+    "code": "NA",
+    "phoneNumberPrefix": 264,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/na.CA_9RoAS.svg"
+  },
+  {
+    "name": "Nauru",
+    "code": "NR",
+    "phoneNumberPrefix": 674,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/nr.CHC0Wbp_.svg"
+  },
+  {
+    "name": "Nepal",
+    "code": "NP",
+    "phoneNumberPrefix": 977,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/np.DkF1GtKg.svg"
+  },
+  {
+    "name": "Netherlands",
+    "code": "NL",
+    "phoneNumberPrefix": 31,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/nl.BElUYFU_.svg"
+  },
+  {
+    "name": "New Caledonia",
+    "code": "NC",
+    "phoneNumberPrefix": 687,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bl.CtQQKLp3.svg"
+  },
+  {
+    "name": "New Zealand",
+    "code": "NZ",
+    "phoneNumberPrefix": 64,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/nz.CDyIOIlN.svg"
+  },
+  {
+    "name": "Nicaragua",
+    "code": "NI",
+    "phoneNumberPrefix": 505,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ni.DEDmWwU_.svg"
+  },
+  {
+    "name": "Niger",
+    "code": "NE",
+    "phoneNumberPrefix": 227,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ne.DFfTuq-3.svg"
+  },
+  {
+    "name": "Nigeria",
+    "code": "NG",
+    "phoneNumberPrefix": 234,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ng.CeFSaW46.svg"
+  },
+  {
+    "name": "Niue",
+    "code": "NU",
+    "phoneNumberPrefix": 683,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/nu.CE2Lz4I6.svg"
+  },
+  {
+    "name": "Norfolk Island",
+    "code": "NF",
+    "phoneNumberPrefix": 672,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/nf.D4FcPRNm.svg"
+  },
+  {
+    "name": "North Macedonia",
+    "code": "MK",
+    "phoneNumberPrefix": 389,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mk.C0VgXr7a.svg"
+  },
+  {
+    "name": "Norway",
+    "code": "NO",
+    "phoneNumberPrefix": 47,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/no.BeK60oyV.svg"
+  },
+  {
+    "name": "Oman",
+    "code": "OM",
+    "phoneNumberPrefix": 968,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/om.C4vZ-U9J.svg"
+  },
+  {
+    "name": "Pakistan",
+    "code": "PK",
+    "phoneNumberPrefix": 92,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/pk.C6GKfae7.svg"
+  },
+  {
+    "name": "Palestinian Territories",
+    "code": "PS",
+    "phoneNumberPrefix": 970,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ps.KD9ygNde.svg"
+  },
+  {
+    "name": "Panama",
+    "code": "PA",
+    "phoneNumberPrefix": 507,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/pa.DPtQXZxt.svg"
+  },
+  {
+    "name": "Papua New Guinea",
+    "code": "PG",
+    "phoneNumberPrefix": 675,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/pg.CJFLyGg7.svg"
+  },
+  {
+    "name": "Paraguay",
+    "code": "PY",
+    "phoneNumberPrefix": 595,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/py.BQeX8-Np.svg"
+  },
+  {
+    "name": "Peru",
+    "code": "PE",
+    "phoneNumberPrefix": 51,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/pe.piYHFy6V.svg"
+  },
+  {
+    "name": "Philippines",
+    "code": "PH",
+    "phoneNumberPrefix": 63,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ph.vgKMQDRt.svg"
+  },
+  {
+    "name": "Pitcairn Islands",
+    "code": "PN",
+    "phoneNumberPrefix": 64,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/pn.hZZabwZG.svg"
+  },
+  {
+    "name": "Poland",
+    "code": "PL",
+    "phoneNumberPrefix": 48,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/pl.BSwUsS6T.svg"
+  },
+  {
+    "name": "Portugal",
+    "code": "PT",
+    "phoneNumberPrefix": 351,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/pt.CauU9mq_.svg"
+  },
+  {
+    "name": "Qatar",
+    "code": "QA",
+    "phoneNumberPrefix": 974,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/qa.Cqom2Li1.svg"
+  },
+  {
+    "name": "Réunion",
+    "code": "RE",
+    "phoneNumberPrefix": 262,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bl.CtQQKLp3.svg"
+  },
+  {
+    "name": "Romania",
+    "code": "RO",
+    "phoneNumberPrefix": 40,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ro.C4aDxciV.svg"
+  },
+  {
+    "name": "Russia",
+    "code": "RU",
+    "phoneNumberPrefix": 7,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ru.DR6aj0J9.svg"
+  },
+  {
+    "name": "Rwanda",
+    "code": "RW",
+    "phoneNumberPrefix": 250,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/rw.BDqSeuFo.svg"
+  },
+  {
+    "name": "Samoa",
+    "code": "WS",
+    "phoneNumberPrefix": 685,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ws.D-fWLSWy.svg"
+  },
+  {
+    "name": "San Marino",
+    "code": "SM",
+    "phoneNumberPrefix": 378,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sm.CZ7yvRSM.svg"
+  },
+  {
+    "name": "São Tomé & Príncipe",
+    "code": "ST",
+    "phoneNumberPrefix": 239,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/st.BBCn7U-7.svg"
+  },
+  {
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "phoneNumberPrefix": 966,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sa.BffmUi_6.svg"
+  },
+  {
+    "name": "Senegal",
+    "code": "SN",
+    "phoneNumberPrefix": 221,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sn.ZnaHG9st.svg"
+  },
+  {
+    "name": "Serbia",
+    "code": "RS",
+    "phoneNumberPrefix": 381,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/rs.BfZ0DQOM.svg"
+  },
+  {
+    "name": "Seychelles",
+    "code": "SC",
+    "phoneNumberPrefix": 248,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sc.SwHozwwg.svg"
+  },
+  {
+    "name": "Sierra Leone",
+    "code": "SL",
+    "phoneNumberPrefix": 232,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sl.DFiNrLno.svg"
+  },
+  {
+    "name": "Singapore",
+    "code": "SG",
+    "phoneNumberPrefix": 65,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sg.BiKhZrv6.svg"
+  },
+  {
+    "name": "Sint Maarten",
+    "code": "SX",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sx.Dq7rz0Sy.svg"
+  },
+  {
+    "name": "Slovakia",
+    "code": "SK",
+    "phoneNumberPrefix": 421,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sk.CklkPFGI.svg"
+  },
+  {
+    "name": "Slovenia",
+    "code": "SI",
+    "phoneNumberPrefix": 386,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/si.B7YmLrpf.svg"
+  },
+  {
+    "name": "Solomon Islands",
+    "code": "SB",
+    "phoneNumberPrefix": 677,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sb.CVVrg21n.svg"
+  },
+  {
+    "name": "Somalia",
+    "code": "SO",
+    "phoneNumberPrefix": 252,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/so.DAFxz84h.svg"
+  },
+  {
+    "name": "South Africa",
+    "code": "ZA",
+    "phoneNumberPrefix": 27,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/za.LaAgL4iz.svg"
+  },
+  {
+    "name": "South Georgia & South Sandwich Islands",
+    "code": "GS",
+    "phoneNumberPrefix": 500,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gs.C1usbzhj.svg"
+  },
+  {
+    "name": "South Korea",
+    "code": "KR",
+    "phoneNumberPrefix": 82,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/kr.Dnmw_cNM.svg"
+  },
+  {
+    "name": "South Sudan",
+    "code": "SS",
+    "phoneNumberPrefix": 211,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ss.BNcHmljM.svg"
+  },
+  {
+    "name": "Spain",
+    "code": "ES",
+    "phoneNumberPrefix": 34,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/es.BoXRvdlC.svg"
+  },
+  {
+    "name": "Sri Lanka",
+    "code": "LK",
+    "phoneNumberPrefix": 94,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/lk.B4kmUCxl.svg"
+  },
+  {
+    "name": "St. Barthélemy",
+    "code": "BL",
+    "phoneNumberPrefix": 590,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bl.CtQQKLp3.svg"
+  },
+  {
+    "name": "St. Helena",
+    "code": "SH",
+    "phoneNumberPrefix": 290,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sh.CFG-OHSs.svg"
+  },
+  {
+    "name": "St. Kitts & Nevis",
+    "code": "KN",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/kn.BnF1Ebkt.svg"
+  },
+  {
+    "name": "St. Lucia",
+    "code": "LC",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/lc.C6-ufBBE.svg"
+  },
+  {
+    "name": "St. Martin",
+    "code": "MF",
+    "phoneNumberPrefix": 590,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/fr.CvJDduyw.svg"
+  },
+  {
+    "name": "St. Pierre & Miquelon",
+    "code": "PM",
+    "phoneNumberPrefix": 508,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bl.CtQQKLp3.svg"
+  },
+  {
+    "name": "St. Vincent & Grenadines",
+    "code": "VC",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/vc.Df4zUfLT.svg"
+  },
+  {
+    "name": "Sudan",
+    "code": "SD",
+    "phoneNumberPrefix": 249,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sd.D0bnztWh.svg"
+  },
+  {
+    "name": "Suriname",
+    "code": "SR",
+    "phoneNumberPrefix": 597,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sr.Bumzb0En.svg"
+  },
+  {
+    "name": "Svalbard & Jan Mayen",
+    "code": "SJ",
+    "phoneNumberPrefix": 47,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/sj.DSDNubTc.svg"
+  },
+  {
+    "name": "Sweden",
+    "code": "SE",
+    "phoneNumberPrefix": 46,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/se.DmscRB-F.svg"
+  },
+  {
+    "name": "Switzerland",
+    "code": "CH",
+    "phoneNumberPrefix": 41,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ch.BZzdDlUs.svg"
+  },
+  {
+    "name": "Taiwan",
+    "code": "TW",
+    "phoneNumberPrefix": 886,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tw.DXv_yiAE.svg"
+  },
+  {
+    "name": "Tajikistan",
+    "code": "TJ",
+    "phoneNumberPrefix": 992,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tj.CVAysDii.svg"
+  },
+  {
+    "name": "Tanzania",
+    "code": "TZ",
+    "phoneNumberPrefix": 255,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tz.-TDymEHv.svg"
+  },
+  {
+    "name": "Thailand",
+    "code": "TH",
+    "phoneNumberPrefix": 66,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/th.QrJN3bvw.svg"
+  },
+  {
+    "name": "Timor-Leste",
+    "code": "TL",
+    "phoneNumberPrefix": 670,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tl.CcIgU-3v.svg"
+  },
+  {
+    "name": "Togo",
+    "code": "TG",
+    "phoneNumberPrefix": 228,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tg.BaW4W_Og.svg"
+  },
+  {
+    "name": "Tokelau",
+    "code": "TK",
+    "phoneNumberPrefix": 690,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tk.CyLOtC5s.svg"
+  },
+  {
+    "name": "Tonga",
+    "code": "TO",
+    "phoneNumberPrefix": 676,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/to.BzIVEtES.svg"
+  },
+  {
+    "name": "Trinidad & Tobago",
+    "code": "TT",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tt.B9Hbp_cZ.svg"
+  },
+  {
+    "name": "Tristan da Cunha",
+    "code": "TA",
+    "phoneNumberPrefix": 2908,
+    "image": ""
+  },
+  {
+    "name": "Tunisia",
+    "code": "TN",
+    "phoneNumberPrefix": 216,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tn.Cfz5rGp-.svg"
+  },
+  {
+    "name": "Türkiye",
+    "code": "TR",
+    "phoneNumberPrefix": 90,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tr.4MQg98Dq.svg"
+  },
+  {
+    "name": "Turkmenistan",
+    "code": "TM",
+    "phoneNumberPrefix": 993,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tm.Qd9z-Egt.svg"
+  },
+  {
+    "name": "Turks & Caicos Islands",
+    "code": "TC",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tc.DfShzjGj.svg"
+  },
+  {
+    "name": "Tuvalu",
+    "code": "TV",
+    "phoneNumberPrefix": 688,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/tv.Bz0AzNGq.svg"
+  },
+  {
+    "name": "U.S. Outlying Islands",
+    "code": "UM",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/um.YZEEIF9X.svg"
+  },
+  {
+    "name": "Uganda",
+    "code": "UG",
+    "phoneNumberPrefix": 256,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ug.LmvsvPuD.svg"
+  },
+  {
+    "name": "Ukraine",
+    "code": "UA",
+    "phoneNumberPrefix": 380,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ua.DYYFmtT2.svg"
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "phoneNumberPrefix": 971,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ae.CSwq5reQ.svg"
+  },
+  {
+    "name": "United Kingdom",
+    "code": "GB",
+    "phoneNumberPrefix": 44,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/gb.CbvrkR0j.svg"
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "phoneNumberPrefix": 1,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/um.YZEEIF9X.svg"
+  },
+  {
+    "name": "Uruguay",
+    "code": "UY",
+    "phoneNumberPrefix": 598,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/uy.JRXPAtnE.svg"
+  },
+  {
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "phoneNumberPrefix": 998,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/uz.TWV0iXMi.svg"
+  },
+  {
+    "name": "Vanuatu",
+    "code": "VU",
+    "phoneNumberPrefix": 678,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/vu.NsnrZXG3.svg"
+  },
+  {
+    "name": "Vatican City",
+    "code": "VA",
+    "phoneNumberPrefix": 39,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/va.HKheKEUQ.svg"
+  },
+  {
+    "name": "Venezuela",
+    "code": "VE",
+    "phoneNumberPrefix": 58,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ve.Bv1d4YAd.svg"
+  },
+  {
+    "name": "Vietnam",
+    "code": "VN",
+    "phoneNumberPrefix": 84,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/vn.DvVe8i2O.svg"
+  },
+  {
+    "name": "Wallis & Futuna",
+    "code": "WF",
+    "phoneNumberPrefix": 681,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/fr.CvJDduyw.svg"
+  },
+  {
+    "name": "Western Sahara",
+    "code": "EH",
+    "phoneNumberPrefix": 212,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/eh.CgCBjspv.svg"
+  },
+  {
+    "name": "Yemen",
+    "code": "YE",
+    "phoneNumberPrefix": 967,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/ye.Banj2_lW.svg"
+  },
+  {
+    "name": "Zambia",
+    "code": "ZM",
+    "phoneNumberPrefix": 260,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/zm.BU-XLGu_.svg"
+  },
+  {
+    "name": "Zimbabwe",
+    "code": "ZW",
+    "phoneNumberPrefix": 263,
+    "image": "https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/zw.DTkOjUDX.svg"
+  }
+]

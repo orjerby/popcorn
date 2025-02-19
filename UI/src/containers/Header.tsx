@@ -34,7 +34,7 @@ function Header({ scrolled }: HeaderProps) {
           </p>
         </div>
         <div
-          className={`grid grid-cols-3 transition-all duration-300 ${scrolled ? 'min-h-80' : 'min-h-108'}`}
+          className={`grid grid-cols-3 transition-all ${scrolled ? 'min-h-80' : 'min-h-108'}`}
         >
           <div className="flex items-center justify-center bg-[#f6f3e2] text-center text-[26px] text-black uppercase">
             <Link to="/collections/all-products" className="pl-16">
@@ -47,14 +47,13 @@ function Header({ scrolled }: HeaderProps) {
           </div>
           <div className="flex items-center justify-center bg-[#f6f3e2]">
             <div
-              className={`absolute flex items-center justify-center rounded-full border-[#f6f3e2] bg-[#f6f3e2] ${scrolled ? 'mt-0' : 'mt-55 max-h-156 max-w-156 border-8'}`}
+              className={`absolute flex items-center justify-center rounded-full border-[#f6f3e2] bg-[#f6f3e2] transition-all ${scrolled ? 'mt-0' : 'mt-50 max-h-156 max-w-156 border-8'}`}
             >
               <Link to="/">
                 <img
-                  className=""
+                  className={`${scrolled ? 'w-80' : 'w-140'} transition-all`}
                   src="https://www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945"
                   alt=""
-                  width={scrolled ? 80 : 140}
                 />
               </Link>
             </div>

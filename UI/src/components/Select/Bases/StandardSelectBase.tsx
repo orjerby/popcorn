@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import {
   Select as AriaSelect,
-  SelectProps as AriaSelectProps,
   Button,
   composeRenderProps,
   FieldError,
@@ -12,27 +11,11 @@ import {
   ListBoxItemProps,
   Popover,
   SelectValue,
-  ValidationResult,
 } from 'react-aria-components'
-import { RefCallBack } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
-import { SelectItem } from '../types'
+import { BaseSelectBaseProps, SelectItem } from '../types'
 
-export type StandardSelectBaseProps<T extends SelectItem> = Omit<
-  AriaSelectProps<T>,
-  'children'
-> & {
-  label: string
-  items: Iterable<T>
-  children: React.ReactNode | ((item: T) => React.ReactNode)
-  inputRef?: RefCallBack
-  isDirty?: boolean
-  isTouched?: boolean
-  errorMessage?: string | ((validation: ValidationResult) => string)
-  onSelectionChange?: (key: Key) => void
-}
-
-export function StandardSelectBase<T extends SelectItem>({
+export function StandardSelectBase({
   inputRef,
   label,
   items,
@@ -43,7 +26,7 @@ export function StandardSelectBase<T extends SelectItem>({
   onSelectionChange,
   defaultSelectedKey,
   ...props
-}: StandardSelectBaseProps<T>) {
+}: BaseSelectBaseProps<SelectItem>) {
   const [value, setValue] = useState<Key>(defaultSelectedKey ?? '')
 
   return (

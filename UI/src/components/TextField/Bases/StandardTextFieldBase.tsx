@@ -1,27 +1,14 @@
 import { useState } from 'react'
 import {
   TextField as AriaTextField,
-  TextFieldProps as AriaTextFieldProps,
   composeRenderProps,
   FieldError,
   Input,
   Label,
-  ValidationResult,
 } from 'react-aria-components'
-import { RefCallBack } from 'react-hook-form'
 import { PatternFormat } from 'react-number-format'
 import { twMerge } from 'tailwind-merge'
-
-export type StandardTextFieldBaseProps = AriaTextFieldProps & {
-  label: string
-  placeholder: string
-  inputRef?: RefCallBack
-  isDirty?: boolean
-  isTouched?: boolean
-  errorMessage?: string | ((validation: ValidationResult) => string)
-  format?: string | ((value: string) => string)
-  onChange?: (value: string) => void
-}
+import { BaseTextFieldProps } from '../types'
 
 export function StandardTextFieldBase({
   inputRef,
@@ -33,7 +20,7 @@ export function StandardTextFieldBase({
   format,
   onChange,
   ...props
-}: StandardTextFieldBaseProps) {
+}: BaseTextFieldProps) {
   const [value, setValue] = useState('')
 
   const commonInputProps = {

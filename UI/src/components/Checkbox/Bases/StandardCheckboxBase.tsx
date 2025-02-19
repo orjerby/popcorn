@@ -1,18 +1,11 @@
-import {
-  Checkbox as AriaCheckbox,
-  CheckboxProps as AriaCheckboxProps,
-} from 'react-aria-components'
-
-export type StandardCheckboxBaseProps = AriaCheckboxProps & {
-  isDirty?: boolean
-  isTouched?: boolean
-}
+import { Checkbox as AriaCheckbox } from 'react-aria-components'
+import { BaseCheckboxBaseProps } from '../types'
 
 export function StandardCheckboxBase({
   isDirty = false,
   isTouched = false,
   ...props
-}: StandardCheckboxBaseProps) {
+}: BaseCheckboxBaseProps) {
   return (
     <AriaCheckbox
       {...props}
