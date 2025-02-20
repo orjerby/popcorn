@@ -126,28 +126,32 @@ function Header({ scrolled }: HeaderProps) {
                   <ModalOverlay className="group">
                     <Modal className="fixed top-116 bottom-0 left-0 z-50 w-full overflow-y-scroll bg-white transition-transform duration-500 group-data-entering:-translate-x-full group-data-exiting:-translate-x-full">
                       <Dialog className="h-full px-16 py-24">
-                        {/* <Heading slot="title">Sign up</Heading> */}
+                        {({ close }) => (
+                          <>
+                            <Link
+                              to={'/collections/all-products'}
+                              onClick={close}
+                              className="text-18 mb-12 self-start text-[#BD8447] uppercase underline"
+                            >
+                              shop all heirloom snacks
+                            </Link>
 
-                        <Link
-                          to={'/collections/all-products'}
-                          className="text-18 mb-12 self-start text-[#BD8447] uppercase underline"
-                        >
-                          shop all heirloom snacks
-                        </Link>
-
-                        <ul className="mt-12 grid grid-cols-3 gap-8">
-                          {filterLinks.map((link) => (
-                            <li className="flex last:col-span-3 nth-last-2:col-span-3">
-                              <Link
-                                aria-label={link.label}
-                                to={link.url}
-                                className="w-full"
-                              >
-                                <img src={link.imgUrl} className="w-full" />
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+                            <ul className="mt-12 grid grid-cols-3 gap-8">
+                              {filterLinks.map((link) => (
+                                <li className="flex last:col-span-3 nth-last-2:col-span-3">
+                                  <Link
+                                    aria-label={link.label}
+                                    to={link.url}
+                                    onClick={close}
+                                    className="w-full"
+                                  >
+                                    <img src={link.imgUrl} className="w-full" />
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
                       </Dialog>
                     </Modal>
                   </ModalOverlay>
