@@ -88,8 +88,6 @@ export default function CheckoutPage() {
   const onSubmit = (data: MyFormData, event?: BaseSyntheticEvent) => {
     const formData = new FormData(event?.target)
 
-    console.log(data)
-
     startTransition(() => {
       submitAction(formData)
     })

@@ -30,7 +30,7 @@ export default function BundleProductsRow({
           {products.map((product, index) => {
             if (index === 3 && product.id === '') {
               return (
-                <div className="min-h-68 w-full max-w-68">
+                <div key={index} className="min-h-68 w-full max-w-68">
                   <div
                     className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#C1803E]"
                     key={index}
@@ -44,7 +44,7 @@ export default function BundleProductsRow({
               )
             } else if (product.id === '') {
               return (
-                <div className="min-h-68 w-full max-w-68">
+                <div key={index} className="min-h-68 w-full max-w-68">
                   <div
                     className="rounded-8 relative min-h-68 w-full max-w-68 border-2 border-dashed border-[#CBC1B7]"
                     key={index}
@@ -58,7 +58,7 @@ export default function BundleProductsRow({
               )
             } else {
               return (
-                <div className="min-h-68 w-full max-w-68">
+                <div key={index} className="min-h-68 w-full max-w-68">
                   <div
                     key={index}
                     style={{

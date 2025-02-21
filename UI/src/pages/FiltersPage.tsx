@@ -1,7 +1,14 @@
 import { useState } from 'react'
-import { Checkbox, CheckboxGroup, Label } from 'react-aria-components'
+import {
+  Button,
+  Checkbox,
+  CheckboxGroup,
+  DialogTrigger,
+  Label,
+} from 'react-aria-components'
 import { useSearchParams } from 'react-router'
 import { SnackFlavor, SnackType } from '../../../API/models/product'
+import { Dialog } from '../components/Dialog/Dialog'
 import Product from '../containers/Product'
 import { useAppContext } from '../context/AppContext'
 import {
@@ -136,6 +143,60 @@ export default function FiltersPage() {
     )
   }
 
+  const filterCheckboxes = (
+    <>
+      <CheckboxGroup value={typesParam}>
+        <Label className="text-24 mb-16 block font-normal text-[#C1803E] uppercase">
+          Filter by snack type
+        </Label>
+
+        {productTypes.map((type, index) => (
+          <Checkbox
+            value={type}
+            key={type}
+            isDisabled={disabledTypesByIndex[index]}
+            onChange={(event) => onTypeChange(event, type)}
+            className="group flex items-center gap-8 text-black data-disabled:opacity-60"
+          >
+            <div aria-hidden="true">
+              <div
+                className={
+                  'rounded-4 size-16 border-2 border-[#C1803E] group-data-hovered:cursor-pointer group-data-selected:bg-[#C1803E]'
+                }
+              ></div>
+            </div>
+            {type}
+          </Checkbox>
+        ))}
+      </CheckboxGroup>
+
+      <CheckboxGroup value={flavorsParam} className="mt-16">
+        <Label className="text-24 mb-16 block font-normal text-[#C1803E] uppercase">
+          Filter by flavors
+        </Label>
+
+        {productFlavors.map((flavor, index) => (
+          <Checkbox
+            value={flavor}
+            key={flavor}
+            isDisabled={disabledFlavorsByIndex[index]}
+            onChange={(event) => onFlavorChange(event, flavor)}
+            className="group flex items-center gap-8 text-black data-disabled:opacity-60"
+          >
+            <div aria-hidden="true">
+              <div
+                className={
+                  'rounded-4 size-16 border-2 border-[#C1803E] group-data-hovered:cursor-pointer group-data-selected:bg-[#C1803E]'
+                }
+              ></div>
+            </div>
+            {flavor}
+          </Checkbox>
+        ))}
+      </CheckboxGroup>
+    </>
+  )
+
   return (
     <>
       <div className="flex items-center justify-center bg-[#24dee4] bg-[url(https://www.pipsnacks.com/cdn/shop/files/plp-chips.webp?v=1727948416)] bg-cover bg-right">
@@ -144,76 +205,52 @@ export default function FiltersPage() {
         </h1>
       </div>
 
-      <div className="flex justify-center gap-16 px-[16px] py-[24px]">
-        <div className="rounded-6 sticky top-144 hidden h-full w-full max-w-250 border border-[#CBC1B7] bg-white p-[16px] lg:block">
-          <CheckboxGroup value={typesParam}>
-            <Label className="text-24 mb-16 block font-normal text-[#C1803E] uppercase">
-              Filter by snack type
-            </Label>
+      <div className="px-[16px] py-[24px]">
+        <div className="mb-16 lg:hidden">
+          <DialogTrigger>
+            <Button
+              aria-label="Open filter"
+              className="text-16 cursor-pointer font-normal text-black"
+            >
+              FILTER
+            </Button>
 
-            {productTypes.map((type, index) => (
-              <Checkbox
-                value={type}
-                key={type}
-                isDisabled={disabledTypesByIndex[index]}
-                onChange={(event) => onTypeChange(event, type)}
-                className="group flex items-center gap-8 text-black data-disabled:opacity-60"
+            <Dialog aboveHeader>
+              <Button
+                slot="close"
+                className="text-20 w-full cursor-pointer border-b border-zinc-400 py-16 text-left font-normal text-black"
               >
-                <div aria-hidden="true">
-                  <div
-                    className={
-                      'rounded-4 size-16 border-2 border-[#C1803E] group-data-hovered:cursor-pointer group-data-selected:bg-[#C1803E]'
-                    }
-                  ></div>
-                </div>
-                {type}
-              </Checkbox>
-            ))}
-          </CheckboxGroup>
+                FILTER
+              </Button>
 
-          <CheckboxGroup value={flavorsParam} className="mt-16">
-            <Label className="text-24 mb-16 block font-normal text-[#C1803E] uppercase">
-              Filter by flavors
-            </Label>
-
-            {productFlavors.map((flavor, index) => (
-              <Checkbox
-                value={flavor}
-                key={flavor}
-                isDisabled={disabledFlavorsByIndex[index]}
-                onChange={(event) => onFlavorChange(event, flavor)}
-                className="group flex items-center gap-8 text-black data-disabled:opacity-60"
-              >
-                <div aria-hidden="true">
-                  <div
-                    className={
-                      'rounded-4 size-16 border-2 border-[#C1803E] group-data-hovered:cursor-pointer group-data-selected:bg-[#C1803E]'
-                    }
-                  ></div>
-                </div>
-                {flavor}
-              </Checkbox>
-            ))}
-          </CheckboxGroup>
+              <div className="mt-24">{filterCheckboxes}</div>
+            </Dialog>
+          </DialogTrigger>
         </div>
 
-        {filterdProducts.length > 0 ? (
-          <div className="grid w-full gap-y-80 border-t border-t-[#CBC1B7] pt-72 lg:w-auto lg:grid-cols-[repeat(3,minmax(0,274px))] lg:gap-x-16">
-            {filterdProducts.map((item) => (
-              <Product
-                key={item.id}
-                id={item.id}
-                image={item.images[0]}
-                title={item.title}
-                count={item.count}
-                price={item.price}
-                reviewsCount={item.reviews.length}
-              />
-            ))}
+        <div className="flex justify-center gap-16">
+          <div className="rounded-6 sticky top-144 hidden h-full w-full max-w-250 border border-[#CBC1B7] bg-white p-[16px] lg:block">
+            {filterCheckboxes}
           </div>
-        ) : (
-          <div>no items!</div>
-        )}
+
+          {filterdProducts.length > 0 ? (
+            <div className="grid w-full gap-y-80 border-t border-t-[#CBC1B7] pt-72 lg:w-auto lg:grid-cols-[repeat(3,minmax(0,274px))] lg:gap-x-16">
+              {filterdProducts.map((item) => (
+                <Product
+                  key={item.id}
+                  id={item.id}
+                  image={item.images[0]}
+                  title={item.title}
+                  count={item.count}
+                  price={item.price}
+                  reviewsCount={item.reviews.length}
+                />
+              ))}
+            </div>
+          ) : (
+            <div>no items!</div>
+          )}
+        </div>
       </div>
     </>
   )

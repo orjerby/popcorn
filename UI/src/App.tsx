@@ -26,8 +26,6 @@ export default function App() {
   })
 
   const handleScroll = () => {
-    // console.log(window.scrollY)
-
     if (window.scrollY > 120) {
       setScrolled(true)
     } else {

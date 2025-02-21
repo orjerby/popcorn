@@ -91,9 +91,6 @@ export default function BundlePage() {
   }
 
   const addToBundle = (product: Product) => {
-    console.log('num ', num)
-    console.log('barwidth ', barWidth)
-
     const bar = document.getElementById('my-bar')
     const barwidth = bar?.offsetWidth
 
@@ -104,7 +101,6 @@ export default function BundlePage() {
     }
     if (barwidth)
       if (count <= 7) {
-        console.log('count ', count)
         setnum(num + barwidth / 8)
       }
 
@@ -222,7 +218,6 @@ export default function BundlePage() {
                       .map((product) => {
                         const sizeSplited = product.size.split('-')
                         const sizeSingle = sizeSplited[1].split(' ')
-                        console.log(sizeSingle[0])
 
                         return (
                           <div

@@ -1,14 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   Button,
-  Dialog,
   DialogTrigger,
   Disclosure,
   DisclosurePanel,
-  Modal,
-  ModalOverlay,
 } from 'react-aria-components'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
+import { Dialog } from '../components/Dialog/Dialog'
 import { useAppContext } from '../context/AppContext'
 import { selectCartTotalQuantity } from '../context/selectors'
 import Cart from './Cart'
@@ -79,6 +77,17 @@ function Header({ scrolled }: HeaderProps) {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [searchInput, setSearchInput] = useState('')
   const navigate = useNavigate()
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false)
+  const location = useLocation()
+  const disclosureBtnRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    disclosureBtnRef.current?.focus()
+    setIsExpanded(false)
+
+    setIsNavbarOpen(false)
+  }, [location, disclosureBtnRef])
 
   const cartTotalQuantity = selectCartTotalQuantity(state)
 
@@ -102,8 +111,14 @@ function Header({ scrolled }: HeaderProps) {
           >
             <div className="flex flex-col justify-center px-12 text-black lg:hidden">
               <span className="justify-start">
-                <DialogTrigger>
-                  <Button aria-label="Open navigation" className="group">
+                <DialogTrigger
+                  onOpenChange={setIsNavbarOpen}
+                  isOpen={isNavbarOpen}
+                >
+                  <Button
+                    aria-label="Open navigation"
+                    className="group cursor-pointer"
+                  >
                     <svg
                       className="w-28 fill-current text-[#953300]"
                       viewBox="0 0 29 28"
@@ -123,38 +138,31 @@ function Header({ scrolled }: HeaderProps) {
                       ></path>
                     </svg>
                   </Button>
-                  <ModalOverlay className="group">
-                    <Modal className="fixed top-116 bottom-0 left-0 z-50 w-full overflow-y-scroll bg-white transition-transform duration-500 group-data-entering:-translate-x-full group-data-exiting:-translate-x-full">
-                      <Dialog className="h-full px-16 py-24">
-                        {({ close }) => (
-                          <>
-                            <Link
-                              to={'/collections/all-products'}
-                              onClick={close}
-                              className="text-18 mb-12 self-start text-[#BD8447] uppercase underline"
-                            >
-                              shop all heirloom snacks
-                            </Link>
+                  <Dialog>
+                    <Link
+                      to={'/collections/all-products'}
+                      className="text-18 mb-12 self-start text-[#BD8447] uppercase underline"
+                    >
+                      shop all heirloom snacks
+                    </Link>
 
-                            <ul className="mt-12 grid grid-cols-3 gap-8">
-                              {filterLinks.map((link) => (
-                                <li className="flex last:col-span-3 nth-last-2:col-span-3">
-                                  <Link
-                                    aria-label={link.label}
-                                    to={link.url}
-                                    onClick={close}
-                                    className="w-full"
-                                  >
-                                    <img src={link.imgUrl} className="w-full" />
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </>
-                        )}
-                      </Dialog>
-                    </Modal>
-                  </ModalOverlay>
+                    <ul className="mt-12 grid grid-cols-3 gap-8">
+                      {filterLinks.map((link, index) => (
+                        <li
+                          key={index}
+                          className="flex last:col-span-3 nth-last-2:col-span-3"
+                        >
+                          <Link
+                            aria-label={link.label}
+                            to={link.url}
+                            className="w-full"
+                          >
+                            <img src={link.imgUrl} className="w-full" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </Dialog>
                 </DialogTrigger>
               </span>
             </div>
@@ -162,10 +170,14 @@ function Header({ scrolled }: HeaderProps) {
               {/* <Link to="/collections/all-products" className="px-16">
                   shop
                 </Link> */}
-              <Disclosure>
+              <Disclosure
+                isExpanded={isExpanded}
+                onExpandedChange={setIsExpanded}
+              >
                 <Button
-                  className={'cursor-pointer px-16 uppercase'}
+                  ref={disclosureBtnRef}
                   slot="trigger"
+                  className={'cursor-pointer px-16 uppercase'}
                 >
                   shop
                 </Button>
@@ -183,8 +195,8 @@ function Header({ scrolled }: HeaderProps) {
                       {/* אופציה לרפקטור בהמשך להשתמש במסד נתונים ולתת לכל סוג תמונה */}
 
                       <ul className="flex items-center gap-16">
-                        {filterLinks.map((link) => (
-                          <li>
+                        {filterLinks.map((link, index) => (
+                          <li key={index}>
                             <Link aria-label={link.label} to={link.url}>
                               <img src={link.imgUrl} />
                             </Link>
@@ -238,13 +250,13 @@ function Header({ scrolled }: HeaderProps) {
                       cy="11.5744"
                       r="9.39077"
                       stroke="currentColor"
-                      stroke-width="2.96551"
+                      strokeWidth="2.96551"
                     ></circle>
                     <path
                       d="M17.3057 18.4939L26.2022 26.8962"
                       stroke="currentColor"
-                      stroke-width="2.96551"
-                      stroke-linecap="round"
+                      strokeWidth="2.96551"
+                      strokeLinecap="round"
                     ></path>
                   </svg>{' '}
                 </button>
@@ -261,13 +273,13 @@ function Header({ scrolled }: HeaderProps) {
                     cy="11.5744"
                     r="9.39077"
                     stroke="currentColor"
-                    stroke-width="2.96551"
+                    strokeWidth="2.96551"
                   ></circle>
                   <path
                     d="M17.3057 18.4939L26.2022 26.8962"
                     stroke="currentColor"
-                    stroke-width="2.96551"
-                    stroke-linecap="round"
+                    strokeWidth="2.96551"
+                    strokeLinecap="round"
                   ></path>
                 </svg>{' '}
               </button>
@@ -286,7 +298,7 @@ function Header({ scrolled }: HeaderProps) {
                   >
                     <path
                       d="M13.7075 9.16067H9.09144C7.73619 9.16067 6.55337 10.0794 6.2181 11.3926L1.80139 28.6913C1.32261 30.5666 2.73933 32.3905 4.67472 32.3905H30.2321C32.1429 32.3905 33.555 30.6097 33.1195 28.7492L29.0709 11.4504C28.757 10.1092 27.5609 9.16067 26.1834 9.16067H22.604M13.7075 9.16067V5.20666C13.7075 3.56885 15.0352 2.24115 16.673 2.24115H19.6385C21.2763 2.24115 22.604 3.56885 22.604 5.20666V9.16067M13.7075 9.16067H22.604"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                   </svg>
                   <span className="absolute -top-13 -right-13 flex h-28 w-24 items-center justify-center rounded-full bg-[#e5d1b3] text-sm text-white">
