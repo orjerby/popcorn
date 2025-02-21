@@ -5,8 +5,13 @@ import {
   CheckboxGroup,
   DialogTrigger,
   Label,
+  ListBox,
+  ListBoxItem,
+  Popover,
+  Select,
+  SelectValue,
 } from 'react-aria-components'
-import { useSearchParams } from 'react-router'
+import { Link, useSearchParams } from 'react-router'
 import { SnackFlavor, SnackType } from '../../../API/models/product'
 import { Dialog } from '../components/Dialog/Dialog'
 import Product from '../containers/Product'
@@ -232,24 +237,82 @@ export default function FiltersPage() {
           <div className="rounded-6 sticky top-144 hidden h-full w-full max-w-250 border border-[#CBC1B7] bg-white p-[16px] lg:block">
             {filterCheckboxes}
           </div>
-
-          {filterdProducts.length > 0 ? (
-            <div className="grid w-full gap-y-80 border-t border-t-[#CBC1B7] pt-72 lg:w-auto lg:grid-cols-[repeat(3,minmax(0,274px))] lg:gap-x-16">
-              {filterdProducts.map((item) => (
-                <Product
-                  key={item.id}
-                  id={item.id}
-                  image={item.images[0]}
-                  title={item.title}
-                  count={item.count}
-                  price={item.price}
-                  reviewsCount={item.reviews.length}
-                />
-              ))}
+          <div className="flex flex-col">
+            <div className="flex justify-between">
+              <div className="flex items-center gap-12">
+                <span className="text-[#414141]">
+                  {filterdProducts.length} PRODUCTS
+                </span>
+                <Link
+                  aria-label="clear filters"
+                  to={''}
+                  className={`${filterdProducts.length === 13 ? 'hidden' : 'visible'} rounded-6 flex items-center gap-4 border bg-white p-10 px-16 py-6 text-[#C1803E]`}
+                >
+                  <span>CLEAR FILTERS</span>
+                  <span>
+                    <svg
+                      className="w-16"
+                      data-slot="icon"
+                      fill="none"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18 18 6M6 6l12 12"
+                      ></path>
+                    </svg>
+                  </span>
+                </Link>
+              </div>
+              <form className="flex items-center" action="">
+                <span className="text-[#414141]">SORT BY: </span>
+                <Select
+                  aria-label="select filter type"
+                  placeholder="FEATURED"
+                  className={
+                    'rounded-6 border bg-white p-10 px-16 py-6 text-[#C1803E]'
+                  }
+                >
+                  <Button>
+                    <SelectValue className={'text-[#C1803E]'} />
+                    <span className="text-[#e5e7eb]" aria-hidden="true">
+                      ▼
+                    </span>
+                  </Button>
+                  <Popover>
+                    <ListBox className={'text-black'}>
+                      <ListBoxItem>Cat</ListBoxItem>
+                      <ListBoxItem>Dog</ListBoxItem>
+                      <ListBoxItem>Kangaroo</ListBoxItem>
+                    </ListBox>
+                  </Popover>
+                </Select>
+              </form>
             </div>
-          ) : (
-            <div>no items!</div>
-          )}
+
+            {filterdProducts.length > 0 ? (
+              <div className="grid w-full gap-y-80 border-t border-t-[#CBC1B7] pt-72 lg:w-auto lg:grid-cols-[repeat(3,minmax(0,274px))] lg:gap-x-16">
+                {filterdProducts.map((item) => (
+                  <Product
+                    key={item.id}
+                    id={item.id}
+                    image={item.images[0]}
+                    title={item.title}
+                    count={item.count}
+                    price={item.price}
+                    reviewsCount={item.reviews.length}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div>no items!</div>
+            )}
+          </div>
         </div>
       </div>
     </>
