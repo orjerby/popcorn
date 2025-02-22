@@ -246,7 +246,7 @@ export default function FiltersPage() {
                 <Link
                   aria-label="clear filters"
                   to={''}
-                  className={`${filterdProducts.length === 13 ? 'hidden' : 'visible'} rounded-6 flex items-center gap-4 border bg-white p-10 px-16 py-6 text-[#C1803E]`}
+                  className={`${!typesParam.length && !flavorsParam.length ? 'hidden' : 'visible'} rounded-6 flex items-center gap-4 border bg-white p-10 px-16 py-6 text-[#C1803E]`}
                 >
                   <span>CLEAR FILTERS</span>
                   <span>
