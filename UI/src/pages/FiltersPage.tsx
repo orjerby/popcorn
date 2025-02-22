@@ -5,15 +5,12 @@ import {
   CheckboxGroup,
   DialogTrigger,
   Label,
-  ListBox,
-  ListBoxItem,
-  Popover,
-  Select,
-  SelectValue,
 } from 'react-aria-components'
-import { Link, useSearchParams } from 'react-router'
+import { useSearchParams } from 'react-router'
 import { SnackFlavor, SnackType } from '../../../API/models/product'
 import { Dialog } from '../components/Dialog/Dialog'
+import { StandardSelect } from '../components/Select'
+import { StandardSelectItem } from '../components/Select/Bases/StandardSelectBase'
 import Product from '../containers/Product'
 import { useAppContext } from '../context/AppContext'
 import {
@@ -22,6 +19,15 @@ import {
   selectProductFlavors,
   selectProductTypes,
 } from '../context/selectors'
+
+const sortByOptions = [
+  { id: 1, value: 'FEATURED' },
+  { id: 2, value: 'MOST REVIEWS' },
+  { id: 3, value: 'ALPHABETICALLY, A-Z' },
+  { id: 4, value: 'ALPHABETICALLY, Z-A' },
+  { id: 5, value: 'PRICE, LOW TO HIGH' },
+  { id: 6, value: 'PRICE, HIGH TO LOW' },
+]
 
 export default function FiltersPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -34,8 +40,11 @@ export default function FiltersPage() {
   // Selectors
   const allProducts = selectBundledProducts(state)
   const filterdProducts = selectFilteredBundledProducts(state, {
-    types: typesParam,
-    flavors: flavorsParam,
+    filterBy: {
+      types: typesParam,
+      flavors: flavorsParam,
+    },
+    sortBy: 'FEATURED',
   })
   const productTypes = selectProductTypes(state)
   const productFlavors = selectProductFlavors(state)
@@ -243,9 +252,9 @@ export default function FiltersPage() {
                 <span className="text-[#414141]">
                   {filterdProducts.length} PRODUCTS
                 </span>
-                <Link
+                <Button
                   aria-label="clear filters"
-                  to={''}
+                  onPress={() => setSearchParams()}
                   className={`${filterdProducts.length === 13 ? 'hidden' : 'visible'} rounded-6 flex items-center gap-4 border bg-white p-10 px-16 py-6 text-[#C1803E]`}
                 >
                   <span>CLEAR FILTERS</span>
@@ -267,31 +276,23 @@ export default function FiltersPage() {
                       ></path>
                     </svg>
                   </span>
-                </Link>
+                </Button>
               </div>
               <form className="flex items-center" action="">
-                <span className="text-[#414141]">SORT BY: </span>
-                <Select
-                  aria-label="select filter type"
-                  placeholder="FEATURED"
-                  className={
-                    'rounded-6 border bg-white p-10 px-16 py-6 text-[#C1803E]'
-                  }
+                <span id="sort-by" className="text-[#414141]">
+                  SORT BY:
+                </span>
+
+                <StandardSelect
+                  aria-labelledby="sort-by"
+                  items={sortByOptions}
+                  defaultSelectedKey={1}
+                  className="w-175"
                 >
-                  <Button>
-                    <SelectValue className={'text-[#C1803E]'} />
-                    <span className="text-[#e5e7eb]" aria-hidden="true">
-                      ▼
-                    </span>
-                  </Button>
-                  <Popover>
-                    <ListBox className={'text-black'}>
-                      <ListBoxItem>Cat</ListBoxItem>
-                      <ListBoxItem>Dog</ListBoxItem>
-                      <ListBoxItem>Kangaroo</ListBoxItem>
-                    </ListBox>
-                  </Popover>
-                </Select>
+                  {({ value }) => (
+                    <StandardSelectItem>{value}</StandardSelectItem>
+                  )}
+                </StandardSelect>
               </form>
             </div>
 

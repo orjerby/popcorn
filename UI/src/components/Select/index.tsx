@@ -3,13 +3,20 @@ import {
   CountrySelectBase,
   CountrySelectBaseProps,
 } from './Bases/CountrySelectBase'
-import { StandardSelectBase } from './Bases/StandardSelectBase'
+import { SplitSelectBase, SplitSelectProps } from './Bases/SplitSelectBase'
+import {
+  StandardSelectBase,
+  StandardSelectProps,
+} from './Bases/StandardSelectBase'
 import { createSelect } from './createSelect'
-import { CountryOption } from './types'
+import { CountryOption, SelectItem } from './types'
 
 export const createTypedStandardSelect = <
   T extends FieldValues = FieldValues,
->() => createSelect<T>(StandardSelectBase)
+>() => createSelect<T, SelectItem, StandardSelectProps>(StandardSelectBase)
+
+export const createTypedSplitSelect = <T extends FieldValues = FieldValues>() =>
+  createSelect<T, SelectItem, SplitSelectProps>(SplitSelectBase)
 
 export const createTypedCountrySelect = <
   T extends FieldValues = FieldValues,

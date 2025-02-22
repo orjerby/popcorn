@@ -14,14 +14,41 @@ export const selectProductFlavors = (state: RootState) =>
 
 export const selectFilteredBundledProducts = (
   state: RootState,
-  { types, flavors }: { types?: string[]; flavors?: string[] },
-) =>
-  state.productState.products.filter(
+  {
+    filterBy: { types, flavors },
+    sortBy,
+  }: {
+    filterBy: { types?: string[]; flavors?: string[] }
+    sortBy:
+      | 'FEATURED'
+      | 'MOST REVIEWS'
+      | 'ALPHABETICALLY, A-Z'
+      | 'ALPHABETICALLY, Z-A'
+      | 'PRICE, LOW TO HIGH'
+      | 'PRICE, HIGH TO LOW'
+  },
+) => {
+  let filteredProducts = state.productState.products.filter(
     (item) =>
       item.count > 1 &&
       (types?.length ? types?.includes(item.type) : true) &&
       (flavors?.length ? flavors?.includes(item.flavor) : true),
   )
+
+  if (sortBy === 'MOST REVIEWS') {
+    filteredProducts.sort((a, b) => b.reviews.length - a.reviews.length)
+  } else if (sortBy === 'ALPHABETICALLY, A-Z') {
+    filteredProducts.sort((a, b) => a.title.localeCompare(b.title))
+  } else if (sortBy === 'ALPHABETICALLY, Z-A') {
+    filteredProducts.sort((a, b) => b.title.localeCompare(a.title))
+  } else if (sortBy === 'PRICE, LOW TO HIGH') {
+    filteredProducts.sort((a, b) => a.price - b.price)
+  } else if (sortBy === 'PRICE, HIGH TO LOW') {
+    filteredProducts.sort((a, b) => b.price - a.price)
+  }
+
+  return filteredProducts
+}
 
 export const selectSearchedBundledProducts = (
   state: RootState,

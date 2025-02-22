@@ -12,8 +12,8 @@ import {
   useForm,
 } from 'react-hook-form'
 import { createTypedStandardCheckbox } from '../components/Checkbox'
-import { StandardSelect } from '../components/Select'
-import { StandardSelectItem } from '../components/Select/Bases/StandardSelectBase'
+import { createTypedSplitSelect } from '../components/Select'
+import { SplitSelectItem } from '../components/Select/Bases/SplitSelectBase'
 import {
   createTypedPhoneTextField,
   createTypedStandardTextField,
@@ -39,6 +39,7 @@ export type MyFormData = {
 const PhoneTextField = createTypedPhoneTextField<MyFormData>()
 const StandardTextField = createTypedStandardTextField<MyFormData>()
 const StandardCheckbox = createTypedStandardCheckbox<MyFormData>()
+const SplitSelect = createTypedSplitSelect<MyFormData>()
 
 const options = [{ id: 1, value: 'United States' }]
 
@@ -132,15 +133,13 @@ export default function CheckoutPage() {
                 <h2 className="text-21 font-semibold text-black">Delivery</h2>
 
                 <div className="flex flex-col gap-14">
-                  <StandardSelect
+                  <SplitSelect
                     name="country"
                     label="Country/Region"
                     items={options}
                   >
-                    {({ value }) => (
-                      <StandardSelectItem>{value}</StandardSelectItem>
-                    )}
-                  </StandardSelect>
+                    {({ value }) => <SplitSelectItem>{value}</SplitSelectItem>}
+                  </SplitSelect>
 
                   <div className="flex gap-14">
                     <StandardTextField

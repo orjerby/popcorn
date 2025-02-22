@@ -21,7 +21,6 @@ export type BaseSelectBaseProps<T extends SelectItem> = Omit<
   AriaSelectProps<T>,
   'children'
 > & {
-  label: string
   items: Iterable<T>
   children: React.ReactNode | ((item: T) => React.ReactNode)
   inputRef?: RefCallBack
