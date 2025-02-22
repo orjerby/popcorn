@@ -31,7 +31,7 @@ export default function ProductCard({
             onClick={onViewMore}
             className="-mt-87 w-full max-w-373 transition-all duration-300 group-hover:scale-105"
           >
-            <img src={image} alt="Popcorn" />
+            <img src={image} aria-label={title} />
           </Link>
 
           <h3 className="line-clamp-2 text-center text-xl font-bold text-black">
