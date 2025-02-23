@@ -4,8 +4,9 @@ import {
   DialogTrigger,
   Disclosure,
   DisclosurePanel,
+  Link,
 } from 'react-aria-components'
-import { Link, useLocation, useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { Dialog } from '../components/Dialog/Dialog'
 import { useAppContext } from '../context/AppContext'
 import { selectCartTotalQuantity } from '../context/selectors'
@@ -83,7 +84,7 @@ function Header({ scrolled }: HeaderProps) {
   const disclosureBtnRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    disclosureBtnRef.current?.focus()
+    // disclosureBtnRef.current?.focus()
     setIsExpanded(false)
 
     setIsNavbarOpen(false)
@@ -140,7 +141,7 @@ function Header({ scrolled }: HeaderProps) {
                   </Button>
                   <Dialog>
                     <Link
-                      to={'/collections/all-products'}
+                      href={'/collections/all-products'}
                       className="text-18 mb-12 self-start text-[#BD8447] uppercase underline"
                     >
                       shop all heirloom snacks
@@ -154,7 +155,7 @@ function Header({ scrolled }: HeaderProps) {
                         >
                           <Link
                             aria-label={link.label}
-                            to={link.url}
+                            href={link.url}
                             className="w-full"
                           >
                             <img
@@ -191,7 +192,7 @@ function Header({ scrolled }: HeaderProps) {
                   <div className="max-w-full bg-white text-black">
                     <div className="container mx-auto flex flex-col px-16 pt-36 pb-24">
                       <Link
-                        to={'/collections/all-products'}
+                        href={'/collections/all-products'}
                         className="text-18 mb-12 self-start text-[#BD8447] uppercase underline"
                       >
                         shop all heirloom snacks
@@ -201,7 +202,7 @@ function Header({ scrolled }: HeaderProps) {
                       <ul className="flex items-center gap-16">
                         {filterLinks.map((link, index) => (
                           <li key={index}>
-                            <Link aria-label={link.label} to={link.url}>
+                            <Link aria-label={link.label} href={link.url}>
                               <img alt={link.label} src={link.imgUrl} />
                             </Link>
                           </li>
@@ -211,7 +212,7 @@ function Header({ scrolled }: HeaderProps) {
                   </div>
                 </DisclosurePanel>
               </Disclosure>
-              <Link to="/pages/builder">
+              <Link href="/pages/builder">
                 <span className="px-16">build a bundle</span>
               </Link>
             </div>
@@ -220,7 +221,7 @@ function Header({ scrolled }: HeaderProps) {
                 className={`absolute flex items-center justify-center rounded-full border-[#f6f3e2] bg-[#f6f3e2] ${scrolled ? 'mt-0' : 'mt-0 lg:mt-55 lg:max-h-156 lg:max-w-156 lg:border-8'}`}
               >
                 <h1 aria-label="Pipcorn">
-                  <Link to="/">
+                  <Link href="/">
                     <img
                       className={` ${scrolled ? 'w-80' : 'w-80 lg:w-140'}`}
                       src="https://www.pipsnacks.com/cdn/shop/files/pipsnack-logo.png?v=1707488945"

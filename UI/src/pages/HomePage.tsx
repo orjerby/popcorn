@@ -1,12 +1,12 @@
 import { Suspense } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-aria-components'
 import ProductList from '../containers/ProductList'
 
 export default function HomePage() {
   return (
     <>
       <div className="bg-[#f6f3e2]">
-        <Link to={'collections/all-products?types=Fries'}>
+        <Link href={'collections/all-products?types=Fries'}>
           <div className="relative block">
             <img
               className="h-auto w-full max-w-full"
@@ -41,7 +41,7 @@ export default function HomePage() {
             <div className="flex rounded-lg bg-[#b69775]">
               <div className="flex-1 items-center justify-center p-16">
                 <Link
-                  to={'pages/builder'}
+                  href={'pages/builder'}
                   className="cursor-pointer justify-center pb-12 pl-32 text-4xl text-black uppercase"
                 >
                   can't pick a favorite? choose your own snack-adventure!
@@ -49,7 +49,7 @@ export default function HomePage() {
               </div>
               <div className="flex max-w-320 items-center justify-center gap-4 rounded bg-orange-500 px-8 py-5 text-4xl text-white uppercase">
                 <Link
-                  to={'pages/builder'}
+                  href={'pages/builder'}
                   className="cursor-pointer font-light"
                 >
                   Build your <br /> own bundle
@@ -77,7 +77,7 @@ export default function HomePage() {
         <div className="mt-12">
           <div className="container mx-auto">
             <div className="grid grid-cols-2 gap-16">
-              <Link to={'collections/all-products?types=Cheese+Balls'}>
+              <Link href={'collections/all-products?types=Cheese+Balls'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
                     className="transform transition duration-200 group-hover:scale-105"
@@ -92,7 +92,7 @@ export default function HomePage() {
                   />
                 </div>
               </Link>
-              <Link to={'collections/all-products?types=Popcorn'}>
+              <Link href={'collections/all-products?types=Popcorn'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
                     className="transform transition duration-200 group-hover:scale-105"
@@ -107,7 +107,7 @@ export default function HomePage() {
                   />
                 </div>
               </Link>
-              <Link to={'collections/all-products?types=Twists'}>
+              <Link href={'collections/all-products?types=Twists'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
                     className="transform transition duration-200 group-hover:scale-105"
@@ -122,7 +122,7 @@ export default function HomePage() {
                   />
                 </div>
               </Link>
-              <Link to={'collections/all-products?types=Crunchies'}>
+              <Link href={'collections/all-products?types=Crunchies'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
                     className="transform transition duration-200 group-hover:scale-105"
