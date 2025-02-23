@@ -4,6 +4,7 @@ import {
   Checkbox,
   CheckboxGroup,
   DialogTrigger,
+  Key,
   Label,
 } from 'react-aria-components'
 import { useSearchParams } from 'react-router'
@@ -20,13 +21,21 @@ import {
   selectProductTypes,
 } from '../context/selectors'
 
-const sortByOptions = [
-  { id: 1, value: 'FEATURED' },
-  { id: 2, value: 'MOST REVIEWS' },
-  { id: 3, value: 'ALPHABETICALLY, A-Z' },
-  { id: 4, value: 'ALPHABETICALLY, Z-A' },
-  { id: 5, value: 'PRICE, LOW TO HIGH' },
-  { id: 6, value: 'PRICE, HIGH TO LOW' },
+export type SortBy =
+  | ''
+  | 'MOST REVIEWS'
+  | 'ALPHABETICALLY, A-Z'
+  | 'ALPHABETICALLY, Z-A'
+  | 'PRICE, LOW TO HIGH'
+  | 'PRICE, HIGH TO LOW'
+
+const sortByOptions: { id: SortBy; value: string }[] = [
+  { id: '', value: 'FEATURED' },
+  { id: 'MOST REVIEWS', value: 'MOST REVIEWS' },
+  { id: 'ALPHABETICALLY, A-Z', value: 'ALPHABETICALLY, A-Z' },
+  { id: 'ALPHABETICALLY, Z-A', value: 'ALPHABETICALLY, Z-A' },
+  { id: 'PRICE, LOW TO HIGH', value: 'PRICE, LOW TO HIGH' },
+  { id: 'PRICE, HIGH TO LOW', value: 'PRICE, HIGH TO LOW' },
 ]
 
 export default function FiltersPage() {
@@ -36,6 +45,7 @@ export default function FiltersPage() {
   // Extract initial parameters from URL
   const typesParam = searchParams.get('types')?.split(',') ?? []
   const flavorsParam = searchParams.get('flavors')?.split(',') ?? []
+  const sortBy = (searchParams.get('sort_by') ?? '') as SortBy
 
   // Selectors
   const allProducts = selectBundledProducts(state)
@@ -44,7 +54,7 @@ export default function FiltersPage() {
       types: typesParam,
       flavors: flavorsParam,
     },
-    sortBy: 'FEATURED',
+    sortBy,
   })
   const productTypes = selectProductTypes(state)
   const productFlavors = selectProductFlavors(state)
@@ -86,6 +96,17 @@ export default function FiltersPage() {
         prev.set(key, values.join(','))
       } else {
         prev.delete(key)
+      }
+      return prev
+    })
+  }
+
+  const onSortByChange = (id: Key) => {
+    setSearchParams((prev) => {
+      if (id) {
+        prev.set('sort_by', `${id}`)
+      } else {
+        prev.delete('sort_by')
       }
       return prev
     })
@@ -255,7 +276,7 @@ export default function FiltersPage() {
                 <Button
                   aria-label="clear filters"
                   onPress={() => setSearchParams()}
-                  className={`${!typesParam.length && !flavorsParam.length ? 'hidden' : 'visible'} rounded-6 flex items-center gap-4 border bg-white p-10 px-16 py-6 text-[#C1803E]`}
+                  className={`rounded-6 flex cursor-pointer items-center gap-4 border bg-white p-10 px-16 py-6 text-[#C1803E] ${!typesParam.length && !flavorsParam.length ? 'hidden' : 'visible'}`}
                 >
                   <span>CLEAR FILTERS</span>
                   <span>
@@ -279,14 +300,15 @@ export default function FiltersPage() {
                 </Button>
               </div>
               <form className="flex items-center" action="">
-                <span id="sort-by" className="text-[#414141]">
+                <p id="sort-by" className="text-[#414141]">
                   SORT BY:
-                </span>
+                </p>
 
                 <StandardSelect
                   aria-labelledby="sort-by"
                   items={sortByOptions}
-                  defaultSelectedKey={1}
+                  defaultSelectedKey={sortBy}
+                  onSelectionChange={onSortByChange}
                   className="w-175"
                 >
                   {({ value }) => (

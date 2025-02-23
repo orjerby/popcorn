@@ -1,4 +1,5 @@
 import { Product } from '../../../API/models/product'
+import { SortBy } from '../pages/FiltersPage'
 import { RootState } from './rootReducer'
 
 export const selectSingleProducts = (state: RootState) =>
@@ -19,13 +20,7 @@ export const selectFilteredBundledProducts = (
     sortBy,
   }: {
     filterBy: { types?: string[]; flavors?: string[] }
-    sortBy:
-      | 'FEATURED'
-      | 'MOST REVIEWS'
-      | 'ALPHABETICALLY, A-Z'
-      | 'ALPHABETICALLY, Z-A'
-      | 'PRICE, LOW TO HIGH'
-      | 'PRICE, HIGH TO LOW'
+    sortBy: SortBy
   },
 ) => {
   let filteredProducts = state.productState.products.filter(
