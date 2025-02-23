@@ -174,9 +174,9 @@ export default function BundlePage() {
       </div>
 
       {/* page body part (list and bundle) */}
-      <div className="relative container mx-auto w-fit">
-        <div className="flex">
-          <div className="flex h-2200 w-720 flex-col bg-[#F9F1E6]">
+      <div className="relative w-full lg:container lg:mx-auto lg:w-fit">
+        <div className="lg:flex">
+          <div className="flex flex-col bg-[#F9F1E6] lg:h-2200 lg:w-720">
             <div className="mx-auto p-10 text-center">
               {/* <SnackTypeSelector types={types} /> */}
 
@@ -278,7 +278,7 @@ export default function BundlePage() {
               })}
             </ul>
           </div>
-          <div className="sticky top-80 ml-20 flex h-fit w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16">
+          <div className="sticky ml-20 flex h-fit w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16 lg:top-80">
             <div>
               <h1 className="text-36 text-zinc-600 uppercase">Your bundle</h1>
               <hr className="mt-5 border-1 text-[#CBC1B7]" />
@@ -311,6 +311,7 @@ export default function BundlePage() {
                 ></div>
               </div>
             </div>
+
             <BundleProductsRow
               rowTitle={'4 PACK'}
               rowStartLocation={0}

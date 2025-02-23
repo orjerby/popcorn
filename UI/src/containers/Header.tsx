@@ -60,13 +60,13 @@ const filterLinks: FilterLink[] = [
   },
   {
     imgUrl:
-      'https://www.pipsnacks.com/cdn/shop/t/205/assets/navigation-pic-item-8.jpg?v=118325367229204719031722260794',
+      'https://www.pipsnacks.com/cdn/shop/t/205/assets/navigation-pic-item-7.jpg?v=112408079595935340441722260794',
     url: `collections/snack-size`,
     label: 'snack-size',
   },
   {
     imgUrl:
-      'https://www.pipsnacks.com/cdn/shop/t/205/assets/navigation-pic-item-7.jpg?v=112408079595935340441722260794',
+      'https://www.pipsnacks.com/cdn/shop/t/205/assets/navigation-pic-item-8.jpg?v=118325367229204719031722260794',
     url: `pages/builder`,
     label: 'builder',
   },
@@ -157,7 +157,11 @@ function Header({ scrolled }: HeaderProps) {
                             to={link.url}
                             className="w-full"
                           >
-                            <img src={link.imgUrl} className="w-full" />
+                            <img
+                              alt={link.label}
+                              src={link.imgUrl}
+                              className="w-full"
+                            />
                           </Link>
                         </li>
                       ))}
@@ -198,7 +202,7 @@ function Header({ scrolled }: HeaderProps) {
                         {filterLinks.map((link, index) => (
                           <li key={index}>
                             <Link aria-label={link.label} to={link.url}>
-                              <img src={link.imgUrl} />
+                              <img alt={link.label} src={link.imgUrl} />
                             </Link>
                           </li>
                         ))}
