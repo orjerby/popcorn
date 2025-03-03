@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-aria-components'
+import {
+  Button,
+  Disclosure,
+  DisclosurePanel,
+  Link,
+} from 'react-aria-components'
 import { useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
 import BundleProductsRow from '../components/BundleProductsRow'
+import BundleProductsRowD from '../components/BundleProductsRowD'
 import Stars from '../components/Stars'
 import { ToggleButton } from '../components/ToggleButton/ToggleButton'
 import { useAppContext } from '../context/AppContext'
@@ -32,6 +38,14 @@ const defaultProduct: Product = {
     },
   ],
 }
+const hexToRgba = (hex: string, alpha = 0.3) => {
+  hex = hex.replace('#', '')
+  const r = parseInt(hex.slice(0, 2), 16)
+  const g = parseInt(hex.slice(2, 4), 16)
+  const b = parseInt(hex.slice(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
 export default function BundlePage() {
   const { state, dispatch } = useAppContext()
   const [barWidth, setBarWidth] = useState(0)
@@ -40,6 +54,7 @@ export default function BundlePage() {
   const types = selectProductTypes(state)
 
   const singleProducts = selectSingleProducts(state)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const bundleIdParam = searchParams.get('bundle') ?? ''
 
@@ -65,6 +80,8 @@ export default function BundlePage() {
   const [count, setCount] = useState<number>(0)
 
   useEffect(() => {
+    setIsExpanded(false)
+
     if (bundleIdParam) {
       setCurrentBundle([
         ...existCustomBundle,
@@ -279,7 +296,7 @@ export default function BundlePage() {
               })}
             </ul>
           </div>
-          <div className="sticky ml-20 flex h-fit w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16 lg:top-80">
+          <div className="sticky ml-20 hidden h-fit w-370 -translate-y-20 flex-col rounded border-2 border-[#CBC1B7] bg-white p-16 lg:top-80 lg:flex">
             <div>
               <h1 className="text-36 text-zinc-600 uppercase">Your bundle</h1>
               <hr className="mt-5 border-1 text-[#CBC1B7]" />
@@ -312,7 +329,6 @@ export default function BundlePage() {
                 ></div>
               </div>
             </div>
-
             <BundleProductsRow
               rowTitle={'4 PACK'}
               rowStartLocation={0}
@@ -359,6 +375,130 @@ export default function BundlePage() {
                 </span>
               </div>
             </button>
+          </div>
+          {/* Mobile design for bundle box ("bundle footer") */}
+          <div className="fixed bottom-0 min-h-167 w-full bg-white py-8 shadow-2xl shadow-black lg:hidden">
+            <div className="grid grid-cols-3 gap-4 px-12">
+              <div className="p-b-8 min-h-32 border-b border-black">
+                <Button
+                  slot="trigger"
+                  className="text-12 flex cursor-pointer items-center gap-8 rounded border border-[#C1803E] px-4 py-2 text-black uppercase"
+                  onPress={() => setIsExpanded(!isExpanded)}
+                >
+                  <span>edit bundle</span>
+                  <svg
+                    viewBox="0 0 22 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-12 transition-all"
+                  >
+                    <path
+                      d="M1.7373 8.8158L11.2373 1.8158L20.7373 8.8158"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Button>
+              </div>
+
+              <div className="col-span-2">
+                <span className="text-14 text-black">
+                  add 8 more and score free shipping
+                </span>
+                <div className="rounded-12 min-h-8 bg-[#e5e7eb]"></div>
+              </div>
+            </div>
+
+            {!isExpanded && (
+              <div className="my-10">
+                <div className="flex h-full max-h-35 gap-8 pl-12">
+                  {currentBundle.map((product, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        backgroundColor: hexToRgba(
+                          product.color ? product.color : '',
+                          0.3,
+                        ),
+                        borderColor: product.color,
+                      }}
+                      className={`text-24 rounded-8 w-full max-w-31 border-2 border-dashed text-center ${
+                        (index + 1) % 4 === 0
+                          ? 'border-[#C1803E] text-[#C1803E]'
+                          : 'border-[#CBC1B7] text-[#CBC1B7]'
+                      }`}
+                    >
+                      {index + 1}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <Disclosure
+              isExpanded={isExpanded}
+              onExpandedChange={setIsExpanded}
+            >
+              {({ isExpanded }) =>
+                isExpanded && (
+                  <DisclosurePanel>
+                    <div className="flex">
+                      <BundleProductsRowD
+                        rowTitle={'4 PACK'}
+                        rowStartLocation={0}
+                        products={firstFourProducts}
+                        deleteFromBundle={deletefromBundle}
+                      />
+                      <BundleProductsRowD
+                        rowTitle={'8 PACK'}
+                        rowStartLocation={4}
+                        products={secondFourProducts}
+                        deleteFromBundle={deletefromBundle}
+                      />
+                      <BundleProductsRowD
+                        rowTitle={'12 PACK'}
+                        rowStartLocation={8}
+                        products={thirdFourProducts}
+                        deleteFromBundle={deletefromBundle}
+                      />
+                    </div>
+                  </DisclosurePanel>
+                )
+              }
+            </Disclosure>
+            <div className="rounded-6 flex px-12">
+              <div className="text-20 rounded-6 flex items-center bg-[#F5F4F3] px-12 text-black">
+                {count}
+              </div>
+              <button
+                onClick={submit}
+                disabled={count !== 4 && count !== 8 && count !== 12}
+                className={`rounded-r-6 flex w-full cursor-pointer flex-col bg-[#3EADB8] disabled:cursor-auto disabled:opacity-50`}
+              >
+                <span className="text-18 text-white uppercase">
+                  Add custom bundle to cart
+                </span>
+                <span className="text-18 text-black lowercase">
+                  {count < 4 ? `add ${4 - count} more items` : ''}
+                  {count >= 4 && count < 8
+                    ? `add ${8 - count} more items and score free shipping!`
+                    : ''}
+                  <span className="uppercase">
+                    {' '}
+                    {count === 8 ? 'YOU SCORED FREE SHIPPING! 🥳' : ''}
+                  </span>
+                  {count >= 9 && count < 12
+                    ? `add ${12 - count} more items`
+                    : ''}
+                  <span className="uppercase">
+                    {' '}
+                    {count === 12 ? 'YOU SCORED FREE SHIPPING! 🥳' : ''}
+                  </span>{' '}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
