@@ -4,6 +4,8 @@ import {
   DialogTrigger,
   Disclosure,
   DisclosurePanel,
+  Form,
+  Input,
   Link,
 } from 'react-aria-components'
 import { useLocation, useNavigate } from 'react-router'
@@ -80,6 +82,7 @@ function Header({ scrolled }: HeaderProps) {
   const navigate = useNavigate()
   const [isExpanded, setIsExpanded] = useState(false)
   const [isNavbarOpen, setIsNavbarOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const location = useLocation()
   const disclosureBtnRef = useRef<HTMLButtonElement>(null)
 
@@ -94,6 +97,7 @@ function Header({ scrolled }: HeaderProps) {
 
   const search = (formData: FormData) => {
     const query = formData.get('search')
+    setIsSearchOpen(false)
     navigate(`/search?q=${query}`)
   }
 
@@ -139,7 +143,13 @@ function Header({ scrolled }: HeaderProps) {
                       ></path>
                     </svg>
                   </Button>
-                  <Dialog>
+                  <Dialog
+                    type="leftToRight"
+                    modalProps={{
+                      className: 'top-116 w-full',
+                    }}
+                    dialogProps={{ className: 'px-16 py-24' }}
+                  >
                     <Link
                       href={'/collections/all-products'}
                       className="text-18 mb-12 self-start text-[#BD8447] uppercase underline"
@@ -235,18 +245,17 @@ function Header({ scrolled }: HeaderProps) {
             <div className="flex items-center justify-end gap-23 bg-[#f6f3e2] px-16 text-black">
               <div className="rounded-8 relative flex min-h-44 w-full max-w-188 items-center whitespace-nowrap text-white uppercase lg:hidden"></div>
 
-              {/* <form action={search}>
-                <input
-                  aria-label="search"
-                  name="search"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type="text"
-                />
-                <button aria-label="serach">
+              <DialogTrigger
+                onOpenChange={setIsSearchOpen}
+                isOpen={isSearchOpen}
+              >
+                <Button
+                  aria-label="Search"
+                  className="cursor-pointer text-[#141B34]"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-full max-w-28"
+                    className={`font-bold ${scrolled ? 'max-h-24 w-full min-w-24' : 'max-h-24 w-full min-w-24 lg:max-h-29 lg:min-w-28'}`}
                     viewBox="0 0 28 29"
                     fill="none"
                   >
@@ -263,31 +272,86 @@ function Header({ scrolled }: HeaderProps) {
                       strokeWidth="2.96551"
                       strokeLinecap="round"
                     ></path>
-                  </svg>{' '}
-                </button>
-              </form> */}
-              <button aria-label="serach">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={`font-bold ${scrolled ? 'max-h-24 w-full min-w-24' : 'max-h-24 w-full min-w-24 lg:max-h-29 lg:min-w-28'}`}
-                  viewBox="0 0 28 29"
-                  fill="none"
+                  </svg>
+                </Button>
+
+                <Dialog
+                  type="topToBottom"
+                  modalProps={{
+                    className: 'h-116 lg:h-144',
+                  }}
+                  dialogProps={{
+                    className: 'h-full bg-[#f6f3e2] px-16',
+                  }}
                 >
-                  <circle
-                    cx="10.88"
-                    cy="11.5744"
-                    r="9.39077"
-                    stroke="currentColor"
-                    strokeWidth="2.96551"
-                  ></circle>
-                  <path
-                    d="M17.3057 18.4939L26.2022 26.8962"
-                    stroke="currentColor"
-                    strokeWidth="2.96551"
-                    strokeLinecap="round"
-                  ></path>
-                </svg>{' '}
-              </button>
+                  <Form
+                    action={search}
+                    className="flex h-full items-center justify-center gap-16"
+                  >
+                    <Input
+                      placeholder="Search"
+                      name="search"
+                      value={searchInput}
+                      onChange={(e) => setSearchInput(e.target.value)}
+                      type="text"
+                      autoFocus
+                      className="text-18 h-48 max-w-520 flex-1 border-2 border-black px-12 text-black placeholder:text-gray-500"
+                    />
+
+                    <Button
+                      type="submit"
+                      aria-label="Submit search"
+                      className="w-24 cursor-pointer text-[#141B34] lg:w-28"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 28 29"
+                        fill="none"
+                      >
+                        <circle
+                          cx="10.88"
+                          cy="11.5744"
+                          r="9.39077"
+                          stroke="currentColor"
+                          strokeWidth="2.96551"
+                        ></circle>
+                        <path
+                          d="M17.3057 18.4939L26.2022 26.8962"
+                          stroke="currentColor"
+                          strokeWidth="2.96551"
+                          strokeLinecap="round"
+                        ></path>
+                      </svg>
+                    </Button>
+
+                    <Button
+                      slot="close"
+                      aria-label="Clear search term"
+                      className="w-24 cursor-pointer text-[#141B34] lg:w-28"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M19.8841 4.11599C20.3722 4.60415 20.3722 5.39561 19.8841 5.88376L5.88407 19.8838C5.39591 20.3719 4.60445 20.3719 4.1163 19.8838C3.62814 19.3956 3.62814 18.6041 4.1163 18.116L18.1163 4.11599C18.6045 3.62784 19.3959 3.62784 19.8841 4.11599Z"
+                          fill="currentColor"
+                        ></path>
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M4.1163 4.11599C4.60445 3.62784 5.39591 3.62784 5.88407 4.11599L19.8841 18.116C20.3722 18.6041 20.3722 19.3956 19.8841 19.8838C19.3959 20.3719 18.6045 20.3719 18.1163 19.8838L4.1163 5.88376C3.62814 5.39561 3.62814 4.60415 4.1163 4.11599Z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </Button>
+                  </Form>
+                </Dialog>
+              </DialogTrigger>
+
               <button
                 title="Cart"
                 onClick={() => setIsCartOpen(true)}

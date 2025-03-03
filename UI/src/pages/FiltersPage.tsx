@@ -250,7 +250,11 @@ export default function FiltersPage() {
               FILTER
             </Button>
 
-            <Dialog aboveHeader>
+            <Dialog
+              type="leftToRight"
+              modalProps={{ className: 'w-full' }}
+              dialogProps={{ className: 'px-16 py-24' }}
+            >
               <Button
                 slot="close"
                 className="text-20 w-full cursor-pointer border-b border-zinc-400 py-16 text-left font-normal text-black"

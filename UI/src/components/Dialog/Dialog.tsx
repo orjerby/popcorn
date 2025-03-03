@@ -11,11 +11,13 @@ import { tv } from 'tailwind-variants'
 
 const styles = tv(
   {
-    base: 'fixed bottom-0 left-0 z-50 w-full overflow-y-scroll bg-white transition-transform duration-500 group-data-entering:-translate-x-full group-data-exiting:-translate-x-full',
+    base: 'fixed z-50 bg-white transition-transform duration-500',
     variants: {
-      aboveHeader: {
-        true: 'top-0',
-        false: 'top-116',
+      type: {
+        leftToRight:
+          'top-0 bottom-0 left-0 group-data-entering:-translate-x-full group-data-exiting:-translate-x-full',
+        topToBottom:
+          'top-0 right-0 left-0 group-data-entering:-translate-y-full group-data-exiting:-translate-y-full',
       },
     },
   },
@@ -23,12 +25,12 @@ const styles = tv(
 )
 
 export function Dialog({
-  aboveHeader,
+  type,
   modalProps,
   dialogProps,
   children,
 }: {
-  aboveHeader?: boolean
+  type: 'leftToRight' | 'topToBottom'
   modalProps?: ModalOverlayProps
   dialogProps?: DialogProps
   children?: ReactNode
@@ -42,14 +44,12 @@ export function Dialog({
           (className, renderProps) =>
             styles({
               ...renderProps,
-              aboveHeader,
+              type,
               className,
             }),
         )}
       >
-        <RACDialog {...dialogProps} className="h-full px-16 py-24">
-          {children}
-        </RACDialog>
+        <RACDialog {...dialogProps}>{children}</RACDialog>
       </Modal>
     </ModalOverlay>
   )
