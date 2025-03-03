@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from 'react-aria-components'
 import Stars from '../Stars'
 
 export type ProductCardProps = {
@@ -27,8 +27,8 @@ export default function ProductCard({
       <div className="flex h-full flex-col items-center justify-center">
         <div className="group flex h-full flex-col items-center justify-between px-[12px] pt-[24px] pb-[28px]">
           <Link
-            to={`/products/${id}`}
-            onClick={onViewMore}
+            href={`/products/${id}`}
+            onPress={onViewMore}
             className="-mt-87 w-full max-w-373 transition-all duration-300 group-hover:scale-105"
           >
             <img src={image} aria-label={title} />
@@ -60,8 +60,8 @@ export default function ProductCard({
                 ADD TO CART
               </button>
               <Link
-                to={`/products/${id}`}
-                onClick={onViewMore}
+                href={`/products/${id}`}
+                onPress={onViewMore}
                 className="rounded bg-[#b69775] p-12 text-center font-sans font-bold text-white hover:opacity-70"
               >
                 VIEW MORE

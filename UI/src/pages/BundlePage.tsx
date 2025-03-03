@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Button, Disclosure, DisclosurePanel } from 'react-aria-components'
-import { Link, useSearchParams } from 'react-router'
+import {
+  Button,
+  Disclosure,
+  DisclosurePanel,
+  Link,
+} from 'react-aria-components'
+import { useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
 import BundleProductsRow from '../components/BundleProductsRow'
 import BundleProductsRowD from '../components/BundleProductsRowD'
@@ -258,7 +263,7 @@ export default function BundlePage() {
                                     25 reviews
                                   </span>
                                   <Link
-                                    to={`/products/${product.id}`}
+                                    href={`/products/${product.id}`}
                                     className="ml-10 text-sm text-zinc-600 lowercase underline"
                                   >
                                     VIEW MORE

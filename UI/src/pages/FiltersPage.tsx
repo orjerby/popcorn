@@ -268,7 +268,7 @@ export default function FiltersPage() {
             {filterCheckboxes}
           </div>
           <div className="flex flex-col">
-            <div className="flex justify-between">
+            <div className="flex justify-between border-b border-b-[#CBC1B7] pb-16">
               <div className="flex items-center gap-12">
                 <span className="text-[#414141]">
                   {filterdProducts.length} PRODUCTS
@@ -319,7 +319,7 @@ export default function FiltersPage() {
             </div>
 
             {filterdProducts.length > 0 ? (
-              <div className="grid w-full gap-y-80 border-t border-t-[#CBC1B7] pt-72 lg:w-auto lg:grid-cols-[repeat(3,minmax(0,274px))] lg:gap-x-16">
+              <div className="grid w-full gap-y-80 pt-72 lg:w-auto lg:grid-cols-[repeat(3,minmax(0,274px))] lg:gap-x-16">
                 {filterdProducts.map((item) => (
                   <Product
                     key={item.id}

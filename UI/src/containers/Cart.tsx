@@ -1,9 +1,9 @@
 import { Button } from '@mui/material'
 import Drawer from '@mui/material/Drawer'
+import { Link } from 'react-aria-components'
 import { FaMinus, FaPlus } from 'react-icons/fa6'
 import { HiOutlineTrash } from 'react-icons/hi'
 import { IoCloseOutline } from 'react-icons/io5'
-import { Link } from 'react-router'
 import { useAppContext } from '../context/AppContext'
 import { selectCartProducts } from '../context/selectors'
 
@@ -166,8 +166,8 @@ export default function Cart({ open, onClose }: Props) {
                     <div className="mb-30 flex gap-10">
                       <Link
                         className="rounded border border-gray-200 px-25 py-8 text-black"
-                        to={`/pages/builder?bundle=${item.id}`}
-                        onClick={onClose}
+                        href={`/pages/builder?bundle=${item.id}`}
+                        onPress={onClose}
                       >
                         EDIT
                       </Link>
@@ -232,7 +232,7 @@ export default function Cart({ open, onClose }: Props) {
           <div className="flex justify-center bg-[#3eadb8]">
             <Link
               className="text-20 px-16 py-14 text-white uppercase"
-              to={'checkouts'}
+              href={'checkouts'}
             >
               continue to checkout
             </Link>

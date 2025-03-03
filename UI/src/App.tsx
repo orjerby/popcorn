@@ -1,22 +1,19 @@
-import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router'
+import { useEffect, useRef, useState } from 'react'
+import { Button, RouterProvider } from 'react-aria-components'
+import { useHref, useNavigate } from 'react-router'
 import './App.css'
 import Footer from './components/Footer'
 import Header from './containers/Header'
-import ScrollToTop from './containers/ScrollToTop'
 import { useAppContext } from './context/AppContext'
 import { useData } from './hooks/useData'
-import BundlePage from './pages/BundlePage'
-import CheckoutPage from './pages/CheckoutPage'
-import Filters from './pages/FiltersPage'
-import HomePage from './pages/HomePage'
-import ProductPage from './pages/ProductPage'
-import SearchPage from './pages/SearchPage'
+import Routes from './Routes'
 import { getProducts } from './services/productService'
 
 export default function App() {
   const { dispatch } = useAppContext()
   const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
+  const mainRef = useRef<HTMLDivElement>(null)
 
   useData({
     promise: getProducts,
@@ -42,20 +39,18 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative bg-[#f6f3e2]">
-      <Header scrolled={scrolled} />
-      <ScrollToTop />
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="products">
-          <Route path=":id" element={<ProductPage />} />
-        </Route>
-        <Route path="search" element={<SearchPage />} />
-        <Route path="collections/all-products" element={<Filters />} />
-        <Route path="pages/builder" element={<BundlePage />} />
-        <Route path="checkouts" element={<CheckoutPage />} />
-      </Routes>
-      <Footer />
-    </div>
+    <RouterProvider navigate={navigate} useHref={useHref}>
+      <Button onPress={() => mainRef.current?.focus()} className="sr-only">
+        skip to content
+      </Button>
+      <div className="relative bg-[#f6f3e2]">
+        <Header scrolled={scrolled} />
+        {/* <ScrollToTop /> */}
+        <div ref={mainRef} tabIndex={-1}>
+          <Routes />
+        </div>
+        <Footer />
+      </div>
+    </RouterProvider>
   )
 }
