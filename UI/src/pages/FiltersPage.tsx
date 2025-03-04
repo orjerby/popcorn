@@ -20,6 +20,7 @@ import {
   selectProductFlavors,
   selectProductTypes,
 } from '../context/selectors'
+import { cn } from '../tailwind/tailwindMerge'
 
 export type SortBy =
   | ''
@@ -252,8 +253,9 @@ export default function FiltersPage() {
 
             <Dialog
               type="leftToRight"
-              modalProps={{ className: 'w-full' }}
-              dialogProps={{ className: 'px-16 py-24' }}
+              dialogProps={{
+                className: cn('bg-white px-16 py-24'),
+              }}
             >
               <Button
                 slot="close"

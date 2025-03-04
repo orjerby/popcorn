@@ -7,7 +7,7 @@ import {
   Label,
 } from 'react-aria-components'
 import { PatternFormat } from 'react-number-format'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '../../../tailwind/tailwindMerge'
 import { BaseTextFieldProps } from '../types'
 
 export function StandardTextFieldBase({
@@ -41,7 +41,7 @@ export function StandardTextFieldBase({
       data-touched={isTouched || undefined}
       data-has-value={value ? true : undefined}
       className={composeRenderProps(props.className, (className) =>
-        twMerge('group font-segoe-ui flex flex-col gap-5', className),
+        cn('group font-segoe-ui flex flex-col gap-5', className),
       )}
     >
       <div className="grid items-center">

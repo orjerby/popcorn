@@ -10,8 +10,8 @@ import {
   TooltipTrigger,
 } from 'react-aria-components'
 import { PatternFormat } from 'react-number-format'
-import { twMerge } from 'tailwind-merge'
 import countriesData from '../../../data/countries.json'
+import { cn } from '../../../tailwind/tailwindMerge'
 import { CountrySelect } from '../../Select'
 import { CountrySelectItem } from '../../Select/Bases/CountrySelectBase'
 import { CountryOption } from '../../Select/types'
@@ -110,7 +110,7 @@ export function PhoneTextFieldBase({
         data-touched={isTouched || undefined}
         data-has-value={value ? true : undefined}
         className={composeRenderProps(props.className, (className) =>
-          twMerge(
+          cn(
             'group font-segoe-ui rounded-5 flex flex-col gap-5 border border-[#dedede] bg-white transition-all duration-200 data-focused:border-[#b69775] data-focused:shadow-[0_0_0_1px_#b69775] data-invalid:!border-[#dd1d1d] data-invalid:!shadow-[0_0_0_1px_#dd1d1d]',
             className,
           ),

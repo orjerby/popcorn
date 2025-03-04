@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
+import { cn, twMergeConfig } from '../../../tailwind/tailwindMerge'
 import { BaseSelectBaseProps, SelectItem } from '../types'
 
 const select = tv(
@@ -34,7 +35,7 @@ const select = tv(
       error: 'text-14 text-red-600',
     },
   },
-  { twMerge: false },
+  { twMergeConfig },
 )
 
 export type SplitSelectProps = BaseSelectBaseProps<SelectItem> & {
@@ -82,10 +83,8 @@ export function SplitSelectBase({
         styles.base({ ...renderProps, className }),
       )}
     >
-      <div className={`${styles.container()} ${containerClassName || ''}`}>
-        <Label className={`${styles.label()} ${labelClassName || ''}`}>
-          {label}
-        </Label>
+      <div className={cn(styles.container(), containerClassName)}>
+        <Label className={cn(styles.label(), labelClassName)}>{label}</Label>
         <Button
           ref={inputRef}
           className={composeRenderProps(

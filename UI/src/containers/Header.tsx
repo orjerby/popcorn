@@ -12,6 +12,7 @@ import { useLocation, useNavigate } from 'react-router'
 import { Dialog } from '../components/Dialog/Dialog'
 import { useAppContext } from '../context/AppContext'
 import { selectCartTotalQuantity } from '../context/selectors'
+import { cn } from '../tailwind/tailwindMerge'
 import Cart from './Cart'
 
 interface HeaderProps {
@@ -146,9 +147,9 @@ function Header({ scrolled }: HeaderProps) {
                   <Dialog
                     type="leftToRight"
                     modalProps={{
-                      className: 'top-116 w-full',
+                      className: cn('top-116'),
                     }}
-                    dialogProps={{ className: 'px-16 py-24' }}
+                    dialogProps={{ className: cn('bg-white px-16 py-24') }}
                   >
                     <Link
                       href={'/collections/all-products'}
@@ -277,11 +278,8 @@ function Header({ scrolled }: HeaderProps) {
 
                 <Dialog
                   type="topToBottom"
-                  modalProps={{
-                    className: 'h-116 lg:h-144',
-                  }}
                   dialogProps={{
-                    className: 'h-full bg-[#f6f3e2] px-16',
+                    className: cn('max-h-116 bg-[#f6f3e2] px-16 lg:max-h-144'),
                   }}
                 >
                   <Form

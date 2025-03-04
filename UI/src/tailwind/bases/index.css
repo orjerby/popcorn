@@ -1,7 +1,7 @@
 @layer base {
   :root {
-    font-family: var(--font-vinyl), Inter, system-ui, Avenir, Helvetica, Arial,
-      sans-serif;
+    font-family:
+      var(--font-vinyl), Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 

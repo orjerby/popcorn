@@ -11,7 +11,7 @@ import {
   Popover,
   SelectValue,
 } from 'react-aria-components'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '../../../tailwind/tailwindMerge'
 import { BaseSelectBaseProps, CountryOption } from '../types'
 
 export type CountrySelectBaseProps = BaseSelectBaseProps<CountryOption>
@@ -43,10 +43,7 @@ export function CountrySelectBase<T extends CountryOption = CountryOption>({
         onSelectionChange?.(key)
       }}
       className={composeRenderProps(props.className, (className) =>
-        twMerge(
-          'group/select font-segoe-ui flex h-full flex-col gap-5',
-          className,
-        ),
+        cn('group/select font-segoe-ui flex h-full flex-col gap-5', className),
       )}
     >
       <div className="grid h-full items-center">

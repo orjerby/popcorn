@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
+import { cn, twMergeConfig } from '../../../tailwind/tailwindMerge'
 import { BaseSelectBaseProps, SelectItem } from '../types'
 
 const select = tv(
@@ -28,7 +29,7 @@ const select = tv(
       error: 'text-14 text-red-600',
     },
   },
-  { twMerge: false },
+  { twMergeConfig },
 )
 
 export type StandardSelectProps = BaseSelectBaseProps<SelectItem> & {
@@ -74,7 +75,7 @@ export function StandardSelectBase({
         styles.base({ ...renderProps, className }),
       )}
     >
-      <div className={`${styles.container()} ${containerClassName || ''}`}>
+      <div className={cn(styles.container(), containerClassName)}>
         <Button
           ref={inputRef}
           className={composeRenderProps(
@@ -84,10 +85,7 @@ export function StandardSelectBase({
           )}
         >
           <SelectValue />
-          <span
-            aria-hidden="true"
-            className={`${styles.icon()} ${iconClassName || ''}`}
-          >
+          <span aria-hidden="true" className={cn(styles.icon(), iconClassName)}>
             <svg
               fill="none"
               strokeWidth="1.5"

@@ -4,6 +4,7 @@ import {
   composeRenderProps,
 } from 'react-aria-components'
 import { tv } from 'tailwind-variants'
+import { twMergeConfig } from '../../tailwind/tailwindMerge'
 
 const styles = tv(
   {
@@ -18,7 +19,7 @@ const styles = tv(
       },
     },
   },
-  { twMerge: false },
+  { twMergeConfig },
 )
 
 export function ToggleButton(props: ToggleButtonProps) {
