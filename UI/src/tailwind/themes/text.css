@@ -1,3 +1,9 @@
+/* 
+  ⚠️ IMPORTANT: Keep in sync with `tailwindMerge.ts`
+  If you add or modify text size variables here, update `tailwindMerge.ts` accordingly
+  to prevent inconsistencies in Tailwind class merging.
+*/
+
 @theme inline {
   --text-1: var(--px-1);
   --text-1--line-height: calc(0.0833 / 0.0625);

@@ -279,7 +279,10 @@ function Header({ scrolled }: HeaderProps) {
                 <Dialog
                   type="topToBottom"
                   dialogProps={{
-                    className: cn('max-h-116 bg-[#f6f3e2] px-16 lg:max-h-144'),
+                    className: cn(
+                      'max-h-116 bg-[#f6f3e2] px-16',
+                      scrolled ? 'lg:max-h-116' : 'lg:max-h-144',
+                    ),
                   }}
                 >
                   <Form

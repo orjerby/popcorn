@@ -377,7 +377,7 @@ export default function BundlePage() {
             </button>
           </div>
           {/* Mobile design for bundle box ("bundle footer") */}
-          <div className="fixed bottom-0 min-h-167 w-full bg-white py-8 shadow-2xl shadow-black lg:hidden">
+          <div className="fixed bottom-0 min-h-167 w-full bg-white py-8 shadow-[0px_-11px_14px_0px] shadow-[rgba(0,0,0,0.18)] lg:hidden">
             <div className="grid grid-cols-3 gap-4 px-12">
               <div className="p-b-8 min-h-32 border-b border-black">
                 <Button
