@@ -76,7 +76,7 @@ export default function HomePage() {
         </div>
         <div className="mt-12">
           <div className="container mx-auto">
-            <div className="grid grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 gap-20 lg:grid-cols-2 lg:gap-16">
               <Link href={'collections/all-products?types=Cheese+Balls'}>
                 <div className="group relative cursor-pointer overflow-hidden rounded-xl">
                   <img
