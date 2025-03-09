@@ -192,16 +192,16 @@ export default function FiltersPage() {
             key={type}
             isDisabled={disabledTypesByIndex[index]}
             onChange={(event) => onTypeChange(event, type)}
-            className="group flex items-center gap-8 text-black data-disabled:opacity-60"
+            className="group flex w-fit items-center gap-8 text-black data-disabled:opacity-60 data-hovered:cursor-pointer"
           >
             <div aria-hidden="true">
               <div
                 className={
-                  'rounded-4 size-16 border-2 border-[#C1803E] group-data-hovered:cursor-pointer group-data-selected:bg-[#C1803E]'
+                  'rounded-4 size-16 border-2 border-[#C1803E] group-data-selected:bg-[#C1803E]'
                 }
               ></div>
             </div>
-            {type}
+            <span>{type}</span>
           </Checkbox>
         ))}
       </CheckboxGroup>
@@ -217,16 +217,16 @@ export default function FiltersPage() {
             key={flavor}
             isDisabled={disabledFlavorsByIndex[index]}
             onChange={(event) => onFlavorChange(event, flavor)}
-            className="group flex items-center gap-8 text-black data-disabled:opacity-60"
+            className="group flex w-fit items-center gap-8 text-black data-disabled:opacity-60 data-hovered:cursor-pointer"
           >
             <div aria-hidden="true">
               <div
                 className={
-                  'rounded-4 size-16 border-2 border-[#C1803E] group-data-hovered:cursor-pointer group-data-selected:bg-[#C1803E]'
+                  'rounded-4 size-16 border-2 border-[#C1803E] group-data-selected:bg-[#C1803E]'
                 }
               ></div>
             </div>
-            {flavor}
+            <span>{flavor}</span>
           </Checkbox>
         ))}
       </CheckboxGroup>
@@ -242,43 +242,77 @@ export default function FiltersPage() {
       </div>
 
       <div className="px-[16px] py-[24px]">
-        <div className="mb-16 lg:hidden">
-          <DialogTrigger>
-            <Button
-              aria-label="Open filter"
-              className="text-16 cursor-pointer font-normal text-black"
-            >
-              FILTER
-            </Button>
-
-            <Dialog
-              type="leftToRight"
-              dialogProps={{
-                className: cn('bg-white px-16 py-24'),
-              }}
-            >
-              <Button
-                slot="close"
-                className="text-20 w-full cursor-pointer border-b border-zinc-400 py-16 text-left font-normal text-black"
-              >
-                FILTER
-              </Button>
-
-              <div className="mt-24">{filterCheckboxes}</div>
-            </Dialog>
-          </DialogTrigger>
-        </div>
-
         <div className="flex justify-center gap-16">
           <div className="rounded-6 sticky top-144 hidden h-full w-full max-w-250 border border-[#CBC1B7] bg-white p-[16px] lg:block">
             {filterCheckboxes}
           </div>
-          <div className="flex flex-col">
-            <div className="flex justify-between border-b border-b-[#CBC1B7] pb-16">
+          <div className="flex w-full flex-col">
+            <div className="flex flex-wrap justify-between gap-8 border-b border-b-[#CBC1B7] pb-16">
               <div className="flex items-center gap-12">
-                <span className="text-[#414141]">
+                <span className="hidden text-[#414141] lg:block">
                   {filterdProducts.length} PRODUCTS
                 </span>
+
+                <div className="lg:hidden">
+                  <DialogTrigger>
+                    <Button
+                      aria-label="Open filter"
+                      className="flex cursor-pointer items-center justify-center text-black"
+                    >
+                      <span className="text-16 font-normal">FILTER</span>
+                      <svg
+                        fill="none"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                        className="-mt-2 w-16 -rotate-90"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        ></path>
+                      </svg>
+                    </Button>
+
+                    <Dialog
+                      type="leftToRight"
+                      dialogProps={{
+                        className: cn('bg-white px-16 py-24'),
+                      }}
+                    >
+                      <Button
+                        slot="close"
+                        className="-mt-2 flex cursor-pointer items-center justify-center gap-8 py-16 text-black"
+                      >
+                        <svg
+                          fill="none"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                          className="w-16 rotate-90"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                          ></path>
+                        </svg>
+
+                        <span className="text-20 font-normal">FILTER</span>
+                      </Button>
+
+                      <hr className="border-zinc-400" />
+
+                      <div className="mt-24">{filterCheckboxes}</div>
+                    </Dialog>
+                  </DialogTrigger>
+                </div>
+
                 <Button
                   aria-label="clear filters"
                   onPress={() => setSearchParams()}
@@ -305,7 +339,7 @@ export default function FiltersPage() {
                   </span>
                 </Button>
               </div>
-              <form className="flex items-center" action="">
+              <form className="flex items-center gap-8" action="">
                 <p id="sort-by" className="text-[#414141]">
                   SORT BY:
                 </p>
