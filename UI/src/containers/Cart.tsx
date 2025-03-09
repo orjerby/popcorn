@@ -1,5 +1,4 @@
 import { Button } from '@mui/material'
-import Drawer from '@mui/material/Drawer'
 import { Link } from 'react-aria-components'
 import { FaMinus, FaPlus } from 'react-icons/fa6'
 import { HiOutlineTrash } from 'react-icons/hi'
@@ -191,54 +190,54 @@ export default function Cart({ open, onClose }: Props) {
   )
 
   return (
-    <Drawer anchor={'right'} open={open} onClose={onClose}>
-      <div className="relative flex h-full w-full flex-col justify-between overflow-hidden">
-        <img
-          className="absolute h-full w-full bg-[#f6f3e2] bg-cover"
-          src="https://www.pipsnacks.com/cdn/shop/t/205/assets/rice-paper.webp?v=15630725387464339411709904553"
-          alt=""
-        />
-        <div className="relative flex justify-between border-b px-20 py-15 text-4xl text-[rgba(0,0,0,20%)] uppercase">
-          <h2 className="text-[#953300]">Cart</h2>
-          <Button
-            className="cursor-pointer text-red-500"
-            onClick={() => onClose()}
+    // <Drawer anchor={'right'} open={open} onClose={onClose}>
+    <div className="relative flex h-full w-full flex-col justify-between overflow-hidden">
+      <img
+        className="absolute h-full w-full bg-[#f6f3e2] bg-cover"
+        src="https://www.pipsnacks.com/cdn/shop/t/205/assets/rice-paper.webp?v=15630725387464339411709904553"
+        alt=""
+      />
+      <div className="relative flex justify-between border-b px-20 py-15 text-4xl text-[rgba(0,0,0,20%)] uppercase">
+        <h2 className="text-[#953300]">Cart</h2>
+        <Button
+          className="cursor-pointer text-red-500"
+          onClick={() => onClose()}
+        >
+          <IoCloseOutline color="#953300" size={20} />
+        </Button>
+      </div>
+
+      <div className="relative flex h-full overflow-y-auto text-[#953300]">
+        {DrawerList}
+      </div>
+
+      <div className="relative flex flex-col">
+        <div className="flex justify-between bg-[#e5d1b3] px-16 py-8 text-black">
+          <span className="text-black">Discounts</span>
+          <span className="">-$0</span>
+        </div>
+        <div className="bg-[#ebe6d3] p-16">
+          <div className="flex justify-between">
+            <div className="text-20 text-[#b74600] uppercase">shipping</div>
+            <div className="text-20 text-[#b74600] uppercase">subtotal</div>
+          </div>
+          <div className="flex justify-between">
+            <div className="text-14 text-black uppercase">
+              Woo hoo! you scored free shipping 🥳
+            </div>
+            <div className="text-20 text-[#b74600] uppercase">$666</div>
+          </div>
+        </div>
+        <div className="flex justify-center bg-[#3eadb8]">
+          <Link
+            className="text-20 px-16 py-14 text-white uppercase"
+            href={'checkouts'}
           >
-            <IoCloseOutline color="#953300" size={20} />
-          </Button>
-        </div>
-
-        <div className="relative flex h-full overflow-y-auto text-[#953300]">
-          {DrawerList}
-        </div>
-
-        <div className="relative flex flex-col">
-          <div className="flex justify-between bg-[#e5d1b3] px-16 py-8 text-black">
-            <span className="text-black">Discounts</span>
-            <span className="">-$0</span>
-          </div>
-          <div className="bg-[#ebe6d3] p-16">
-            <div className="flex justify-between">
-              <div className="text-20 text-[#b74600] uppercase">shipping</div>
-              <div className="text-20 text-[#b74600] uppercase">subtotal</div>
-            </div>
-            <div className="flex justify-between">
-              <div className="text-14 text-black uppercase">
-                Woo hoo! you scored free shipping 🥳
-              </div>
-              <div className="text-20 text-[#b74600] uppercase">$666</div>
-            </div>
-          </div>
-          <div className="flex justify-center bg-[#3eadb8]">
-            <Link
-              className="text-20 px-16 py-14 text-white uppercase"
-              href={'checkouts'}
-            >
-              continue to checkout
-            </Link>
-          </div>
+            continue to checkout
+          </Link>
         </div>
       </div>
-    </Drawer>
+    </div>
+    // </Drawer>
   )
 }
