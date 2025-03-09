@@ -154,7 +154,7 @@ function Header({ scrolled }: HeaderProps) {
                       isDismissable: true,
                     }}
                     modalProps={{
-                      className: cn('w-512'),
+                      className: cn('max-w-512'),
                     }}
                     dialogProps={{
                       className: cn('bg-white px-16 py-24'),
@@ -413,7 +413,7 @@ function Header({ scrolled }: HeaderProps) {
                     isDismissable: true,
                   }}
                   modalProps={{
-                    className: cn('w-512'),
+                    className: cn('max-w-512'),
                   }}
                 >
                   <Cart
