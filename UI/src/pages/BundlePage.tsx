@@ -247,14 +247,14 @@ export default function BundlePage() {
                           >
                             <div className="absolute -left-30">
                               <img
-                                className="mr-auto ml-auto max-h-126 max-w-126 -rotate-6"
+                                className="mr-auto ml-auto max-h-87 max-w-87 -rotate-6 lg:max-h-126 lg:max-w-126"
                                 src={product.images[0]}
                                 alt=""
                               />
                             </div>
-                            <div className="ml-100 flex-3 flex-col px-12 py-8">
+                            <div className="ml-40 flex-3 flex-col px-12 py-8 lg:ml-100">
                               <div>
-                                <span className="text-xl text-zinc-600 uppercase">
+                                <span className="text-14 lg:text-20 text-zinc-600 uppercase">
                                   {product.id} -- {product.title}
                                 </span>
                                 <div className="flex text-black">
@@ -280,7 +280,7 @@ export default function BundlePage() {
                                 onClick={() => {
                                   addToBundle(product)
                                 }}
-                                className="cursor-pointer rounded-tl-xl px-16 py-4 text-xl text-white uppercase"
+                                className="text-14 lg:text-20 cursor-pointer rounded-tl-xl px-16 py-4 text-white uppercase"
                                 style={{
                                   backgroundColor: product.color,
                                 }}
