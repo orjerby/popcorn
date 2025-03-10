@@ -26,7 +26,7 @@ export function StandardTextFieldBase({
   const commonInputProps = {
     placeholder,
     className:
-      'text-14 rounded-5 border border-[#dedede] bg-white px-11 py-13.5 text-black outline-0 transition-all duration-200 [grid-area:1/1] group-data-has-value:pt-19.5 group-data-has-value:pb-7.5 group-data-invalid:!border-[#dd1d1d] group-data-invalid:!shadow-[0_0_0_1px_#dd1d1d] data-focused:border-[#b69775] data-focused:shadow-[0_0_0_1px_#b69775]',
+      'text-14 w-full rounded-5 border border-[#dedede] bg-white px-11 py-13.5 text-black outline-0 transition-all duration-200 [grid-area:1/1] group-data-has-value:pt-19.5 group-data-has-value:pb-7.5 group-data-invalid:!border-[#dd1d1d] group-data-invalid:!shadow-[0_0_0_1px_#dd1d1d] data-focused:border-[#b69775] data-focused:shadow-[0_0_0_1px_#b69775]',
   }
 
   const handleChange = (newValue: string) => {

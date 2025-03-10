@@ -202,6 +202,7 @@ export default function BundlePage() {
                 <li className="text-16 hidden font-normal text-black lg:block">
                   JUMP TO:
                 </li>
+                {/* <li className="text-16 font-normal text-black">JUMP TO:</li> */}
                 <ToggleButtonGroup
                   className={'overflow-x-auto'}
                   disallowEmptySelection

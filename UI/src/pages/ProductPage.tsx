@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Button, Group, Input, NumberField } from 'react-aria-components'
 import { useParams } from 'react-router'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { useAppContext } from '../context/AppContext'
 import { selectProduct } from '../context/selectors'
 
@@ -26,20 +27,28 @@ export default function ProductPage() {
     <div className="mx-auto mt-80 box-content flex max-w-1120 flex-col gap-32 px-16 py-80 lg:flex-row">
       <div className="flex-[0.55]">
         <div className="bg-[#faf8ee]">
-          <img src={product.images[selectedImageIndex]} alt="" />
+          <img
+            src={product.images[selectedImageIndex]}
+            alt=""
+            className="w-full"
+          />
         </div>
 
         <div className="mt-32 flex h-71 gap-12">
-          {product.images.map((image, index) => (
-            <button
-              onClick={() => setSelectedImageIndex(index)}
-              aria-label="image"
-              key={index}
-              className="flex-0-0-71 bg-[#faf8ee] p-[8px]"
-            >
-              <img src={image} alt="" />
-            </button>
-          ))}
+          <Swiper slidesPerView="auto">
+            {product.images.map((image, index) => (
+              <SwiperSlide key={product.id} className="!w-71">
+                <button
+                  onClick={() => setSelectedImageIndex(index)}
+                  aria-label="image"
+                  key={index}
+                  className="bg-[#faf8ee] p-[8px]"
+                >
+                  <img src={image} alt="" />
+                </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
 
@@ -58,13 +67,7 @@ export default function ProductPage() {
           </p>
         </div>
 
-        <p className="text-14 font-normal text-black">Select a size</p>
-
-        <div className="mt-4"></div>
-
-        <div className="rounded-4 mt-16 bg-white p-[8px]"></div>
-
-        <div className="mt-16 flex">
+        <div className="mt-8 flex">
           <div className="rounded-6 bg-white"></div>
 
           <div className="flex w-full gap-12">
@@ -83,7 +86,7 @@ export default function ProductPage() {
               className="rounded-6 bg-white"
             >
               <Group className="flex h-full items-center justify-center">
-                <Button slot="decrement" className="px-[16px]">
+                <Button slot="decrement" className="cursor-pointer px-[16px]">
                   <svg
                     width="20"
                     height="21"
@@ -101,7 +104,7 @@ export default function ProductPage() {
                   </svg>
                 </Button>
                 <Input className="text-18 w-24 text-center font-bold text-[#414141]" />
-                <Button slot="increment" className="px-[16px]">
+                <Button slot="increment" className="cursor-pointer px-[16px]">
                   <svg
                     width="20"
                     height="21"
@@ -138,7 +141,7 @@ export default function ProductPage() {
           </div>
         </div>
 
-        <p className="text-18 mt-64 font-normal text-black">
+        <p className="text-18 mt-45 font-normal text-black">
           {product.description}
         </p>
       </div>
