@@ -96,8 +96,8 @@ export default function CheckoutPage() {
 
   return (
     <>
-      <div className="mt-200 flex bg-white">
-        <div className="flex flex-1 justify-end">
+      <div className="mt-100 flex bg-white">
+        <div className="flex w-full flex-1 justify-end">
           <FormProvider {...methods}>
             <Form
               onSubmit={handleSubmit((_, event) => onSubmit(_, event))}
