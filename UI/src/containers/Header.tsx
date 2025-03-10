@@ -105,7 +105,6 @@ function Header({ scrolled }: HeaderProps) {
   return (
     <>
       <div className="header sticky top-0 z-50 h-(--header-height) w-full">
-        {/* <Cart open={isCartOpen} onClose={() => setIsCartOpen(false)} /> */}
         <div className="flex h-36 flex-col items-center justify-center bg-[#eb6600]">
           <p className="font-pluto-medium text-center text-sm font-medium text-white uppercase">
             Snag free shipping on orders over $30
@@ -416,10 +415,7 @@ function Header({ scrolled }: HeaderProps) {
                     className: cn('max-w-512'),
                   }}
                 >
-                  <Cart
-                    open={isCartOpen}
-                    onClose={() => setIsCartOpen(false)}
-                  />
+                  <Cart onClose={() => setIsCartOpen(false)} />
                 </Dialog>
               </DialogTrigger>
             </div>

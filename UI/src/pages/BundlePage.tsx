@@ -1,14 +1,8 @@
 import { useEffect, useState } from 'react'
-import {
-  Button,
-  Disclosure,
-  DisclosurePanel,
-  Link,
-} from 'react-aria-components'
+import { Link } from 'react-aria-components'
 import { useSearchParams } from 'react-router'
 import { Product } from '../../../API/models/product'
 import BundleProductsRow from '../components/BundleProductsRow'
-import BundleProductsRowD from '../components/BundleProductsRowD'
 import Stars from '../components/Stars'
 import { ToggleButton } from '../components/ToggleButton/ToggleButton'
 import { useAppContext } from '../context/AppContext'
@@ -199,7 +193,7 @@ export default function BundlePage() {
               {/* <SnackTypeSelector types={types} /> */}
 
               <ul className="flex items-center gap-x-8">
-                <li className="text-16 font-normal text-black">JUMP TO:</li>
+                {/* <li className="text-16 font-normal text-black">JUMP TO:</li> */}
                 <ToggleButtonGroup
                   disallowEmptySelection
                   onSelectionChange={(keys) => {
@@ -212,6 +206,11 @@ export default function BundlePage() {
                     section?.focus({ preventScroll: true })
                   }}
                 >
+                  {types.map((type) => (
+                    <ToggleButton key={type} id={type}>
+                      {type}
+                    </ToggleButton>
+                  ))}
                   {types.map((type) => (
                     <ToggleButton key={type} id={type}>
                       {type}
@@ -377,7 +376,7 @@ export default function BundlePage() {
             </button>
           </div>
           {/* Mobile design for bundle box ("bundle footer") */}
-          <div className="fixed bottom-0 min-h-167 w-full bg-white py-8 shadow-[0px_-11px_14px_0px] shadow-[rgba(0,0,0,0.18)] lg:hidden">
+          {/* <div className="fixed bottom-0 min-h-167 w-full bg-white py-8 shadow-[0px_-11px_14px_0px] shadow-[rgba(0,0,0,0.18)] lg:hidden">
             <div className="grid grid-cols-3 gap-4 px-12">
               <div className="p-b-8 min-h-32 border-b border-black">
                 <Button
@@ -499,7 +498,7 @@ export default function BundlePage() {
                 </span>
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

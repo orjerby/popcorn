@@ -7,11 +7,10 @@ import { useAppContext } from '../context/AppContext'
 import { selectCartProducts } from '../context/selectors'
 
 type Props = {
-  open: boolean
   onClose: () => void
 }
 
-export default function Cart({ open, onClose }: Props) {
+export default function Cart({ onClose }: Props) {
   const { state, dispatch } = useAppContext()
   const cart = selectCartProducts(state)
 
@@ -190,7 +189,6 @@ export default function Cart({ open, onClose }: Props) {
   )
 
   return (
-    // <Drawer anchor={'right'} open={open} onClose={onClose}>
     <div className="relative flex h-full w-full flex-col justify-between overflow-hidden">
       <img
         className="absolute h-full w-full bg-[#f6f3e2] bg-cover"
@@ -231,6 +229,7 @@ export default function Cart({ open, onClose }: Props) {
         <div className="flex justify-center bg-[#3eadb8]">
           <Link
             className="text-20 px-16 py-14 text-white uppercase"
+            onPress={onClose}
             href={'checkouts'}
           >
             continue to checkout
@@ -238,6 +237,5 @@ export default function Cart({ open, onClose }: Props) {
         </div>
       </div>
     </div>
-    // </Drawer>
   )
 }
