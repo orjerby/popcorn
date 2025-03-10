@@ -194,13 +194,16 @@ export default function BundlePage() {
       {/* page body part (list and bundle) */}
       <div className="relative w-full lg:container lg:mx-auto lg:w-fit">
         <div className="lg:flex">
-          <div className="flex flex-col bg-[#F9F1E6] lg:h-2200 lg:w-720">
-            <div className="mx-auto p-10 text-center">
+          <div className="flex flex-col overflow-hidden bg-[#F9F1E6] lg:h-2200 lg:w-720">
+            <div className="mx-auto w-full overflow-x-auto p-10 text-center">
               {/* <SnackTypeSelector types={types} /> */}
 
               <ul className="flex items-center gap-x-8">
-                <li className="text-16 font-normal text-black">JUMP TO:</li>
+                <li className="text-16 hidden font-normal text-black lg:block">
+                  JUMP TO:
+                </li>
                 <ToggleButtonGroup
+                  className={'overflow-x-auto'}
                   disallowEmptySelection
                   onSelectionChange={(keys) => {
                     const sectionId = `section-${[...keys.values()][0]}`
