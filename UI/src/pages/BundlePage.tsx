@@ -430,7 +430,7 @@ export default function BundlePage() {
                       style={{
                         backgroundColor: hexToRgba(
                           product.color ? product.color : '',
-                          0.3,
+                          0.5,
                         ),
                         borderColor: product.color,
                       }}
@@ -438,7 +438,7 @@ export default function BundlePage() {
                         (index + 1) % 4 === 0
                           ? 'border-[#C1803E] text-[#C1803E]'
                           : 'border-[#CBC1B7] text-[#CBC1B7]'
-                      }`}
+                      } ${product.color ? 'border-solid text-white' : 'text-[#CBC1B7]'}`}
                     >
                       {index + 1}
                     </span>
