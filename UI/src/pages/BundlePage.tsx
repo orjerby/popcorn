@@ -165,27 +165,29 @@ export default function BundlePage() {
   }
 
   return (
-    <div>
+    <div className="mt-30 overflow-hidden">
       <div>
-        <div className="relative">
+        <div className="relative w-full">
           <img
-            className="w-full"
+            className="h-auto w-full"
             src="https://www.pipsnacks.com/cdn/shop/t/205/assets/bundle-builder-cover.webp?v=92580026083330038291709732442"
             alt=""
             width={1200}
             height={400}
           />
-          <div className="absolute top-1/2 ml-40 max-w-400 rounded bg-white text-3xl text-black uppercase opacity-80">
-            <p className="p-10">
-              choose your own snack adventure and build your own bundle!
-            </p>
+          <div className="flex w-full justify-center lg:justify-start">
+            <div className="text-12 lg:text-30 absolute bottom-16 flex w-full items-center justify-center text-black uppercase lg:bottom-2/5 lg:ml-40 lg:block lg:w-fit lg:items-start lg:justify-start">
+              <p className="w-fit max-w-400 rounded bg-white p-10 opacity-80">
+                choose your own snack adventure and build your own bundle!
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* white title part */}
       <div className="w-full bg-white">
-        <h2 className="w-full bg-white p-40 text-center text-3xl text-black uppercase">
+        <h2 className="text-12 lg:text-30 w-full bg-white p-40 text-center text-black uppercase">
           Select 4, 8, or 12 packs of your pipcorn favorites to create your
           perfect snack lineup
         </h2>
@@ -217,7 +219,11 @@ export default function BundlePage() {
                   }}
                 >
                   {types.map((type) => (
-                    <ToggleButton key={type} id={type}>
+                    <ToggleButton
+                      className={'whitespace-nowrap'}
+                      key={type}
+                      id={type}
+                    >
                       {type}
                     </ToggleButton>
                   ))}
@@ -417,7 +423,7 @@ export default function BundlePage() {
 
             {!isExpanded && (
               <div className="my-10">
-                <div className="flex h-full max-h-35 gap-8 pl-12">
+                <div className="flex h-full w-full gap-8 overflow-x-auto pb-4 pl-12">
                   {currentBundle.map((product, index) => (
                     <span
                       key={index}
@@ -428,7 +434,7 @@ export default function BundlePage() {
                         ),
                         borderColor: product.color,
                       }}
-                      className={`text-24 rounded-8 w-full max-w-31 border-2 border-dashed text-center ${
+                      className={`flex h-35 w-35 flex-shrink-0 items-center justify-center rounded-lg border-2 border-dashed text-center text-2xl ${
                         (index + 1) % 4 === 0
                           ? 'border-[#C1803E] text-[#C1803E]'
                           : 'border-[#CBC1B7] text-[#CBC1B7]'
@@ -448,7 +454,7 @@ export default function BundlePage() {
               {({ isExpanded }) =>
                 isExpanded && (
                   <DisclosurePanel>
-                    <div className="flex">
+                    <div className="flex overflow-x-auto">
                       <BundleProductsRowD
                         rowTitle={'4 PACK'}
                         rowStartLocation={0}
